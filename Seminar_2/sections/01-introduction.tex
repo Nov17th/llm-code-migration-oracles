@@ -1,0 +1,28 @@
+%% ===== 1 Introduction =====
+\section{Introduction}
+\label{sec:intro}
+
+Code migration is routine industrial work, and LLMs are taking a growing share of it. Google reports LLM-driven migrations across its monorepo, such as JUnit~3 to JUnit~4~\cite{googlemig}, and similar efforts span C-to-Rust ports, COBOL modernization and dependency upgrades. In every case someone must decide whether the migrated code still does what the original did. That decision rests on an \emph{oracle}: a compiler, a test suite, a comparison with the original program, a formal check, a human or another LLM.
+
+The oracle is not a neutral instrument. Papers in our own scope show the same outputs looking very different under different oracles:
+\begin{itemize}
+  \item DepWareTrans~\cite{depwaretrans}: file-by-file Java-to-Kotlin migration reaches 38.16\% compilation but only 9.39\% test success.
+  \item DGIR~\cite{dgir}: a model rewarded only for compiling reaches 97.9\% compilation and 0\% computational accuracy.
+  \item DepUpgrade~\cite{depupgrade}: \new{in 96.75\% of dependency-upgrade tasks the code compiles, but reviewers judge only 62 of the 123 tasks (50.4\%) to end with a semantically equivalent patch.}
+\end{itemize}
+Work at co-located events reports the same pattern\new{:} Copilot Agent Mode migrating SQLAlchemy reaches a median migration coverage of 100\% but a median test pass rate of 39.75\%~\cite{copilotmig}. \new{The problem is not specific to translation either: in an FSE~2025 study, existing regression tests caught only 7.6\% of behavior-changing commits~\cite{changeguard}.}
+
+Despite this, no study has mapped which oracles the community uses, where those oracles come from, and in which settings. The closest related studies (Section~\ref{sec:related}) \new{survey translation techniques, benchmarks, publication trends or security, but none analyzes where equivalence oracles come from or how reliable they are.} We address that gap with a systematic mapping study of three \new{flagship SE venues}, and ask:
+\begin{itemize}
+  \item[\textbf{RQ1.}] Which oracles are used to evaluate behavioral equivalence in LLM-based code translation and migration?
+  \item[\textbf{RQ2.}] Where do these oracles come from, and in which contexts are they used: with or without existing tests, for which kind of migration, in which track?
+  \item[\textbf{RQ3.}] Which threats to oracle reliability do the studies acknowledge or demonstrate?
+  \item[\new{\textbf{RQ4.}}] \new{What gaps separate current evaluation practice from the needs of real migration projects, and what should studies report and investigate next?}
+\end{itemize}
+%% RQ4 comes from the project spec. It is answered in Section 6.1.
+
+Our contributions are: (1) a coded map of 49 primary studies by oracle, oracle origin, migration kind, track and LLM role, with the empty cells that mark under-studied combinations; (2) \new{a catalog of the 33 studies that report two or more oracles on the same outputs, showing how far those oracles disagree}; (3) a classification of the \new{limitations that studies report about their own oracles}; and (4) \new{six gaps between evaluation practice and real migration, with} a checklist for reporting oracle provenance. All data and coding are released (Section~\ref{sec:conclusion}).
+
+\begin{added}
+\paragraph{Structure.} Section~\ref{sec:background} defines the kinds of migration and the oracle categories we code. Section~\ref{sec:related} positions this study against the closest related studies. Section~\ref{sec:method} reports the search, selection and extraction. Section~\ref{sec:results} answers RQ1 to RQ3, and Section~\ref{sec:discussion} answers RQ4 and proposes the checklist. Section~\ref{sec:threats} discusses threats to validity, and Section~\ref{sec:conclusion} concludes. Appendix~\ref{app:primary} lists every included paper with its coding.
+\end{added}

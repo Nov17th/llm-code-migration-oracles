@@ -1,0 +1,34 @@
+%% ===== 8 Conclusion and Data Availability =====
+\section{Conclusion and Data Availability}
+\label{sec:conclusion}
+
+We mapped how 49 papers at ICSE, FSE and ASE from 2024 to 2026 decide whether LLM-translated or migrated code behaves like the original. Compilation and existing tests dominate, and \new{legacy} settings fall back on differential runs, generated tests, LLM judges or people. \new{Of the 33 papers that report several oracles on the same outputs, 18 report both a compile and a behavioral rate, and there behavior trails compilation by up to 98 percentage points. The gaps to real migration are clear: legacy settings are rare, test evidence rests largely on benchmarks, derived oracles are seldom independent of the output, judgments by people or LLMs are rarely validated, compilation is reported as if it were evidence, and 9 papers state no limitation of their own oracle.} Before we trust LLMs to translate the software that runs the world, we must agree on how to check their work; the provenance checklist in Section~\ref{sec:checklist} is a first step.
+
+\paragraph{Data availability.} The replication package contains the search log with dates and counts for every proceedings volume, the codebook, every screening decision with its reason and evidence basis, the extraction form for all 51 papers, the coded data behind every table and figure, and a script that recomputes every count: \TODO{GitHub link, or switch to the non-public version below}.
+%% Pick ONE of the two drafts below, uncomment it, fill the slots, and delete
+%% the paragraph above (with its \TODO).
+%%
+%% ---- Draft A: public package on GitHub ------------------------------------
+%% Link to a tagged release (e.g. v1.0), not to the main branch, so the link
+%% always shows the data the paper describes.
+%% For a double-blind submission (check the EASE call), a GitHub link reveals
+%% the authors: give an anonymized copy for review instead, for example via
+%% anonymous.4open.science, and put the real link in the camera-ready.
+% \paragraph{Data availability.} The replication package is available at
+% \url{https://github.com/Nov17th/llm-code-migration-oracles} (release \fillin{v1.0}). It
+% contains the search log with dates and counts for every proceedings volume,
+% the codebook, every screening decision with its reason and evidence basis,
+% the extraction form and coded data for all 51 papers, the data behind every
+% table and figure, and a script that recomputes every count in the paper.
+%%
+%% ---- Draft B: package not public ------------------------------------------
+%% Appendix A already gives the coding of every included paper, so the counts
+%% in Sections 5 and 6 can still be checked from the paper itself.
+% \paragraph{Data availability.} The coding of every included paper, from
+% which all counts in Sections~\ref{sec:results} and~\ref{sec:discussion} can
+% be recomputed, is given in Appendix~\ref{app:primary}. The search log with
+% dates and counts for every proceedings volume, the codebook, and every
+% screening decision with its reason and evidence basis are available from
+% the authors on request.
+%%
+% \paragraph{Acknowledgments.} \fillin{Optional: course, instructor, funding.}

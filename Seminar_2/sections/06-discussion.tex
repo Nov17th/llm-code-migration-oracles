@@ -1,0 +1,48 @@
+%% ===== 6 Discussion =====
+%% 6.1 answers RQ4; 6.2 and 6.3 are the implications and the checklist.
+\section{Discussion}
+\label{sec:discussion}
+
+\begin{added}
+\subsection{RQ4: Gaps between evaluation practice and real migration}
+\label{sec:rq4}
+
+Real migration projects, legacy ones above all, often have no usable tests, cannot re-check every output by hand, and need evidence that holds beyond a benchmark. Measured against these needs, the map shows six gaps.
+\begin{enumerate}[label=\textbf{G\arabic*.}]
+  \item \textbf{\new{Legacy settings are rare and appear only in the industry/SEIP and NIER tracks.}} Only 5 of the 49 papers migrate a legacy system, all in \new{these tracks}, and none of them \new{uses} existing tests. Two run the original system as a differential oracle; the other 3 rely on generated tests, an LLM judge or a person (Section~\ref{sec:rq2}).
+  \item \textbf{Test evidence rests largely on benchmarks.} \new{Of the 28 papers that use existing tests, 14 use only tests built for benchmarks of curated problems and 2 use both kinds;} in translation between languages benchmark tests outnumber project test suites \new{12 to 6}. A pass rate on such tests says little about a repository whose own tests are missing or weak.
+  \item \textbf{Derived oracles are seldom independent of the output.} In 5 of the 7 papers with translated tests, the evaluated system translated them\new{, so in 4 of them a translation error can affect the code and its tests alike}; one paper generates tests and code from the same specification; and in at least 3 papers the reported oracle also selects or repairs the outputs it judges (Section~\ref{sec:rq3}).
+  %% G4: full-text search of all 18 O-i papers (kappa, inter-rater, agreement):
+  %% ASE 5 kappa 0.83/0.73, FSE 15 kappa 0.71, #212 agreement 100%/96.7%,
+  %% FSE 26 Cohen's kappa 0.435 (correctness). #398 states it used no formal
+  %% agreement measure; FSE 11 says it measured agreement but gives no figure.
+  \item \textbf{Judgment-based oracles go unvalidated.} Human evaluation appears in 18 papers, but only \new{4} report agreement between raters~\cite{pylibmig,translibeval,recodeagent,fruntke}. LLM judges appear in 3 papers, and one industrial paper relies on an LLM judge alone~\cite{wca4z}.
+  \item \textbf{Compilation is reported as if it were evidence.} Thirty-three papers \new{use compilation as an oracle; in the 18 that report a compile rate and a behavioral pass rate for the same outputs, behavior trails compilation by 3 to 98 percentage points in the configurations shown in Figure~\ref{fig:compile-gap}.}
+  \item \textbf{Oracle limitations go unstated.} Nine papers state no limitation of their own oracle, including all three that rely on a single weak oracle.
+\end{enumerate}
+
+\paragraph{What to report and what to study next.} The checklist in Section~\ref{sec:checklist} addresses what papers should report. Four research directions follow from the gaps: benchmarks with a \new{setting} that withholds tests, in which equivalence must be shown against a runnable original, as legacy projects require (G1, G2); ways to validate translated and generated tests before trusting them, for example by mutation analysis~\cite{mbta} or by checking them against the original (G3); LLM judges calibrated against execution, with agreement reported by task difficulty, given that \new{the F1 score of LLMs judging equivalence} already drops between benchmarks~\cite{moumoula} (G4); and evaluation protocols that keep one oracle hidden from the technique, so that optimizing against the oracle cannot inflate the result (G3, G5).
+\end{added}
+
+\subsection{Implications}
+\label{sec:implications}
+
+\paragraph{For researchers.} A compile rate is not evidence of equivalence \new{(G5)}. Results should lead with a behavioral oracle and report compilation only as a filter. Where tests are the oracle, their strength matters as much as the pass rate: how many tests per sample, what they cover, and whether they were translated, generated or pre-existing. \new{Test weakness is already the most common main limitation (15 papers, Table~\ref{tab:limits}); reporting test strength would let readers judge it.}
+
+\paragraph{For benchmark builders.} Benchmarks shape the oracle a field uses. \new{Surface similarity (O-a)} still appears in 14 papers and ranks systems in the opposite order to execution in at least one\new{~\cite{terramod}}. Benchmarks should ship executable oracles with known coverage, and guard against gaming as FreshBrew does with a coverage gate~\cite{freshbrew}. \new{The zero cells of Table~\ref{tab:context} point to benchmarks that do not yet exist: legacy migrations with existing or translated test suites, dialect pairs with test suites, and library migrations evaluated with generated tests or formal verification. Even where library migrations have tests, they rarely cover the change: in one study only 27 of 314 migrations had tests covering the changed code~\cite{pylibmig}.}
+
+\paragraph{For practitioners migrating real systems.} \new{No legacy paper in our corpus uses existing tests, and the corpus} shows what replaces them: running the original system as a differential oracle, tests generated from an extracted specification, an LLM judge or a human. These differ in trust. \new{A differential oracle uses the original program as ground truth. Tests and code generated from the same specification can only show consistency with that specification, as one industrial paper states itself~\cite{ipmodern}. LLM judges are rarely validated: the one paper that relies only on an LLM judge mentions a human check but reports no agreement figure~\cite{wca4z}, and Moumoula et al.\ show the F1 score of an LLM judging cross-language equivalence dropping from 0.99 to 0.82 between benchmarks~\cite{moumoula}.} Out-of-scope work points the same way: in function-level migration, passing parity tests did not guarantee preserved behavior~\cite{oracleescape}.
+
+\subsection{A checklist for oracle provenance}
+\label{sec:checklist}
+
+We propose that papers on LLM-based translation and migration report, for each oracle:
+\begin{enumerate}
+  \item What it judges (well-formedness, behavior on given inputs, equivalence for all inputs, similarity, a person's or model's verdict).
+  \item Where it comes from: existing, translated with the code, generated (by whom), derived from a specification, or obtained by running the original.
+  \item How strong it is: number of tests or inputs per sample, coverage, input-generation budget, verification bounds.
+  \item Whether it is independent of the output: produced by the same model, prompt or specification, or used inside the technique (repair loop, reward, filter).
+  \item Its numbers alongside every other oracle applied to the same outputs.
+  \item For human or LLM judges: who or which model, the protocol, and agreement with a ground truth or between raters.
+  \item Its known limitations in this setting.
+\end{enumerate}

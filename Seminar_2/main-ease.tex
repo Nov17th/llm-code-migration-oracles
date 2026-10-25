@@ -1,0 +1,85 @@
+%% =====================================================================
+%% How Is Behavioral Equivalence Evaluated in LLM-Based Code Translation
+%% and Migration? A Systematic Mapping Study
+%%
+%% EASE VERSION: ACM sigconf, as required by EASE 2027 (Hanoi).
+%% The course version of the same paper is main.tex (NeurIPS style).
+%% Both files read the same sections/, figures/ and refs.bib.
+%%
+%% EASE limits full papers to 10 pages; this file is not cut to length.
+%% Cutting is a separate step once the course version is final.
+%% =====================================================================
+
+%% Line numbers are OFF: this file is currently also a course output.
+%% `nonacm` drops the ACM copyright block.
+%% For the EASE submission, add `review` back (EASE requires it; it prints
+%% line numbers), add `anonymous` if the call asks for double-blind review,
+%% and drop `nonacm`: \documentclass[sigconf,review]{acmart}
+\documentclass[sigconf,nonacm]{acmart}
+
+\input{macros}
+
+\begin{document}
+
+\title{How Is Behavioral Equivalence Evaluated in LLM-Based Code Translation and Migration? A Systematic Mapping Study}
+
+%% Five authors. Replace every placeholder.
+\author{Author Name 1}
+\affiliation{%
+  \institution{Institute 1}
+  \city{City}
+  \country{Country}}
+\email{author1@example.com}
+
+\author{Author Name 2}
+\affiliation{%
+  \institution{Institute 2}
+  \city{City}
+  \country{Country}}
+\email{author2@example.com}
+
+\author{Author Name 3}
+\affiliation{%
+  \institution{Institute 3}
+  \city{City}
+  \country{Country}}
+\email{author3@example.com}
+
+\author{Author Name 4}
+\affiliation{%
+  \institution{Institute 4}
+  \city{City}
+  \country{Country}}
+\email{author4@example.com}
+
+\author{Author Name 5}
+\affiliation{%
+  \institution{Institute 5}
+  \city{City}
+  \country{Country}}
+\email{author5@example.com}
+
+\renewcommand{\shortauthors}{Author Name 1 et al.}
+
+\input{sections/00-abstract}
+
+\keywords{code translation, code migration, large language models, test oracle, behavioral equivalence, systematic mapping study}
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-related-work}
+\input{sections/04-method}
+\input{sections/05-results}
+\input{sections/06-discussion}
+\input{sections/07-threats}
+\input{sections/08-conclusion}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{refs}
+
+\appendix
+\input{sections/09-appendix}
+
+\end{document}

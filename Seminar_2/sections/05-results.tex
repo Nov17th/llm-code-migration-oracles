@@ -1,0 +1,211 @@
+%% ===== 5 Results =====
+\section{Results}
+\label{sec:results}
+
+Counts below refer to the 49 papers of the main corpus; the two cross-language equivalence-detection papers (I3) are reported at the end of Section~\ref{sec:rq3}. A paper can use several oracles and several migration kinds, so columns do not sum to 49.
+
+%% ---------------------------------------------------------------------
+\subsection{Corpus overview}
+\label{sec:overview}
+
+The corpus grows quickly: \new{8 papers are from 2024, 14 from 2025 and 27 from 2026; Table~\ref{tab:search} gives the counts per conference.}
+
+Most papers are research-track (28), followed by industry/SEIP (\new{9}), journal-first (5), NIER (3), posters (2), \new{and one each in demonstrations and Ideas, Visions and Reflections (IVR). We call the NIER, IVR, demonstration and poster papers short papers.} Translation between languages dominates (XL, 33 papers), followed by library migration (LIB, 12), version migration (VER, 3), framework migration (FW, 3) and dialect translation (DIA, 2); 5 papers migrate legacy systems. Rust is a target language in 13 papers. The LLM is the proposed technique in 32 papers, the evaluated subject in 9, and both in 4; in the remaining 4 it is only a baseline (1), part of the evaluation tooling (1), or replaced by a smaller neural model (2).
+
+%% ---------------------------------------------------------------------
+\subsection{RQ1: Which oracles are used?}
+\label{sec:rq1}
+
+Compilation and existing tests dominate; formal verification and LLM judges are rare (Figure~\ref{fig:oracle-freq}).
+
+\begin{figure}[t]
+  \centering
+  \input{figures/oracle-freq}
+  \caption{Oracles used by the 49 main-corpus papers. A paper can use several oracles.}
+  \Description{Horizontal bar chart. Compilation 33 papers (67\%), existing tests 28 (57\%), human evaluation 18 (37\%), surface similarity 14 (29\%), differential testing 13 (27\%), translated tests 7 (14\%), LLM-generated tests 5 (10\%), LLM judge 3 (6\%), formal verification 2 (4\%).}
+  \label{fig:oracle-freq}
+\end{figure}
+
+Most papers combine oracles: 9 use one, 17 use two, 17 use three, and 6 use four or more, up to eight in ReCodeAgent~\cite{recodeagent}. Nine papers use no oracle that executes code (none of O-c to O-f): they judge outputs by compilation, similarity, a human or an LLM. Three rely on a single weak oracle: 2 report only BLEU or CodeBLEU~\cite{vimpt,collaboration}, and one only an LLM judge~\cite{wca4z}.
+
+\begin{added}
+Table~\ref{tab:cooc} shows which oracles are combined. Compilation accompanies most other oracles: 21 of the 28 papers with existing tests also \new{use compilation as an oracle}, and so do 13 of the 18 with human evaluation. Differential testing seldom appears next to existing tests (3 of 13 papers), and in 8 of the 13 no \new{test-suite oracle} (O-c, O-d, O-e) is used. Both papers with formal verification also run differential tests. The number of oracles varies by track: research papers use 2.8 on average, industry/SEIP papers \new{2.4}, and NIER papers 1.7.
+\end{added}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Oracle combinations in the main corpus. Each cell counts the papers that use both oracles; the diagonal gives the papers that use each oracle.}
+  \label{tab:cooc}
+  \footnotesize
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{tabular}{@{}lrrrrrrrrr@{}}
+    \toprule
+        & O-a & O-b & O-c & O-d & O-e & O-f & O-g & O-h & O-i \\
+    \midrule
+    O-a & 14 &    &    &   &   &    &   &   &    \\
+    O-b & 7  & 33 &    &   &   &    &   &   &    \\
+    O-c & 8  & 21 & 28 &   &   &    &   &   &    \\
+    O-d & 1  & 7  & 5  & 7 &   &    &   &   &    \\
+    O-e & 2  & 4  & 3  & 1 & 5 &    &   &   &    \\
+    O-f & 2  & 10 & 3  & 3 & 2 & 13 &   &   &    \\
+    O-g & 0  & 2  & 0  & 1 & 0 & 2  & 2 &   &    \\
+    O-h & 1  & 2  & 1  & 1 & 1 & 1  & 0 & 3 &    \\
+    O-i & 5  & 13 & 7  & 4 & 1 & 6  & 1 & 2 & 18 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%% ---------------------------------------------------------------------
+\subsection{RQ2: Where do oracles come from, and in which contexts?}
+\label{sec:rq2}
+
+The oracle a paper uses follows its context \new{(Table~\ref{tab:context})}.
+
+\begin{table*}[t]
+  \centering
+  \caption{Oracle use by context. Each cell counts papers in the group that use the oracle; $n$ is the group size. \new{IVR: Ideas, Visions and Reflections.}}
+  \label{tab:context}
+  \small
+  \begin{tabular}{@{}lrrrrrrrrrr@{}}
+    \toprule
+    Group & $n$ & O-a & O-b & O-c & O-d & O-e & O-f & O-g & O-h & O-i \\
+    \midrule
+    Legacy                    & 5  & 0  & 1  & 0  & 0 & 1 & 2  & 0 & 1 & 1  \\
+    Not legacy                & 44 & 14 & 32 & 28 & 7 & 4 & 11 & 2 & 2 & 17 \\
+    \midrule
+    XL                        & 33 & 8  & 21 & 20 & 6 & 5 & 10 & 2 & 2 & 7  \\
+    LIB                       & 12 & 4  & 9  & 6  & 2 & 0 & 1  & 0 & 1 & 9  \\
+    VER                       & 3  & 1  & 2  & 1  & 0 & 0 & 1  & 0 & 0 & 1  \\
+    FW                        & 3  & 1  & 3  & 1  & 0 & 1 & 1  & 0 & 0 & 1  \\
+    DIA                       & 2  & 1  & 1  & 0  & 0 & 0 & 1  & 0 & 0 & 2  \\
+    \midrule
+    Research                  & 28 & 9  & 19 & 15 & 6 & 3 & 8  & 2 & 2 & 14 \\
+    Industry/SEIP             & 9  & 2  & 7  & 5  & 1 & 2 & 2  & 0 & 1 & 2  \\
+    NIER, IVR, demo, poster   & 7  & 2  & 4  & 3  & 0 & 0 & 2  & 0 & 0 & 2  \\
+    Journal-first             & 5  & 1  & 3  & 5  & 0 & 0 & 1  & 0 & 0 & 0  \\
+    \midrule
+    2024                      & 8  & 3  & 4  & 5  & 1 & 0 & 2  & 0 & 0 & 1  \\
+    2025                      & 14 & 3  & 10 & 8  & 3 & 0 & 4  & 2 & 0 & 6  \\
+    2026                      & 27 & 8  & 19 & 15 & 3 & 5 & 7  & 0 & 3 & 11 \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\begin{itemize}
+  \item \textbf{\new{No legacy paper uses existing tests.}} Two of the 5 legacy papers run the original system as a differential oracle~\cite{kcobagent,coboljava}, one generates tests with an LLM from an extracted specification~\cite{ipmodern}, one uses an LLM judge~\cite{wca4z}, and one \new{compares the generated Java with the expected code by hand}~\cite{pli}. All five appear in \new{the industry/SEIP or NIER tracks}.
+  \item \textbf{Library migration leans on people.} \new{Nine of the 12} LIB papers include human evaluation, against 7 of 33 XL papers. \new{One reason for this reliance on people, reported in a study of Python library migration, is that few migrations have tests covering the changed code: only 27 of 314 did~\cite{pylibmig}.} No LIB paper uses LLM-generated tests or formal verification.
+  \item \textbf{Formal verification appears only for Rust.} Both O-g papers translate into Rust~\cite{rustassure,vert}.
+  \item \textbf{LLM-based oracles are new.} All 5 papers with LLM-generated tests and all 3 with LLM judges are from 2026.
+  \item \textbf{\new{Zero cells}} mark combinations \new{that no paper uses}: legacy with \new{similarity,} existing, translated or formal-verification oracles; library migration with LLM-generated tests or formal verification; dialect translation with any \new{test-suite} oracle; and short papers with translated tests, generated tests, \new{formal verification} or LLM judges.
+\end{itemize}
+
+%% Previous paragraph, replaced by the analysis below (kept for reference):
+%% Oracle origin follows the same split. Where an oracle comes from the project or benchmark (existing tests, reference translations), it is used in research settings with curated benchmarks. Where the project has no usable tests, papers fall back on running the original (differential), on deriving tests from a specification or an LLM, or on people.
+\begin{added}
+\paragraph{Where the ground truth comes from.} Table~\ref{tab:origin} breaks down the four execution-based oracles by the origin of their ground truth. Existing tests split almost evenly: 14 papers use tests built for a benchmark of curated problems or reference translations, \new{12} use the test suite that a real project's developers wrote, and \new{2 use both~\cite{dgir,recodeagent}}. Project test suites are the norm in library and version migration (6 of the 7 such papers with existing tests), where the client project's tests are rerun after the change~\cite{fruntke,byam,bdupdater,freshbrew}. In translation between languages, benchmark tests are more common: 12 papers, against \new{6} with project suites and \new{2} with both.
+
+Translated tests are mostly translated by the system under evaluation (5 of 7)\new{. In 4 of these papers a translation error can therefore affect the code and its tests alike; in IntentTester the migrated tests are themselves the output under evaluation~\cite{intenttester}. In 3 papers the authors translated tests by hand, in one of them alongside tests translated by its system~\cite{lostintranslation,rustassure,recodeagent}.} LLM-generated tests depend less on the LLM than their name suggests: in 3 of the 5 papers \new{the expected outputs come from running the original program}, \new{so these tests compare the translation with the original, much as differential testing does}~\cite{travel,ptrtrans,recodeagent}. One paper derives its tests from the same specification it uses to generate the code~\cite{ipmodern}, and one does not say where the expected outputs come from~\cite{transagent}. Differential testing takes its inputs from fuzzing, property-based testing or symbolic execution in 5 papers, reuses existing tests or benchmark data in 3, uses LLM-generated inputs in 1, compares curated samples or rendered screens in 2, and does not describe its inputs in 2.
+\end{added}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Where the ground truth of execution-based oracles comes from (main corpus). Per-paper codes are in Appendix~\ref{app:primary}. \new{$^{*}$One paper uses both translated-test origins, so the O-d rows sum to 8.}}
+  \label{tab:origin}
+  \small
+  \begin{tabular}{@{}P{0.8\linewidth}r@{}}
+    \toprule
+    Oracle and origin & Papers \\
+    \midrule
+    \multicolumn{2}{@{}l}{\textit{O-c Existing tests (28)}} \\
+    \quad Built for a benchmark (curated problems, reference translations) & 14 \\
+    \quad A real project's own test suite & 12 \\
+    \quad Both & 2 \\
+    \multicolumn{2}{@{}l}{\textit{O-d Translated tests (7)}} \\
+    \quad Translated by the system under evaluation & 5 \\
+    \quad Translated by hand by the authors\new{\textsuperscript{*}} & 3 \\
+    \multicolumn{2}{@{}l}{\textit{O-e LLM-generated tests (5)}} \\
+    \quad \new{Expected outputs from running the original} & 3 \\
+    \quad Derived from the specification that also generates the code & 1 \\
+    \quad Source of expected outputs not stated & 1 \\
+    \multicolumn{2}{@{}l}{\textit{O-f Differential testing (13)}} \\
+    \quad Inputs from fuzzing, property-based testing or symbolic execution & 5 \\
+    \quad Inputs from existing tests or benchmark data & 3 \\
+    \quad Inputs generated by an LLM & 1 \\
+    \quad Curated samples or rendered screens & 2 \\
+    \quad Inputs not described & 2 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%% ---------------------------------------------------------------------
+\subsection{RQ3: Threats to oracle reliability}
+\label{sec:rq3}
+
+\paragraph{Oracle disagreement.} \new{Thirty-three} papers apply two or more oracles to the same outputs and report \new{numbers under each in the text or tables. A few more apply several oracles but report them only as a combined rate~\cite{byam}, a pass/fail summary~\cite{ipmodern,deepmodelx}, a chart~\cite{transgraph}, or not separately~\cite{googlemig}.} The largest and most consistent gap is between compiling and behaving correctly\new{: 18 papers report both a compile rate (or the rate of another well-formedness check) and a behavioral pass rate for the same outputs, and in every configuration plotted in Figure~\ref{fig:compile-gap} behavior trails compilation, by 3 to 98 percentage points}.
+
+\begin{figure}[t]
+  \centering
+  \input{figures/compile-gap}
+  \caption{\new{Share of outputs passing compilation or another well-formedness check (gray) versus behavioral pass rate (blue) in the 18 papers that report both for the same outputs, with the gap in percentage points. Numbers are as reported in each paper, for the configuration named in parentheses and otherwise for the paper's own system; the DGIR row is its compile-only-reward ablation, the RISE row its GPT-based LLM baseline, \new{the DepWareTrans row a file-by-file baseline, and the BatFix row the translations before repair}. The behavioral oracle differs by paper.}}
+  \Description{Dot plot with one row per paper. Gaps range from 98 percentage points for the DGIR ablation (97.9\% compile, 0\% correct) to 3 percentage points for EvoC2Rust (92.25\% versus 89.53\%).}
+  \label{fig:compile-gap}
+\end{figure}
+
+Other disagreements involve surface similarity and test strength (Table~\ref{tab:disagree}). \new{Besides the 18 papers in Figure~\ref{fig:compile-gap} and 6 more in Table~\ref{tab:disagree}, the other 9 papers report numbers under several oracles in \new{other forms}: counts of compile errors next to test pass rates~\cite{smartc2rust}, \new{breakdowns of failures by stage~\cite{lostintranslation,rustrepotrans}, a compile rate per function next to equivalence per return value~\cite{rustassure},} bugs found by each checking stage~\cite{prognosticator}, build errors next to diff similarity~\cite{codeplan}, rendered-screen similarity next to structural similarity~\cite{guimigrator}, a manual review of outputs that failed an AST match~\cite{rulesynth}, \new{and a syntax-check rate next to a correctness rate from matching and manual review~\cite{pylibmig}}.}
+
+\begin{table*}[t]
+  \centering
+  \caption{Other oracle disagreements reported on the same outputs\new{. TerraMod and VERT also appear in Figure~\ref{fig:compile-gap}. CA: computational accuracy, the share of outputs that pass the tests}.}
+  \label{tab:disagree}
+  \small
+  \begin{tabular}{@{}P{0.22\linewidth} P{0.25\linewidth} P{0.45\linewidth}@{}}
+    \toprule
+    Paper & Oracles compared & Result \\
+    \midrule
+    UniTrans~\cite{unitrans} & Tests (CA) vs exact match & 87.92\% vs 18.04\% \new{(GPT-3.5)} \\
+    CAST~\cite{cast} & Tests (CA) vs exact match & 69.72\% vs 16.23\% (GPT-4o) \\
+    TransAgent~\cite{transagent} & Tests (CA) vs CodeBLEU & TransCoder Python to Java: CA 2.4\%, CodeBLEU 40.1 \\
+    TerraMod~\cite{terramod} & Execution (Pass@1) vs CrystalBLEU & \new{LLaMA-4-Maverick:} baseline 44\% / 0.78 vs TerraMod 76\% / 0.66\new{; the two metrics rank the systems in opposite order (one of four models)} \\
+    VERT~\cite{vert} & Compile, property-based tests, bounded and full verification & C++, 569 programs: 539, 295, 233 and 19 pass \\
+    MBTA~\cite{mbta} & Tests (CA) vs mutation-based score & 168 programs reach perfect CA, yet TransCoder mistranslates at least one of their mutants \\
+    BDUpdater~\cite{bdupdater} & Existing tests vs developer's fix & 1 of 24 adaptations passes the tests but is not equivalent \\
+    Code hints~\cite{codehints} & Fuzzing check vs manual review & Symbolic engine without hints: 23 candidates pass the check, 7 are correct \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+Three patterns recur: compiling says little about equivalence; surface similarity can rank systems in the opposite order to execution; and \new{tests and fuzzing checks miss faults that mutation analysis, verification or human review find}.
+
+\paragraph{\new{Limitations that studies report.}} We grouped the oracle limitations that papers state about their own evaluation (Table~\ref{tab:limits}).
+
+\begin{table}[t]
+  \centering
+  \caption{Oracle limitations that papers state about their own evaluation. \new{Each paper is counted once, under its main theme.}}
+  \label{tab:limits}
+  \small
+  \begin{tabular}{@{}P{0.8\linewidth}r@{}}
+    \toprule
+    Theme & Papers \\
+    \midrule
+    Weak or few tests, so passing tests does not imply equivalence & 15 \\
+    Incomplete differential, fuzzing, symbolic or bounded checks & 6 \\
+    Subjective human evaluation, or no agreement measured & 4 \\
+    The LLM games the oracle: optimizes for compiling or passing tests & 3 \\
+    Oracle derived from the same source as the output (tests and code generated from one specification) & 3 \\
+    Misleading surface similarity & 3 \\
+    Compiling does not imply correct behavior & 2 \\
+    No executable oracle available & 2 \\
+    \new{A limitation of the oracle unrelated to equivalence (e.g., readability)} & 2 \\
+    \midrule
+    No limitation of the paper's own oracle stated & 9 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Test weakness is the most \new{common main} limitation \new{(15 papers), even though existing tests remain the second most used oracle (28 papers)}. Nine papers state \new{no limitation of} their own oracle, including both BLEU-only papers and the paper that relies only on an LLM judge. Oracle gaming is a new theme: a model rewarded for compiling emits trivial code such as \texttt{panic!}~\cite{dgir}, an LLM rewrites code until tests pass~\cite{smartc2rust}, and benchmark agents \new{game the tests, which FreshBrew detects with a coverage threshold}~\cite{freshbrew}.
+
+\begin{added}
+\paragraph{Oracles reused inside the technique.} \new{Although we code only the oracle that judges the final output (Section~\ref{sec:extraction}),} in some papers the same oracle also selects or repairs the outputs it later judges. InterTrans stops its search as soon as a candidate passes the benchmark tests and reports accuracy on those same tests~\cite{intertrans}; SmartC2Rust runs the same tests in its repair loop and as its final measure~\cite{smartc2rust}; and RISE uses its differential check both as a validity step inside the technique and as the evaluation~\cite{rise}. In these 3 papers the reported pass rate shows that the output satisfies the oracle it was selected against, not that it is equivalent; a held-out oracle would separate the two. Two further papers train \new{their models} against the same kind of oracle they report, \new{though not necessarily on the evaluated problems}: TRAVEL rewards its model with LLM-generated test components of the kind it also evaluates with~\cite{travel}, and \new{DGIR, in an ablation that rewards compilation only, shows where this leads (Figure~\ref{fig:compile-gap})}~\cite{dgir}. We flagged these cases during extraction rather than coding them systematically, so there may be more.
+\end{added}
+
+\paragraph{Cross-language equivalence detection (I3).} Two papers form the separate tier. One measures how well LLMs judge whether code in two languages is equivalent: GPT-3.5-Turbo reaches F1 0.99 on XLCoST but 0.82 on CodeNet~\cite{moumoula}, which is direct evidence on LLMs as oracles (O-h). The other checks equivalence formally between C++ or PyTorch specifications and Chisel or Verilog implementations through MLIR, without an LLM~\cite{equivfusion}: a kind of formal cross-language oracle that the software translation papers in our corpus barely use.

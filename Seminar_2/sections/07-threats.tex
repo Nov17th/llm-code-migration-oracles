@@ -1,0 +1,33 @@
+%% ===== 7 Threats to Validity =====
+%% Grouped by the usual SE categories. The original paragraphs are kept
+%% word for word; new text is marked with \new{} or the added environment.
+\section{Threats to Validity}
+\label{sec:threats}
+
+\paragraph{Construct validity.} Classifying oracles and contexts requires judgment, for instance when a compiler serves both as a filter and as a reported metric. We mitigate this with a written codebook, by coding only oracles that judge the final output, and by discussing hard cases until agreement. \new{Some codes record what papers write rather than what they do. A paper that states no oracle limitation may still be aware of one, so the 9 papers in that row of Table~\ref{tab:limits} measure reporting, not awareness. The origin codes in Table~\ref{tab:origin} depend on how fully papers describe their tests and inputs, which is why two differential-testing papers fall under ``not described''. We take every reported number as published, without re-running any experiment, so the gaps in Figure~\ref{fig:compile-gap} compare \new{reported configurations. The configuration we plot for each paper (named in the figure) affects the size of its gap. \new{Some behavioral rates also count outputs that no test covers as failures~\cite{alphatrans,ptrtrans}, and ReCodeAgent's is a rate over tests rather than over outputs~\cite{recodeagent}, so the gaps are indicative rather than exact}}. Journal-first papers are counted under the conference and year that presented them.} \TODO{report the calibration on five shared papers.}
+%% ---- Draft: calibration paragraph ------------------------------------
+%% Uncomment once the team has done the calibration (step 4 of the plan).
+%% Fill every \fillin{} slot, then delete the \TODO above and this header.
+%% The five papers below are a suggestion: together they cover XL, LIB and
+%% legacy, four kinds of track, and the hardest coding decisions.
+% \paragraph{Calibration.} Before splitting the extraction, all five authors
+% independently coded the same five papers with the form in
+% Table~\ref{tab:form}: \fillin{AlphaTrans~\cite{alphatrans}, DGIR~\cite{dgir},
+% DepUpgrade~\cite{depupgrade}, K-COBAgent~\cite{kcobagent} and
+% WCA4Z~\cite{wca4z}}. We chose them to cover translation, library migration
+% and legacy settings, four kinds of track, and the hardest coding decisions:
+% tests translated together with the code, a compiler used both as a training
+% reward and as a reported metric, human and LLM judgment, and differential
+% testing against a legacy original. Of the 35 coded values (five papers,
+% seven fields), \fillin{N} were identical for all five authors before
+% discussion. Most differences concerned \fillin{which field, for example
+% whether an oracle used only inside a repair loop should be coded}. We
+% resolved every difference by discussion and added \fillin{N} clarifications
+% to the codebook, for example \fillin{one clarification}. Each remaining
+% paper was then coded by one author and checked by \fillin{a second author}.
+
+\paragraph{Internal validity.} A keyword search can miss papers. Against papers we knew in advance, the string retrieved 39 of 40. \new{For 80 papers without an abstract, the keyword string could be matched against the title only}; the \new{poster tracks} of ICSE~2025, FSE~2026 and ASE~2026 had no paper list at the time of the scan; and 3 papers available only behind a paywall were excluded under E6. \new{Exclusions could be decided on title and abstract, while every inclusion required the full text (Figure~\ref{fig:flow}); an early exclusion can therefore miss a relevant paper, and the recall check bounds this risk only for the papers we knew in advance.} Extraction was drafted from full text and the reported numbers were re-checked against the papers, but some versions read were preprints rather than the published version; we mark these in the data.
+
+\paragraph{External validity.} The map reflects the main proceedings of ICSE, FSE and ASE from 2024 to 2026, without co-located workshops, where much legacy and migration work appears; this area also moves fast on arXiv, so the newest work may be missing. Our conclusions are limited to practice at these venues. \new{The corpus also mixes full papers with \new{seven short ones (NIER, posters, a demonstration and an Ideas, Visions and Reflections paper)}, which describe their evaluation in less detail and may therefore understate the oracles they use.}
+
+\paragraph{Reliability.} \new{With 49 papers, we report counts and do not test differences between groups; the trend over years rests on three \new{years}, the last of which (2026, 27 papers) is larger than the first two together. Every count can be recomputed from the replication package (Section~\ref{sec:conclusion}).} The data are a snapshot as of \new{October 23, 2026}.

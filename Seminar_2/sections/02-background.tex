@@ -1,0 +1,35 @@
+%% ===== 2 Background =====
+\section{Background}
+\label{sec:background}
+
+\paragraph{Kinds of migration.} We distinguish five kinds, and a study may involve several: between programming languages (XL, e.g.\ C to Rust, COBOL to Java); between versions of a language or platform (VER, e.g.\ Java~8 to~17); between libraries or APIs, including dependency upgrades with breaking changes (LIB, e.g.\ JUnit~3 to~4); between dialects (DIA, e.g.\ PostgreSQL to MySQL); and between frameworks or application platforms (FW, e.g.\ Android to iOS, PyTorch to Paddle). A \emph{legacy} flag marks a legacy source system (COBOL, PL/I, ASP.NET WebForms).
+
+\begin{added}
+\paragraph{Behavioral equivalence.} Two programs are behaviorally equivalent if, for every input, they produce the same observable behavior: the same outputs, the same effects on files, databases or other state, and the same termination or failure. Checking this exactly is undecidable in general, so every practical check approximates it. Tests and differential runs sample the input space; bounded model checking and symbolic execution cover it up to a bound; formal proofs cover it completely but only for a model of the program; and compilation, similarity metrics and human or LLM judgment do not run the program at all. Migration also relaxes the definition in ways that a check must state. A translation may map types whose ranges differ, such as \new{32-bit integers in C into Python's unbounded integers}; a library migration may keep the functional result but change logging, performance or error messages; and a framework migration may be judged on what a user sees rather than on internal state. ``Equivalent'' therefore always means equivalent with respect to some oracle and some notion of observable behavior.
+\end{added}
+
+\paragraph{Oracles.} An oracle decides whether the migrated program behaves like the original. We use nine categories (Table~\ref{tab:oracles}).
+
+\begin{table*}[t]
+  \centering
+  \caption{Oracle categories used throughout the paper.}
+  \label{tab:oracles}
+  \small
+  \begin{tabular}{@{}l P{0.25\linewidth} P{0.25\linewidth} P{0.34\linewidth}@{}}
+    \toprule
+    Code & Oracle & What it checks & Known weakness \\
+    \midrule
+    O-a & Surface similarity (BLEU, CodeBLEU, exact match, AST match) & Closeness to a reference translation & Equivalent code can look different, and similar code can behave differently \\
+    O-b & Compilation, type checking \new{or another well-formedness check} & The output is well-formed in the target & Says nothing about behavior \\
+    O-c & Existing tests & Behavior on the project's or benchmark's tests & Only as strong as the tests; benchmarks often have few \\
+    O-d & \new{Translated tests} & Behavior on tests migrated alongside the code & Test and code may share the same translation error \\
+    O-e & LLM-generated tests & Behavior on new tests written by an LLM & Generated expectations can be wrong or aligned with the output \\
+    O-f & \new{Differential testing} against the original & Same outputs as the source program on the same inputs & Limited by input generation; needs the source to run \\
+    O-g & \new{Formal verification} & Equivalence proven or bounded-checked \new{against the original or a specification} & Costly; bounds and models limit coverage \\
+    O-h & \new{LLM judge} & An LLM's verdict on equivalence & Reliability of the judge is itself unvalidated \\
+    O-i & Human evaluation & A person's judgment & Subjective, small samples, rarely agreement-measured \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+The categories are not exclusive. Many studies combine several, and some use one inside the technique (for example, to filter training data or drive a repair loop) and another to report results. \new{Section~\ref{sec:extraction} states which of these uses we code.}

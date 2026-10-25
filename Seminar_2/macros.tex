@@ -1,0 +1,52 @@
+%% ---------------------------------------------------------------------
+%% Packages and macros shared by all sections.
+%% Loaded by both main.tex (NeurIPS style, course version) and
+%% main-ease.tex (ACM sigconf, EASE version). Keep it class-neutral.
+%% ---------------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{enumitem}
+\setlist{leftmargin=*,itemsep=1pt,topsep=2pt}
+
+%% acmart defines \Description for figure alt text; other classes do not.
+\providecommand{\Description}[1]{}
+
+%% Ragged-right paragraph column for tables, e.g. P{0.3\linewidth}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+%% ---- Review comments ------------------------------------------------
+%% \TODO{...}         something still missing in the paper
+%% \cmt{Name}{...}    a reviewer's comment; delete once resolved
+%% \new{...}          a short piece of text you added and want others to check
+%% \begin{added}...\end{added}
+%%                    a whole new paragraph or list (may span paragraphs)
+%% \addedtag          put at the start of a caption to flag a new table/figure
+%% \fillin{...}       a slot the team must fill (number, name, link)
+%% Set \reviewfalse to hide all marks in one go; text inside \new{} and
+%% the added environment stays, in black.
+\newif\ifreview \reviewtrue
+\ifreview
+  \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+  \newcommand{\cmt}[2]{\textcolor{blue}{\textbf{[#1:} #2\textbf{]}}}
+  \newcommand{\new}[1]{\textcolor{teal}{#1}}
+  \newenvironment{added}{\color{teal}}{}
+  \newcommand{\addedtag}{\textcolor{teal}{\textbf{[new]}}~}
+  \newcommand{\fillin}[1]{\colorbox{orange!25}{\textbf{#1}}}
+\else
+  \newcommand{\TODO}[1]{}
+  \newcommand{\cmt}[2]{}
+  \newcommand{\new}[1]{#1}
+  \newenvironment{added}{}{}
+  \newcommand{\addedtag}{}
+  \newcommand{\fillin}[1]{#1}
+\fi
+
+%% ---- Notation -------------------------------------------------------
+%% Oracle codes O-a ... O-i and migration kinds, kept as plain text so that
+%% search-and-replace stays easy.
+\newcommand{\oc}[1]{O-#1}
+\newcommand{\RQ}[1]{RQ#1}

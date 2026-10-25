@@ -1,0 +1,130 @@
+%% ===== 4 Method =====
+\section{Method}
+\label{sec:method}
+
+We followed the guidelines for systematic mapping studies in software engineering~\cite{petersen}. The protocol, search log, codebook and all decisions are in the replication package.
+
+\subsection{Scope}
+\label{sec:scope}
+
+A paper is in scope if it appears at ICSE, FSE or ASE in 2024, 2025 or 2026 \new{in any track (research, industry/SEIP, NIER, Ideas, Visions and Reflections, demonstrations, posters and journal-first), whether it is published in the conference's main or Companion volume or, for journal-first papers, presented there. We call this set the main proceedings.} These venues are where SE evaluation norms are set and accepted by reviewers, and their industry tracks are where legacy settings without tests appear. Co-located workshops and conferences (ReCode, LLM4Code, FORGE, AGENT, AIware, AISM, ICPC, MSR and others) are out of scope: the set of events changes from year to year, so counting them would make years incomparable. ISSTA~2025 and Internetware~2025, which were co-hosted with FSE that year only, are excluded for the same reason. \new{Related papers outside the corpus} are cited in Sections~\ref{sec:intro}, \new{\ref{sec:related}} and~\ref{sec:discussion} but not counted.
+
+\subsection{Search}
+\label{sec:search}
+
+We applied one frozen keyword string to titles and abstracts:
+\begin{center}
+\fbox{\parbox{0.94\columnwidth}{\small\ttfamily translat* OR transpil* OR migrat* OR moderni* OR legacy OR porting OR ported OR upgrad* OR deprecat* OR \textquotedbl cross-language\textquotedbl{} OR \textquotedbl cross-lingual\textquotedbl{} OR equivalen*}}
+\end{center}
+The string omits ``oracle'' and ``behavior*'', \new{because they} pulled in unrelated testing papers, and omits ``LLM'', because many neural papers do not use the word; the LLM criterion is applied at screening. Paper lists came from each conference program on conf.researchr.org, covering every track \new{that had a published paper list (three poster tracks did not; Section~\ref{sec:threats}). Both the main and the Companion volume of each conference} were cross-checked through Crossref, and missing abstracts were taken from Semantic Scholar and arXiv. \new{The final scan, on October 23, 2026,} covered 4,451 main-proceedings papers and returned 430 keyword hits; \new{for 80 papers without an available abstract, the string was matched against the title only}.
+\new{Table~\ref{tab:search} gives the counts for each conference and year. Most papers without an abstract are from ICSE~2024 (61 of 80).}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Search and selection by conference and year. Papers: main-proceedings papers scanned; \new{No abstract: papers matched on their title only; Hits: keyword hits; Candidates: hits plus the one known paper the search missed; Included: main corpus; I3: cross-language equivalence detection tier.}}
+  \label{tab:search}
+  \small
+  \begin{tabular}{@{}lrrrrrr@{}}
+    \toprule
+    Venue & Papers & No abstract & Hits & Candidates & Included & I3 \\
+    \midrule
+    ICSE 2024 & 611 & 61 & 58 & 58 & 2 & 0 \\
+    ICSE 2025 & 526 & 0 & 41 & 41 & 4 & 0 \\
+    ICSE 2026 & 796 & 1 & 68 & 68 & 7 & 0 \\
+    FSE 2024 & 261 & 6 & 17 & 17 & 2 & 0 \\
+    FSE 2025 & 451 & 1 & 35 & 36 & 6 & 1 \\
+    FSE 2026 & 563 & 2 & 64 & 64 & 11 & 1 \\
+    ASE 2024 & 299 & 1 & 25 & 25 & 4 & 0 \\
+    ASE 2025 & 447 & 1 & 53 & 53 & 4 & 0 \\
+    ASE 2026 & 497 & 7 & 69 & 69 & 9 & 0 \\
+    \midrule
+    Total & 4,451 & 80 & 430 & 431 & 49 & 2 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\new{To estimate recall, we used 40 in-scope papers that meet our criteria and that we had identified before the scan, in exploratory searches of the same proceedings and while reading related work. The string retrieved 39 of the 40 (97.5\%). We added the one miss, a dependency-repair paper whose title and abstract use none of our terms~\cite{fruntke}, to the candidates as a known paper, which gives 431 candidates.}
+
+\subsection{Selection}
+\label{sec:selection}
+
+A paper is included if it satisfies I4 and at least one of I1--I3, and no exclusion criterion (Table~\ref{tab:criteria}).
+
+\begin{table}[t]
+  \centering
+  \caption{Inclusion (I) and exclusion (E) criteria.}
+  \label{tab:criteria}
+  \small
+  \begin{tabular}{@{}l P{0.86\linewidth}@{}}
+    \toprule
+    Code & Criterion \\
+    \midrule
+    I1 & Uses a neural model or LLM to translate or migrate code between a named source and target (language, version, dialect, library or API, framework) and describes how equivalence is checked, even if only by BLEU \\
+    I2 & Proposes or uses a method, benchmark or oracle to evaluate translations or migrations \\
+    I3 & Detects equivalence between programs in two different languages; reported as a separate tier \\
+    I4 & English, peer-reviewed \\
+    \midrule
+    E1 & Natural-language translation, or NL-to-code tasks with no code-to-code translation \\
+    E2 & No information at all on how outputs are evaluated \\
+    E3 & Clone or similarity detection that neither targets functional equivalence nor relates to translation \\
+    E4 & Secondary study \\
+    E5 & Duplicate of the same work (we keep the most complete version) \\
+    E6 & Full text unavailable \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Nine clarification rules settle recurring hard cases. Migrating tests between languages or libraries counts as I1 (L-TEST). A deterministic technique counts if it compares against an LLM baseline using the same oracle and reports numbers (L-BASE). Microservice extraction, architecture changes and decompilation do not count, because there is no source-to-target program pair to compare (L-ARCH, L-DECOMP). A dataset without an evaluation protocol is E2\new{; one with a protocol meets} I2 (L-DATA). An oracle or benchmark for rule-based translators still meets I2 (L-RB). Cross-language equivalence detection meets I3 (L-XEQ). Translation must be a main goal or research question of the paper: general models or benchmarks in which translation is one of three or more tasks, and papers that use translation only as a means (to build a dataset, to test a database system), are excluded (L-TASK). A paper that summarizes its authors' published results counts as a duplicate (L-SUM).
+
+Of \new{431} candidates in the main proceedings, 51 were included and \new{380} excluded. The \new{reasons} were: neither translation nor its evaluation (174); \new{related topics that meet none of I1--I3}, such as purely rule-based translation, refactoring with no target, or program repair (\new{96}); natural-language tasks (E1, 47); same-language equivalence detection (\new{15}); translation as a minor task (L-TASK, 16); no evaluation information (E2, 14); clone detection unrelated to equivalence (E3, 8); duplicates (E5, 7); and no available full text (E6, 3). Hard cases were discussed \new{within the team until agreement was reached}.
+%% ---- Draft: independent screening (uncomment if the team screens every
+%% candidate in pairs, step 3 of the plan; fill the slots) -----------------
+% Two authors screened every candidate independently. They disagreed on
+% \fillin{N} of the 431 candidates; \fillin{N} disagreements were settled by
+% discussion and \fillin{N} by a third author.
+
+\begin{added}
+Figure~\ref{fig:flow} shows the flow. \new{We excluded 362 of the 431 candidates on title and abstract, 3 of them on the title alone because no abstract was available; Section~\ref{sec:fulltext} reports the full-text stage.}
+\end{added}
+
+\begin{figure}[t]
+  \centering
+  \input{figures/selection-flow}
+  \caption{\addedtag Selection flow. Counts are papers; reasons follow Table~\ref{tab:criteria} and the clarification rules.}
+  \Description{Flow diagram. 4,451 papers yield 430 keyword hits; together with one known paper the search missed, 431 candidates. 362 are excluded on title and abstract, 3 have no available full text, 15 are excluded after reading the full text, and 51 are included: 49 in the main corpus and 2 in the I3 tier.}
+  \label{fig:flow}
+\end{figure}
+
+\subsection{Full-text confirmation}
+\label{sec:fulltext}
+
+\new{Every included paper was read in full (Figure~\ref{fig:flow}). Full texts were sought for \new{69} candidates. Forty-one of them had first been included on title \new{and} abstract: we obtained 29 through freely available versions (arXiv, author pages, PubMed Central, institutional repositories) and 9 through the ACM Digital Library, and excluded 3 IEEE papers with no accessible version under E6. The other \new{28} candidates were decided on full text from the start, 18 included and \new{10} excluded.} Full-text reading changed 5 \new{of the 38 earlier decisions}: one paper explicitly does not validate its translations (E2), one adds type annotations without translating (not I1), one compares two versions of the same PLC program (same-language equivalence), one poster duplicates its full paper (E5), and one deterministic converter fails L-BASE because its LLM baselines are judged by a different oracle. In that last case the authors' LLM-based poster of the same work is counted instead. \new{In total, 51 papers were included (33 confirmed and 18 decided on full text) and \new{15} were excluded after reading (5 changed decisions and \new{10} decided on full text).}
+
+\subsection{Classification and extraction}
+\label{sec:extraction}
+
+For each included paper we extracted seven fields: (1) migration kind and legacy flag; (2) track; (3) role of the LLM (proposed technique, evaluated subject, \new{both,} baseline \new{only}, part of the evaluation tooling, \new{or no LLM}); (4) oracles used; (5) the origin of each oracle (existing, translated, LLM-generated, from running the original, from a specification, none); (6) whether two or more oracles were applied to the same outputs, and if so, the numbers under each; and (7) oracle limitations the paper states, quoted with location. We code only oracles that judge the final output; an oracle used solely inside the technique, such as a compiler in a repair loop or a filter on training data, is not counted. All 51 extractions were drafted from the full text, and every number in the disagreement analysis (Section~\ref{sec:rq3}) was re-checked against the paper.
+
+\begin{added}
+Table~\ref{tab:form} lists the fields and their values. For field~5 we further coded where the ground truth of each execution-based oracle comes from: for existing tests, whether they were built for a benchmark or belong to a real project's own test suite; for translated tests, whether the system under evaluation translated them or the authors did by hand; for LLM-generated tests, where the expected outputs come from; and for differential testing, where the inputs come from. \new{Tests that benchmark builders translated by hand when building a benchmark count as benchmark tests (O-c); tests that a paper's own authors translate for its evaluation count as translated tests (O-d).} Section~\ref{sec:rq2} reports the result, and Appendix~\ref{app:primary} gives the code for every paper.
+\end{added}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Extraction form.}
+  \label{tab:form}
+  \small
+  \begin{tabular}{@{}P{0.3\linewidth} P{0.64\linewidth}@{}}
+    \toprule
+    Field & Values \\
+    \midrule
+    1. Migration kind & XL, VER, LIB, DIA, FW (several allowed); legacy flag \\
+    2. Track & Research, industry/SEIP, journal-first, NIER, \new{Ideas, Visions and Reflections}, poster, demonstration \\
+    3. Role of the LLM & Proposed technique; evaluated subject; both; baseline only; part of the evaluation tooling; no LLM (\new{a smaller neural model, or no model}) \\
+    4. Oracles & O-a to O-i (Table~\ref{tab:oracles}); final-output oracles only \\
+    5. Origin of each oracle & Existing (benchmark or project), translated (by the system or by hand), LLM-generated, from running the original, from a specification, none \\
+    6. Oracles on the same outputs & Yes or no; if yes, the numbers under each oracle \\
+    7. Stated limitations & Free text with location, later grouped into themes (Table~\ref{tab:limits}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
