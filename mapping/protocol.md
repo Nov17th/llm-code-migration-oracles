@@ -26,7 +26,7 @@ co-hosted in a single year only (ISSTA 2025, Internetware 2025), are out of scop
 - **Sources.** The program of each conference-year on conf.researchr.org, every track that had a published
   paper list. Main and Companion volumes were cross-checked through Crossref. Missing abstracts were taken from
   Semantic Scholar and arXiv. See `1_search/search_log.csv`.
-- **Date.** October 23, 2026.
+- **Date of the final scan.** October 23, 2026.
 - **String**, applied to titles and abstracts (case-insensitive; `*` is a wildcard):
 
   ```

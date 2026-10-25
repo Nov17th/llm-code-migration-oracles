@@ -1,8 +1,7 @@
 # LLM Code Migration Oracles
 
 Data and scripts for the systematic mapping study **How Is Behavioral Equivalence Evaluated in LLM-Based Code
-Translation and Migration?** The paper refers to this repository as its replication package. The data are a
-snapshot as of October 23, 2026.
+Translation and Migration?** The paper refers to this repository as its replication package. The final scan of the proceedings was run on October 23, 2026.
 
 | Folder | Content |
 | --- | --- |
