@@ -1,0 +1,537 @@
+\begin{thebibliography}{62}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Allain et~al.(2026)Allain, Blot, Khelladi, and Acher]{rulesynth}
+Axel Allain, Aymeric Blot, Djamel~Eddine Khelladi, and Mathieu Acher.
+\newblock {Code Transformation Rule Synthesis using LLMs: Potential and
+  Limits}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 2639--2651. ACM, 2026.
+\newblock \doi{10.1145/3832783.3837504}.
+
+\bibitem[Almeida et~al.(2026)Almeida, Valente, and Xavier]{copilotmig}
+Aylton Almeida, Marco~Tulio Valente, and Laerte Xavier.
+\newblock {Using Copilot Agent Mode to Automate Library Migration: A
+  Quantitative Assessment}.
+\newblock In \emph{Proceedings of the 2026 International Workshop on Agentic
+  Engineering}, pages 135--139. ACM, 2026.
+\newblock \doi{10.1145/3786167.3788411}.
+
+\bibitem[Arafat and Nagy(2026)]{prognosticator}
+Yeaseen Arafat and Stefan Nagy.
+\newblock {PROGnosticator: Testing Source-to-Source Code Translators via
+  Construct-Oriented Fuzzing}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 876--898, 2026.
+\newblock \doi{10.1145/3797135}.
+
+\bibitem[Bai and Palit(2025)]{rustassure}
+Yubo Bai and Tapti Palit.
+\newblock {RustAssure: Differential Symbolic Testing for LLM-Transpiled
+  C-to-Rust Code}.
+\newblock In \emph{2025 40th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 534--546. IEEE, 2025.
+\newblock \doi{10.1109/ase63991.2025.00051}.
+
+\bibitem[Bairi et~al.(2024)Bairi, Sonwane, Kanade, C., Iyer, Parthasarathy,
+  Rajamani, Ashok, and Shet]{codeplan}
+Ramakrishna Bairi, Atharv Sonwane, Aditya Kanade, Vageesh~D. C., Arun Iyer,
+  Suresh Parthasarathy, Sriram Rajamani, B.~Ashok, and Shashank Shet.
+\newblock {CodePlan: Repository-Level Coding using LLMs and Planning}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 1\penalty0
+  (FSE):\penalty0 675--698, 2024.
+\newblock \doi{10.1145/3643757}.
+
+\bibitem[Barr et~al.(2015)Barr, Harman, McMinn, Shahbaz, and Yoo]{barr}
+Earl~T. Barr, Mark Harman, Phil McMinn, Muzammil Shahbaz, and Shin Yoo.
+\newblock {The Oracle Problem in Software Testing: A Survey}.
+\newblock \emph{IEEE Transactions on Software Engineering}, 41\penalty0
+  (5):\penalty0 507--525, 2015.
+\newblock \doi{10.1109/tse.2014.2372785}.
+
+\bibitem[Biesdorf et~al.(2026)Biesdorf, Seibert, Wengatz, Carpels, and
+  Schoonbaert]{ipmodern}
+Andreas Biesdorf, Eckhard Seibert, Nicole Wengatz, Bart Carpels, and Tom
+  Schoonbaert.
+\newblock {IP-Preserving Enterprise System Modernization via LLM-Driven
+  Specification Extraction and Multi-target Code Generation}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 4463--4468. ACM, 2026.
+\newblock \doi{10.1145/3832783.3834533}.
+
+\bibitem[Chakaravarthy et~al.(2026)Chakaravarthy, Choudhury, Garg, Kanvar,
+  Pandian, Raghuvanshi, Sabharwal, and Singhee]{wca4z}
+Venkatesan~T. Chakaravarthy, Anamitra~Roy Choudhury, Dinesh Garg, Vini Kanvar,
+  Shivmaran~S. Pandian, Aditya Raghuvanshi, Yogish Sabharwal, and Amith
+  Singhee.
+\newblock {Enterprise-Scale COBOL-to-Java Translation: LLMs Augmented with
+  Program Analysis}.
+\newblock In \emph{Proceedings of the IEEE/ACM 48th International Conference on
+  Software Engineering: Software Engineering in Practice}, pages 775--785. ACM,
+  2026.
+\newblock \doi{10.1145/3786583.3786915}.
+
+\bibitem[Chand et~al.(2026)Chand, Pretschner, Haupt, Zhu, and
+  Pandey]{depwaretrans}
+Sivajeet Chand, Alexander Pretschner, Steve Haupt, Derui Zhu, and Sushant~Kumar
+  Pandey.
+\newblock {DepWareTrans: Dependency-Aware Incremental Repository Migration
+  across Co-executable Languages}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 4164--4174. ACM, 2026.
+\newblock \doi{10.1145/3832783.3834505}.
+
+\bibitem[Chen et~al.(2025)Chen, Xue, Xie, Liang, and Ju]{nctslr}
+Xiang Chen, Jiacheng Xue, Xiaofei Xie, Caokai Liang, and Xiaolin Ju.
+\newblock {A Systematic Literature Review on Neural Code Translation}.
+\newblock arXiv preprint arXiv:2505.07425, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.07425}.
+
+\bibitem[David et~al.(2025)David, Kesseli, Kroening, and Zhang]{codehints}
+Cristina David, Pascal Kesseli, Daniel Kroening, and Hanliang Zhang.
+\newblock {Quantifying the Benefits of Code Hints for Refactoring Deprecated
+  Java APIs}.
+\newblock In \emph{Proceedings of the 33rd ACM International Conference on the
+  Foundations of Software Engineering}, pages 444--455. ACM, 2025.
+\newblock \doi{10.1145/3696630.3728567}.
+
+\bibitem[Dristi and Dwyer(2026)]{dristi}
+Simantika~Bhattacharjee Dristi and Matthew~B. Dwyer.
+\newblock {A Differential Fuzzing-Based Evaluation of Functional Equivalence in
+  LLM-Generated Code Refactorings}.
+\newblock In \emph{Proceedings of the 34th ACM International Conference on the
+  Foundations of Software Engineering}, pages 1708--1712. ACM, 2026.
+\newblock \doi{10.1145/3803437.3806717}.
+
+\bibitem[Du et~al.(2024)Du, Sun, and Li]{vimpt}
+Yali Du, Hui Sun, and Ming Li.
+\newblock {A Joint Learning Model with Variational Interaction for Multilingual
+  Program Translation}.
+\newblock In \emph{Proceedings of the 39th IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 1907--1918. ACM, 2024.
+\newblock \doi{10.1145/3691620.3695553}.
+
+\bibitem[Du et~al.(2025)Du, Sun, and Li]{cast}
+Yali Du, Hui Sun, and Ming Li.
+\newblock {Post-Incorporating Code Structural Knowledge Into Pretrained Models
+  via ICL for Code Translation}.
+\newblock \emph{IEEE Transactions on Software Engineering}, 51\penalty0
+  (11):\penalty0 3038--3055, 2025.
+\newblock \doi{10.1109/tse.2025.3605768}.
+
+\bibitem[Feng et~al.(2026)Feng, Gan, Gao, Wang, Luo, Xia, Li, and Liu]{dgir}
+Jia Feng, Wenjie Gan, Cuiyun Gao, Chaozheng Wang, Feng Luo, Xin Xia, Ge~Li, and
+  Kui Liu.
+\newblock {Dependency-Guided Repository-Level C-to-Rust Translation with
+  Reinforcement Alignment}.
+\newblock In \emph{Proceedings of the 34th ACM International Conference on the
+  Foundations of Software Engineering}, pages 954--965. ACM, 2026.
+\newblock \doi{10.1145/3803437.3805266}.
+
+\bibitem[Fruntke and Krinke(2025)]{fruntke}
+Lukas Fruntke and Jens Krinke.
+\newblock {Automatically Fixing Dependency Breaking Changes}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 2\penalty0
+  (FSE):\penalty0 2146--2168, 2025.
+\newblock \doi{10.1145/3729366}.
+
+\bibitem[Gajula et~al.(2026)Gajula, Kodela, and Chimalakonda]{kcobagent}
+Kavyasri Gajula, Phanindra Kodela, and Sridhar Chimalakonda.
+\newblock {K-COBAgent: A Knowledge-Driven Multi-agent Framework for COBOL
+  Modernization}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 4631--4635. ACM, 2026.
+\newblock \doi{10.1145/3832783.3834560}.
+
+\bibitem[Gao et~al.(2026{\natexlab{a}})Gao, Hu, Yang, and Xia]{guimigrator}
+Yi~Gao, Xing Hu, Xiaohu Yang, and Xin Xia.
+\newblock {GUIMigrator: Semantics-Preserving Transpilation from Android XML to
+  Compose and SwiftUI}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 4737--4759, 2026{\natexlab{a}}.
+\newblock \doi{10.1145/3808215}.
+
+\bibitem[Gao et~al.(2026{\natexlab{b}})Gao, Zhang, Hu, Yang, and
+  Xia]{intenttester}
+Yi~Gao, Ziyuan Zhang, Xing Hu, Xiaohu Yang, and Xin Xia.
+\newblock {IntentTester: Intent-Driven Multi-agent Framework for Cross-Library
+  Test Migration}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 1515--1535, 2026{\natexlab{b}}.
+\newblock \doi{10.1145/3797096}.
+
+\bibitem[Gröninger et~al.(2025)Gröninger, Souza, and Pradel]{changeguard}
+Lars Gröninger, Beatriz Souza, and Michael Pradel.
+\newblock {ChangeGuard: Validating Code Changes via Pairwise Learning-Guided
+  Execution}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 2\penalty0
+  (FSE):\penalty0 936--956, 2025.
+\newblock \doi{10.1145/3715760}.
+
+\bibitem[Guizzo et~al.(2023)Guizzo, Zhang, Sarro, Treude, and Harman]{mbta}
+Giovani Guizzo, Jie~M. Zhang, Federica Sarro, Christoph Treude, and Mark
+  Harman.
+\newblock {Mutation Analysis for Evaluating Code Translation}.
+\newblock \emph{Empirical Software Engineering}, 29\penalty0 (1), 2023.
+\newblock \doi{10.1007/s10664-023-10385-w}.
+
+\bibitem[Gupta et~al.(2026)Gupta, Aggarwal, Paulovicks, Mohapatra, Lee, and
+  Sheinin]{terramod}
+Pranjal Gupta, Pooja Aggarwal, Brent Paulovicks, Prateeti Mohapatra, Rong Lee,
+  and Vadim Sheinin.
+\newblock {Automating Terraform Code Migration through Provider Evolution
+  Knowledge}.
+\newblock In \emph{Proceedings of the IEEE/ACM 48th International Conference on
+  Software Engineering}, pages 211--215. ACM, 2026.
+\newblock \doi{10.1145/3786582.3786841}.
+
+\bibitem[Hans et~al.(2025)Hans, Kumar, Yasue, Ono, Krishnan, Sondhi, Satoh,
+  Mitchell, Kumar, and Saha]{coboljava}
+Sandeep Hans, Atul Kumar, Toshiaki Yasue, Kouichi Ono, Saravanan Krishnan,
+  Devika Sondhi, Fumiko Satoh, Gerald Mitchell, Sachin Kumar, and Diptikalyan
+  Saha.
+\newblock {Automated Testing of COBOL to Java Transformation}.
+\newblock In \emph{Proceedings of the 33rd ACM International Conference on the
+  Foundations of Software Engineering}, pages 227--237. ACM, 2025.
+\newblock \doi{10.1145/3696630.3728548}.
+
+\bibitem[Ibrahimzada et~al.(2025)Ibrahimzada, Ke, Pawagi, Abid, Pan, Sinha, and
+  Jabbarvand]{alphatrans}
+Ali~Reza Ibrahimzada, Kaiyao Ke, Mrigank Pawagi, Muhammad~Salman Abid, Rangeet
+  Pan, Saurabh Sinha, and Reyhaneh Jabbarvand.
+\newblock {AlphaTrans: A Neuro-Symbolic Compositional Approach for
+  Repository-Level Code Translation and Validation}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 2\penalty0
+  (FSE):\penalty0 2454--2476, 2025.
+\newblock \doi{10.1145/3729379}.
+
+\bibitem[Ibrahimzada et~al.(2026)Ibrahimzada, Paulsen, Kroening, and
+  Jabbarvand]{recodeagent}
+Ali~Reza Ibrahimzada, Brandon Paulsen, Daniel Kroening, and Reyhaneh
+  Jabbarvand.
+\newblock {ReCodeAgent: A Multi-agent Workflow for Language-Agnostic
+  Translation and Validation of Large-Scale Repositories}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 2409--2421. ACM, 2026.
+\newblock \doi{10.1145/3832783.3837486}.
+
+\bibitem[Islam et~al.(2025)Islam, Jha, Mahmoud, Akhmetov, and Nadi]{pylibmig}
+Mohayeminul Islam, Ajay~Kumar Jha, May Mahmoud, Ildar Akhmetov, and Sarah Nadi.
+\newblock {An Empirical Study of Python Library Migration Using Large Language
+  Models}.
+\newblock In \emph{2025 40th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 867--879. IEEE, 2025.
+\newblock \doi{10.1109/ase63991.2025.00077}.
+
+\bibitem[Jiao et~al.(2023)Jiao, Yu, Li, Qiu, Gu, and Shen]{jiao23}
+Mingsheng Jiao, Tingrui Yu, Xuan Li, Guanjie Qiu, Xiaodong Gu, and Beijun Shen.
+\newblock {On the Evaluation of Neural Code Translation: Taxonomy and
+  Benchmark}.
+\newblock In \emph{2023 38th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 1529--1541. IEEE, 2023.
+\newblock \doi{10.1109/ase56229.2023.00114}.
+
+\bibitem[Kang et~al.(2026)Kang, Oh, An, and Oh]{pig}
+Miryeong Kang, Wonseok Oh, Gabin An, and Hakjoo Oh.
+\newblock {Pig: Leveraging Large Language Models for Python Library
+  Migrations}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 967--988, 2026.
+\newblock \doi{10.1145/3797072}.
+
+\bibitem[Karanjai et~al.(2025)Karanjai, Blackshear, Xu, and Shi]{collaboration}
+Rabimba Karanjai, Sam Blackshear, Lei Xu, and Weidong Shi.
+\newblock {Collaboration Is All You Need: LLM Assisted Safe Code Translation}.
+\newblock In \emph{Proceedings of the 33rd ACM International Conference on the
+  Foundations of Software Engineering}, pages 671--675. ACM, 2025.
+\newblock \doi{10.1145/3696630.3728521}.
+
+\bibitem[Khanna(2026)]{oracleescape}
+Simarjot Khanna.
+\newblock {Passing Parity Is Not Preserving Behaviour: Oracle Escape in
+  Function-Level LLM Code Migration}.
+\newblock In \emph{Proceedings of the 2nd International Workshop on AI for
+  Software Modernization}, pages 61--68. ACM, 2026.
+\newblock \doi{10.1145/3843775.3844550}.
+
+\bibitem[Li et~al.(2025)Li, Jiang, Jia, Zhang, Si, Zhou, and Li]{deepmodelx}
+Xingpei Li, Zhijie Jiang, Zhouyang Jia, Yuanliang Zhang, Zheng Si, Haifang
+  Zhou, and Shanshan Li.
+\newblock {Enhancing Deep Learning Transpilation with LLMs: Automation and
+  Semantic Consistency}.
+\newblock In \emph{Proceedings of the 33rd ACM International Conference on the
+  Foundations of Software Engineering}, pages 1238--1239. ACM, 2025.
+\newblock \doi{10.1145/3696630.3731431}.
+
+\bibitem[Liu et~al.(2024)Liu, Lin, Hu, Zhang, and Gao]{arkts}
+Runlin Liu, Yuhang Lin, Yunge Hu, Zhe Zhang, and Xiang Gao.
+\newblock {LLM-Based Java Concurrent Program to ArkTS Converter}.
+\newblock In \emph{Proceedings of the 39th IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 2403--2406. ACM, 2024.
+\newblock \doi{10.1145/3691620.3695362}.
+
+\bibitem[Luo et~al.(2026)Luo, Liu, Gao, Feng, and Liu]{travel}
+Feng Luo, Jiachen Liu, Cuiyun Gao, Jia Feng, and Kui Liu.
+\newblock {Towards Reliable C-to-Rust Translation with Rule-Guided Reasoning
+  and Reinforcement Learning}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 4469--4480. ACM, 2026.
+\newblock \doi{10.1145/3832783.3834534}.
+
+\bibitem[Luo et~al.(2024)Luo, Yu, Zhang, Liang, and Xiong]{transgraph}
+Yang Luo, Richard Yu, Fajun Zhang, Ling Liang, and Yongqiang Xiong.
+\newblock {Bridging Gaps in LLM Code Translation: Reducing Errors with Call
+  Graphs and Bridged Debuggers}.
+\newblock In \emph{Proceedings of the 39th IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 2448--2449. ACM, 2024.
+\newblock \doi{10.1145/3691620.3695322}.
+
+\bibitem[Ma et~al.(2026)Ma, An, Tian, Wang, Dong, Gao, and Sun]{depupgrade}
+Xiangxi Ma, Yifan An, Wentong Tian, Xuanqi Wang, Qingao Dong, Xiang Gao, and
+  Hailong Sun.
+\newblock {DepUpgrade: Automating Dependency Upgrade through State-Path
+  Exploration}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 1844--1856. ACM, 2026.
+\newblock \doi{10.1145/3832783.3837442}.
+
+\bibitem[Macedo et~al.(2025)Macedo, Tian, Nie, Cogo, and Adams]{intertrans}
+Marcos Macedo, Yuan Tian, Pengyu Nie, Filipe~R. Cogo, and Bram Adams.
+\newblock {INTERTRANS: Leveraging Transitive Intermediate Translations to
+  Enhance LLM-Based Code Translation}.
+\newblock In \emph{2025 IEEE/ACM 47th International Conference on Software
+  Engineering (ICSE)}, pages 1153--1164. IEEE, 2025.
+\newblock \doi{10.1109/icse55347.2025.00236}.
+
+\bibitem[May et~al.(2026)May, Misra, Luo, Sridhar, Gehring, and
+  Ribeiro]{freshbrew}
+Victor May, Diganta Misra, Yanqi Luo, Anjali Sridhar, Justine Gehring, and
+  Silvio~Soares Ribeiro.
+\newblock {FreshBrew: A Benchmark for Evaluating AI Agents on Java Code
+  Migration}.
+\newblock In \emph{Proceedings of the 2026 IEEE/ACM 48th International
+  Conference on Software Engineering}, pages 944--955. ACM, 2026.
+\newblock \doi{10.1145/3744916.3773214}.
+
+\bibitem[Mohammed et~al.(2025)Mohammed, Lal, Rastogi, Sharma, and Roy]{msa}
+Nausheen Mohammed, Akash Lal, Aseem Rastogi, Rahul Sharma, and Subhajit Roy.
+\newblock {LLM Assistance for Memory Safety}.
+\newblock In \emph{2025 IEEE/ACM 47th International Conference on Software
+  Engineering (ICSE)}, pages 1717--1728. IEEE, 2025.
+\newblock \doi{10.1109/icse55347.2025.00023}.
+
+\bibitem[Moumoula et~al.(2025)Moumoula, Kaboré, Klein, and
+  Bissyandé]{moumoula}
+Micheline~Bénédicte Moumoula, Abdoul~Kader Kaboré, Jacques Klein, and
+  Tegawendé~F. Bissyandé.
+\newblock {The Struggles of LLMs in Cross-Lingual Code Clone Detection}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 2\penalty0
+  (FSE):\penalty0 1023--1045, 2025.
+\newblock \doi{10.1145/3715764}.
+
+\bibitem[Nikolov et~al.(2025)Nikolov, Codecasa, Sjövall, Tabachnyk, Chandra,
+  Taneja, and Ziftci]{googlemig}
+Stoyan Nikolov, Daniele Codecasa, Anna Sjövall, Maxim Tabachnyk, Satish
+  Chandra, Siddharth Taneja, and Celal Ziftci.
+\newblock {How is Google Using AI for Internal Code Migrations?}
+\newblock In \emph{2025 IEEE/ACM 47th International Conference on Software
+  Engineering: Software Engineering in Practice (ICSE-SEIP)}, pages 481--492.
+  IEEE, 2025.
+\newblock \doi{10.1109/icse-seip66354.2025.00048}.
+
+\bibitem[Nitin et~al.(2026)Nitin, Krishna, Valle, and Ray]{c2saferrust}
+Vikram Nitin, Rahul Krishna, Luiz Lemos~do Valle, and Baishakhi Ray.
+\newblock {C2SaferRust: Transforming C Projects Into Safer Rust With
+  NeuroSymbolic Techniques}.
+\newblock \emph{IEEE Transactions on Software Engineering}, 52\penalty0
+  (2):\penalty0 618--630, 2026.
+\newblock \doi{10.1109/tse.2025.3641486}.
+
+\bibitem[Ou et~al.(2025)Ou, Liu, Chen, Wang, Peng, and Zheng]{rustrepotrans}
+Guangsheng Ou, Mingwei Liu, Yuxuan Chen, Yanlin Wang, Xin Peng, and Zibin
+  Zheng.
+\newblock {RustRepoTrans: Repository-level Context Code Translation Benchmark
+  Targeting Rust}.
+\newblock In \emph{2025 40th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 610--622. IEEE, 2025.
+\newblock \doi{10.1109/ase63991.2025.00057}.
+
+\bibitem[Pan et~al.(2024)Pan, Ibrahimzada, Krishna, Sankar, Wassi, Merler,
+  Sobolev, Pavuluri, Sinha, and Jabbarvand]{lostintranslation}
+Rangeet Pan, Ali~Reza Ibrahimzada, Rahul Krishna, Divya Sankar, Lambert~Pouguem
+  Wassi, Michele Merler, Boris Sobolev, Raju Pavuluri, Saurabh Sinha, and
+  Reyhaneh Jabbarvand.
+\newblock {Lost in Translation: A Study of Bugs Introduced by Large Language
+  Models while Translating Code}.
+\newblock In \emph{Proceedings of the IEEE/ACM 46th International Conference on
+  Software Engineering}, pages 1--13. ACM, 2024.
+\newblock \doi{10.1145/3597503.3639226}.
+
+\bibitem[Pappas et~al.(2026)Pappas, Zalusky, Burkett, and Gazzillo]{tagteam}
+Brent Pappas, Joseph Zalusky, Zachary Burkett, and Paul Gazzillo.
+\newblock {Translation Tag Team: Formal Rules and LLMs Translate More Macros
+  Together Than Apart}.
+\newblock In \emph{Proceedings of the 41st IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 1457--1469. ACM, 2026.
+\newblock \doi{10.1145/3832783.3837412}.
+
+\bibitem[Petersen et~al.(2015)Petersen, Vakkalanka, and Kuzniarz]{petersen}
+Kai Petersen, Sairam Vakkalanka, and Ludwik Kuzniarz.
+\newblock {Guidelines for Conducting Systematic Mapping Studies in Software
+  Engineering: An Update}.
+\newblock \emph{Information and Software Technology}, 64:\penalty0 1--18, 2015.
+\newblock \doi{10.1016/j.infsof.2015.03.007}.
+
+\bibitem[Ramos et~al.(2024)Ramos, Lynce, Manquinho, Martins, and
+  Le~Goues]{batfix}
+Daniel Ramos, Inês Lynce, Vasco Manquinho, Ruben Martins, and Claire Le~Goues.
+\newblock {BatFix: Repairing Language Model-Based Transpilation}.
+\newblock \emph{ACM Transactions on Software Engineering and Methodology},
+  33\penalty0 (6):\penalty0 1--29, 2024.
+\newblock \doi{10.1145/3658668}.
+
+\bibitem[Reyes et~al.(2026)Reyes, Mahmoud, Bono, Nadi, Baudry, and
+  Monperrus]{byam}
+Frank Reyes, May Mahmoud, Federico Bono, Sarah Nadi, Benoit Baudry, and Martin
+  Monperrus.
+\newblock {Byam: Fixing Breaking Dependency Updates with Large Language
+  Models}.
+\newblock \emph{Empirical Software Engineering}, 31\penalty0 (4), 2026.
+\newblock \doi{10.1007/s10664-026-10835-1}.
+
+\bibitem[Rgaguena et~al.(2025)Rgaguena, Chlioui, and Radgui]{genaisms}
+Aymane Rgaguena, Imane Chlioui, and Maryam Radgui.
+\newblock {Generative AI for Code Translation: A Systematic Mapping Study}.
+\newblock \emph{Engineering Proceedings}, 112\penalty0 (1):\penalty0 33, 2025.
+\newblock \doi{10.3390/engproc2025112033}.
+\newblock Presented at ICATH 2025.
+
+\bibitem[Shiraishi et~al.(2026)Shiraishi, Cao, and Shinagawa]{smartc2rust}
+Momoko Shiraishi, Yinzhi Cao, and Takahiro Shinagawa.
+\newblock {SmartC2Rust: Iterative, Feedback-Driven C-to-Rust Translation via
+  Large Language Models for Safety and Equivalence}.
+\newblock In \emph{Proceedings of the 2026 IEEE/ACM 48th International
+  Conference on Software Engineering}, pages 980--991. ACM, 2026.
+\newblock \doi{10.1145/3744916.3773259}.
+
+\bibitem[Sun et~al.(2026)Sun, Uchôa, Gheyi, and Assunção]{polyhuman}
+Hui Sun, Anderson Uchôa, Rohit Gheyi, and Wesley K.~G. Assunção.
+\newblock {Evaluating Language Models on Cross-Language Code Functional
+  Equivalence}.
+\newblock arXiv preprint arXiv:2608.23961, 2026.
+\newblock URL \url{https://arxiv.org/abs/2608.23961}.
+\newblock ESEM 2026.
+
+\bibitem[Tateishi and Katsuno(2026)]{pli}
+Takaaki Tateishi and Yasuharu Katsuno.
+\newblock {Translating PL/I Macro Procedures into Java Using Automatic
+  Templatization and Large Language Models}.
+\newblock In \emph{Proceedings of the IEEE/ACM 48th International Conference on
+  Software Engineering}, pages 46--50. ACM, 2026.
+\newblock \doi{10.1145/3786582.3786808}.
+
+\bibitem[Wang et~al.(2026)Wang, Yu, Shen, Wang, Chen, Zhang, Shi, Xie, and
+  Gu]{evoc2rust}
+Chaofan Wang, Tingrui Yu, Beijun Shen, Jie Wang, Dong Chen, Wenrui Zhang,
+  Yuling Shi, Chen Xie, and Xiaodong Gu.
+\newblock {EvoC2Rust: A Skeleton-guided Framework for Project-Level C-to-Rust
+  Translation}.
+\newblock In \emph{Proceedings of the IEEE/ACM 48th International Conference on
+  Software Engineering: Software Engineering in Practice}, pages 94--105. ACM,
+  2026.
+\newblock \doi{10.1145/3786583.3786856}.
+
+\bibitem[Wu et~al.(2025)Wu, Li, Zhou, and Chandrasekaran]{ai4codesok}
+Qilong Wu, Taoran Li, Tianyang Zhou, and Varun Chandrasekaran.
+\newblock {SoK: Understanding (New) Security Issues Across AI4Code Use Cases}.
+\newblock arXiv preprint arXiv:2512.18456, 2025.
+\newblock URL \url{https://arxiv.org/abs/2512.18456}.
+
+\bibitem[Xia et~al.(2026)Xia, Liu, Xie, Zhang, Liu, Lu, Liu, Wang, and
+  Ji]{bdupdater}
+Yifan Xia, Chengwei Liu, Zifan Xie, Lyuye Zhang, Peiyu Liu, Kangjie Lu, Yang
+  Liu, Wenhai Wang, and Shouling Ji.
+\newblock {Break to Adapt: Knowledge-Based Updates of Breaking Dependencies in
+  JavaScript}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 2442--2464, 2026.
+\newblock \doi{10.1145/3808116}.
+
+\bibitem[Xie et~al.(2026)Xie, Zhang, Dou, Gao, Cui, Song, Yang, and Wei]{rise}
+Xudong Xie, Yuwei Zhang, Wensheng Dou, Yu~Gao, Ziyu Cui, Jiansen Song, Rui
+  Yang, and Jun Wei.
+\newblock {RISE: Rule-Driven SQL Dialect Translation via Query Reduction}.
+\newblock In \emph{Proceedings of the 2026 IEEE/ACM 48th International
+  Conference on Software Engineering}, pages 968--979. ACM, 2026.
+\newblock \doi{10.1145/3744916.3773257}.
+
+\bibitem[Xue et~al.(2026)Xue, Zheng, Yang, Pei, Wu, Dong, Luo, Xiao, Liu,
+  Zhang, Lyu, Li, Zhu, and Wang]{translibeval}
+Pengyu Xue, Kunwu Zheng, Zhen Yang, Yifei Pei, Linhao Wu, Jiahui Dong, Xiapu
+  Luo, Yan Xiao, Fei Liu, Yuxuan Zhang, Xiran Lyu, Xianhang Li, Xuanyu Zhu, and
+  Chengyi Wang.
+\newblock {TransLibEval: Demystify Large Language Models' Capability in
+  Third-Party Library-Targeted Code Translation}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 920--942, 2026.
+\newblock \doi{10.1145/3797137}.
+
+\bibitem[Yang et~al.(2025)Yang, Takashima, Paulsen, Dodds, and Kroening]{vert}
+Aidan~Z.H. Yang, Yoshiki Takashima, Brandon Paulsen, Josiah Dodds, and Daniel
+  Kroening.
+\newblock {VERT: Polyglot Verified Equivalent Rust Transpilation with Large
+  Language Models}.
+\newblock In \emph{2025 40th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 1453--1463. IEEE, 2025.
+\newblock \doi{10.1109/ase63991.2025.00123}.
+
+\bibitem[Yang et~al.(2024)Yang, Liu, Yu, Keung, Li, Liu, Hong, Ma, Jin, and
+  Li]{unitrans}
+Zhen Yang, Fang Liu, Zhongxing Yu, Jacky~Wai Keung, Jia Li, Shuo Liu, Yifan
+  Hong, Xiaoxue Ma, Zhi Jin, and Ge~Li.
+\newblock {Exploring and Unleashing the Power of Large Language Models in
+  Automated Code Translation}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 1\penalty0
+  (FSE):\penalty0 1585--1608, 2024.
+\newblock \doi{10.1145/3660778}.
+
+\bibitem[Yuan et~al.(2026{\natexlab{a}})Yuan, Chen, Wang, Peng, Chen, and
+  Lou]{transagent}
+Zhiqiang Yuan, Weitong Chen, Hanlin Wang, Xin Peng, Zhenpeng Chen, and Yiling
+  Lou.
+\newblock {TransAgent: Enhancing LLM-Based Code Translation via Fine-Grained
+  Execution Alignment}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 1582--1604, 2026{\natexlab{a}}.
+\newblock \doi{10.1145/3797099}.
+
+\bibitem[Yuan et~al.(2026{\natexlab{b}})Yuan, Mao, Chen, Shang, Wang, Lou, and
+  Peng]{ptrtrans}
+Zhiqiang Yuan, Wenjun Mao, Zhuo Chen, Xiyue Shang, Chong Wang, Yiling Lou, and
+  Xin Peng.
+\newblock {Project-Level C-to-Rust Translation via Pointer Knowledge Graphs}.
+\newblock \emph{Proceedings of the ACM on Software Engineering}, 3\penalty0
+  (FSE):\penalty0 3675--3698, 2026{\natexlab{b}}.
+\newblock \doi{10.1145/3808169}.
+
+\bibitem[Zhu et~al.(2026)Zhu, Zhang, Tao, Li, Yan, Xu, and Li]{equivfusion}
+Jiaying Zhu, Baoqi Zhang, Mengxia Tao, Kezhi Li, Hao Yan, Qiang Xu, and Min Li.
+\newblock {EquivFusion: Unifying Hardware Equivalence Checking from Algorithms
+  to Netlists via MLIR}.
+\newblock In \emph{Proceedings of the 34th ACM International Conference on the
+  Foundations of Software Engineering}, pages 102--106. ACM, 2026.
+\newblock \doi{10.1145/3803437.3806400}.
+
+\bibitem[Zhu et~al.(2024)Zhu, Karim, Lourentzou, and Yao]{semisup}
+Ming Zhu, Mohimenul Karim, Ismini Lourentzou, and Daphne Yao.
+\newblock {Semi-Supervised Code Translation Overcoming the Scarcity of Parallel
+  Code Data}.
+\newblock In \emph{Proceedings of the 39th IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 1545--1556. ACM, 2024.
+\newblock \doi{10.1145/3691620.3695524}.
+
+\end{thebibliography}
