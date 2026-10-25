@@ -1,0 +1,19 @@
+candidate_id,short_name,configuration,compile_rate_pct,behavioral_rate_pct,gap_points,fractions,compile_check,behavioral_oracle,location_in_paper
+C223,DGIR,compile-only reward ablation (1:0),97.9,0.0,97.9,,compilation,computational accuracy (tests),reward-weight ablation
+C165,AlphaTrans,"DeepSeek, 4,654 application method fragments",98.8,24.5,74.3,,syntactic correctness,existing tests run through GraalVM,RQ1 results
+C098,DepUpgrade,"GPT-5.4, benchmark of 123 tasks",96.75,50.41,46.34,119/123; 62/123,compilation,human review: semantically equivalent,Tables 3 and 5
+C169,Fruntke & Krinke,"zero-shot, Claude 3.5 Sonnet, light slice (n = 65)",61.54,18.46,43.08,40/65; 12/65,compilation,test suite,Table 1 and Section 5
+C075,VERT,"Claude-2 + VERT, C++ (569 programs)",94.73,51.85,42.88,539/569; 295/569,compilation,property-based tests against the original,"results table, C++ row"
+C260,TransLibEval,"GPT-4o, average",75.42,42.67,32.75,,compilation success rate,computational accuracy (tests),Table 4
+C099,DepWareTrans,"STAR, file by file with feedback (baseline)",38.16,9.39,28.77,,compilation,existing test suite,"RQ results, STAR project"
+C236,IntentTester,all migrated tests,85.23,61.28,23.95,"2,776/3,257; 1,996/3,257",compilation,migrated tests pass on the target library,Table 4
+C016,Java-to-ArkTS converter,53 samples,66.0,45.3,20.7,35/53; 24/53,compilation,"runs correctly (differential, checked by people)",evaluation section
+C249,PtrTrans,projects under 4K LOC,98.3,81.6,16.7,,compilation,equivalence on generated tests,Table 4
+C393,FreshBrew,"Gemini 2.5 Flash, JDK 17",79.8,63.2,16.6,,compilation,project tests,Table 1
+C143,TRAVEL,"Qwen2.5-Coder-7B + TRAVEL, xCodeEval (515)",87.38,71.07,16.31,,compilation success rate,computational accuracy (tests),Table 3
+C131,ReCodeAgent,ReCodeAgent translations,99.4,86.5,12.9,,compilation,"validated developer tests (1,822/2,107)",Table 1
+C415,RISE,"LLMTranslator_GPT baseline, 143 queries",95.1,86.71,8.39,136/143; 124/143,executes without syntax error,same result and DB state as the original query,Table 1
+C372,TerraMod,"TerraMod, Mistral-Large",84.0,76.0,8.0,,TF-Validate,Pass@1 (execution checks),Table 1
+C144,Translation Tag Team,"GPT-4o, 350 translations",78.29,72.29,6.0,274/350; 253/350,compilation,no runtime or non-functional failure,Table 2 and Figure 4b
+C331,BatFix,"TransCoder output before repair, Java to C++ (698 programs)",86.68,81.23,5.45,605/698; 567/698,compiles (no syntax error),passes the benchmark tests,Table 2
+C390,EvoC2Rust,"module level, C2R-Bench, DeepSeek-V3",92.25,89.53,2.72,,compilation success rate,test pass rate,module-level results table

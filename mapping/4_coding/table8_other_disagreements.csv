@@ -1,0 +1,9 @@
+candidate_id,short_name,oracles_compared,result,location_in_paper
+C155,UniTrans,Tests (CA) vs exact match,GPT-3.5: 87.92% vs 18.04%,Table 2
+C246,CAST,Tests (CA) vs exact match,"GPT-4o, 1-shot: 69.72% vs 16.23%",Table I
+C259,TransAgent,Tests (CA) vs CodeBLEU,"TransCoder, Python to Java: CA 2.4%, CodeBLEU 40.1",Table 2
+C372,TerraMod,Execution (Pass@1) vs CrystalBLEU,LLaMA-4-Maverick: baseline 44% / 0.78 vs TerraMod 76% / 0.66 (opposite ranking; one of four models),Table 1
+C075,VERT,"Compile, property-based tests, bounded and full verification","C++, 569 programs: 539, 295, 233 and 19 pass","results table, C++ row"
+C295,MBTA,Tests (CA) vs mutation-based score,"168 programs reach CA = 1, yet TransCoder mistranslates at least one of their mutants",results section
+C212,BDUpdater,Existing tests vs developer's fix,1 of 24 adaptations passes the tests but is not equivalent,Tables 6 and 8
+C192,Code hints,Fuzzing check vs manual review,"symbolic engine without hints: 23 candidates pass the check, 7 are correct",Table 1
