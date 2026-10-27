@@ -24,56 +24,61 @@ excluded on title/abstract: 362 (title only: 3)
    reasons: {'¬I1 ¬I2': 173, '¬I1': 92, 'E1': 47, 'I3-instr': 13, 'E2': 12, 'L-TASK': 11, 'E3': 8, 'E5': 6}
 full text sought: 69  not available (E6): 3  read: 66
 excluded after full text: 15 {'L-TASK': 5, '¬I1': 4, 'I3-instr': 2, 'E2': 2, 'E5': 1, '¬I1 ¬I2': 1}
+clarification rules (Table 4): {'L-TASK': 16, 'L-ARCH': 6, 'L-DECOMP': 5, 'L-SUM': 3, 'L-BASE': 2, 'L-XEQ': 2, 'L-TEST': 1, 'L-RB': 1}  total: 36  exclusions: 31  inclusions: 5
 
 == Corpus overview (Section 5.1), main corpus n = 49 ==
 by year: {'2024': 8, '2025': 14, '2026': 27}
 by track: {'Research': 28, 'Industry/SEIP': 9, 'Journal-first': 5, 'NIER': 3, 'Poster': 2, 'Demonstration': 1, 'Ideas, Visions and Reflections': 1}
 migration kinds (a paper can have several): {'XL': 33, 'LIB': 12, 'VER': 3, 'FW': 3, 'DIA': 2}
 legacy: 5  Rust target: 13
-LLM role: {'proposed technique': 32, 'evaluated subject': 9, 'proposed technique;evaluated subject': 4, 'no LLM': 2, 'baseline only': 1, 'evaluation tooling': 1}
+LLM role: {'proposed technique': 32, 'evaluated subject': 9, 'proposed technique;evaluated subject': 4, 'baseline only': 3, 'evaluation tooling': 1}
 
 == RQ1: oracle frequency (Figure 2) ==
-  O-a 14 (29%)
-  O-b 33 (67%)
+  O-a 13 (27%)
+  O-b 35 (71%)
   O-c 28 (57%)
   O-d 7 (14%)
-  O-e 5 (10%)
-  O-f 13 (27%)
+  O-e 2 (4%)
+  O-f 14 (29%)
   O-g 2 (4%)
-  O-h 3 (6%)
-  O-i 18 (37%)
-number of oracles per paper: {1: 9, 2: 17, 3: 17, 4: 4, 5: 1, 8: 1}
+  O-h 2 (4%)
+  O-i 17 (35%)
+number of oracles per paper: {1: 9, 2: 16, 3: 18, 4: 5, 5: 1}
 no execution-based oracle (none of O-c..O-f): 9
-mean oracles by track: {'Demonstration': 3.0, 'Ideas, Visions and Reflections': 1.0, 'Industry/SEIP': 2.4, 'Journal-first': 2.0, 'NIER': 1.7, 'Poster': 2.0, 'Research': 2.8}
+  of these, a single oracle: 5 ['collaboration', 'pig', 'pli', 'vimpt', 'wca4z']
+compare outputs with the original program (O-f or O-g): 14
+existing tests but no compile rate (O-c without O-b): 5
+differential testing as the only test-based oracle: 9 of 14
+mean oracles by track: {'Demonstration': 3.0, 'Ideas, Visions and Reflections': 1.0, 'Industry/SEIP': 2.4, 'Journal-first': 2.4, 'NIER': 1.7, 'Poster': 2.0, 'Research': 2.6}
 
 == RQ1: oracle combinations (Table 5, lower triangle) ==
       O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
-O-a    14
-O-b     7   33
-O-c     8   21   28
-O-d     1    7    5    7
-O-e     2    4    3    1    5
-O-f     2   10    3    3    2   13
+O-a    13
+O-b     7   35
+O-c     7   23   28
+O-d     0    7    5    7
+O-e     1    1    1    0    2
+O-f     1   12    4    3    0   14
 O-g     0    2    0    1    0    2    2
-O-h     1    2    1    1    1    1    0    3
-O-i     5   13    7    4    1    6    1    2   18
+O-h     0    1    0    0    0    0    0    2
+O-i     4   12    6    3    0    5    1    1   17
 
 == RQ2: oracle use by context (Table 6) ==
 group                      n  O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
 Legacy                     5    0    1    0    0    1    2    0    1    1
-Not legacy                44   14   32   28    7    4   11    2    2   17
-XL                        33    8   21   20    6    5   10    2    2    7
+Not legacy                44   13   34   28    7    1   12    2    1   16
+XL                        33    7   23   20    6    2   11    2    1    6
 LIB                       12    4    9    6    2    0    1    0    1    9
 VER                        3    1    2    1    0    0    1    0    0    1
 FW                         3    1    3    1    0    1    1    0    0    1
 DIA                        2    1    1    0    0    0    1    0    0    2
-Research                  28    9   19   15    6    3    8    2    2   14
-Industry/SEIP              9    2    7    5    1    2    2    0    1    2
+Research                  28    8   19   15    6    1    8    2    1   13
+Industry/SEIP              9    2    7    5    1    1    3    0    1    2
 NIER, IVR, demo, poster    7    2    4    3    0    0    2    0    0    2
-Journal-first              5    1    3    5    0    0    1    0    0    0
-2024                       8    3    4    5    1    0    2    0    0    1
+Journal-first              5    1    5    5    0    0    1    0    0    0
+2024                       8    3    5    5    1    0    2    0    0    1
 2025                      14    3   10    8    3    0    4    2    0    6
-2026                      27    8   19   15    3    5    7    0    3   11
+2026                      27    7   20   15    3    2    8    0    2   10
 
 == RQ2: origin of execution-based oracles (Table 7) ==
   c:B   14
@@ -81,12 +86,11 @@ Journal-first              5    1    3    5    0    0    1    0    0    0
   c:BP  2
   d:S   5
   d:H   3
-  e:R   3
   e:S   1
   e:U   1
   f:F   5
   f:T   3
-  f:L   1
+  f:L   3
   f:C   2
   f:U   2
 existing-test origin, library or version migration: {'c:P': 6, 'c:B': 1}  translation (XL): {'c:B': 12, 'c:P': 6, 'c:BP': 2}
@@ -127,7 +131,7 @@ Table 8 rows: 8
    2  Compiling does not imply correct behavior
 
 == RQ3 and RQ4: other counts ==
-human evaluation papers: 18  reporting rater agreement: 4
+human evaluation papers: 17  reporting rater agreement: 3
 final oracle also used in the technique: {'trained against the same kind of oracle': 2, 'same oracle selects or repairs outputs': 3}
 formal verification papers targeting Rust: 2 of 2
-LLM-generated tests / LLM judges by year: {'2026': 5} {'2026': 3}
+LLM-generated tests / LLM judges by year: {'2026': 2} {'2026': 2}

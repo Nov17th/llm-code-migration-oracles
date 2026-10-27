@@ -79,6 +79,10 @@ print('   reasons:', dict(Counter(reason(c) for c in ta).most_common()))
 print('full text sought:', len(inc) + len(ft_exc) + len(e6), ' not available (E6):', len(e6),
       ' read:', len(inc) + len(ft_exc))
 print('excluded after full text:', len(ft_exc), dict(Counter(reason(c) for c in ft_exc).most_common()))
+rules = Counter(c['clarification_rule'] for c in cands if c['clarification_rule'])
+print('clarification rules (Table 4):', dict(rules.most_common()), ' total:', sum(rules.values()),
+      ' exclusions:', sum(1 for c in cands if c['clarification_rule'] and c['decision'] == 'exclude'),
+      ' inclusions:', sum(1 for c in cands if c['clarification_rule'] and c['decision'] == 'include'))
 
 # ---------------------------------------------------------------- Corpus (Section 5.1)
 section('Corpus overview (Section 5.1), main corpus n = %d' % N)
@@ -96,6 +100,12 @@ for o in ORACLES:
 print('number of oracles per paper:', dict(sorted(Counter(int(c['n_oracles']) for c in main).items())))
 exe = {'O-c', 'O-d', 'O-e', 'O-f'}
 print('no execution-based oracle (none of O-c..O-f):', sum(not (set(c['oracles'].split(';')) & exe) for c in main))
+single = [c for c in main if c['n_oracles'] == '1' and not (set(c['oracles'].split(';')) & exe)]
+print('  of these, a single oracle:', len(single), sorted(c['cite_key'] for c in single))
+print('compare outputs with the original program (O-f or O-g):', sum(has(c, 'O-f') or has(c, 'O-g') for c in main))
+print('existing tests but no compile rate (O-c without O-b):', sum(has(c, 'O-c') and not has(c, 'O-b') for c in main))
+print('differential testing as the only test-based oracle:',
+      sum(has(c, 'O-f') and not any(has(c, o) for o in ('O-c', 'O-d', 'O-e')) for c in main), 'of', sum(has(c, 'O-f') for c in main))
 print('mean oracles by track:', {t: round(sum(int(c['n_oracles']) for c in main if c['track'] == t) /
                                      sum(c['track'] == t for c in main), 1) for t in sorted(set(c['track'] for c in main))})
 section('RQ1: oracle combinations (Table 5, lower triangle)')
@@ -117,7 +127,7 @@ for name, f in groups:
     print('%-24s %3d ' % (name, len(g)) + ' '.join('%4d' % sum(has(c, o) for c in g) for o in ORACLES))
 section('RQ2: origin of execution-based oracles (Table 7)')
 codes = Counter(k for c in main for k in c['oracle_origin'].split(';') if k)
-for k in ['c:B', 'c:P', 'c:BP', 'd:S', 'd:H', 'e:R', 'e:S', 'e:U', 'f:F', 'f:T', 'f:L', 'f:C', 'f:U']:
+for k in ['c:B', 'c:P', 'c:BP', 'd:S', 'd:H', 'e:S', 'e:U', 'f:F', 'f:T', 'f:L', 'f:C', 'f:U']:
     print('  %-5s %d' % (k, codes[k]))
 lv = Counter(); xl = Counter()
 for c in main:
