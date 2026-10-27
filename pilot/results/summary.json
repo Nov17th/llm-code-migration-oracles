@@ -1,0 +1,135 @@
+{
+  "tasks": 164,
+  "accept_pct": {
+    "O-b compile": 89.6,
+    "O-c tests": 80.5,
+    "O-a CodeBLEU>=0.5": 82.3,
+    "O-a CodeBLEU>=0.6": 67.1,
+    "O-a CodeBLEU>=0.7": 51.8,
+    "O-h judge": 73.8
+  },
+  "compile_minus_tests_pp": 9.1,
+  "test_status": {
+    "pass": 132,
+    "compile_error": 18,
+    "fail": 14
+  },
+  "interface_errors": 1,
+  "judge_unparsed": 0,
+  "codebleu_mean_if_pass": 0.756,
+  "codebleu_mean_if_fail": 0.507,
+  "codebleu_test_correlation": 0.439,
+  "against_tests": {
+    "O-b compile": {
+      "accepts_passes": 132,
+      "accepts_fails": 15,
+      "rejects_passes": 0,
+      "rejects_fails": 17,
+      "agreement_pct": 90.9,
+      "false_acceptance_pct": 46.9,
+      "false_rejection_pct": 0.0
+    },
+    "O-a CodeBLEU>=0.5": {
+      "accepts_passes": 118,
+      "accepts_fails": 17,
+      "rejects_passes": 14,
+      "rejects_fails": 15,
+      "agreement_pct": 81.1,
+      "false_acceptance_pct": 53.1,
+      "false_rejection_pct": 10.6
+    },
+    "O-a CodeBLEU>=0.6": {
+      "accepts_passes": 97,
+      "accepts_fails": 13,
+      "rejects_passes": 35,
+      "rejects_fails": 19,
+      "agreement_pct": 70.7,
+      "false_acceptance_pct": 40.6,
+      "false_rejection_pct": 26.5
+    },
+    "O-a CodeBLEU>=0.7": {
+      "accepts_passes": 80,
+      "accepts_fails": 5,
+      "rejects_passes": 52,
+      "rejects_fails": 27,
+      "agreement_pct": 65.2,
+      "false_acceptance_pct": 15.6,
+      "false_rejection_pct": 39.4
+    },
+    "O-h judge": {
+      "accepts_passes": 105,
+      "accepts_fails": 16,
+      "rejects_passes": 27,
+      "rejects_fails": 16,
+      "agreement_pct": 73.8,
+      "false_acceptance_pct": 50.0,
+      "false_rejection_pct": 20.5
+    }
+  },
+  "pairwise_agreement_pct": {
+    "O-b compile": {
+      "O-b compile": 100.0,
+      "O-c tests": 90.9,
+      "O-a CodeBLEU>=0.6": 68.9,
+      "O-h judge": 74.4
+    },
+    "O-c tests": {
+      "O-b compile": 90.9,
+      "O-c tests": 100.0,
+      "O-a CodeBLEU>=0.6": 70.7,
+      "O-h judge": 73.8
+    },
+    "O-a CodeBLEU>=0.6": {
+      "O-b compile": 68.9,
+      "O-c tests": 70.7,
+      "O-a CodeBLEU>=0.6": 100.0,
+      "O-h judge": 68.9
+    },
+    "O-h judge": {
+      "O-b compile": 74.4,
+      "O-c tests": 73.8,
+      "O-a CodeBLEU>=0.6": 68.9,
+      "O-h judge": 100.0
+    }
+  },
+  "patterns": {
+    "order": [
+      "O-b compile",
+      "O-c tests",
+      "O-a CodeBLEU>=0.6",
+      "O-h judge"
+    ],
+    "counts": {
+      "++++": 81,
+      "++-+": 24,
+      "+++-": 16,
+      "++--": 11,
+      "----": 7,
+      "--++": 5,
+      "+---": 5,
+      "+-++": 4,
+      "+--+": 4,
+      "---+": 3,
+      "+-+-": 2,
+      "--+-": 2
+    }
+  },
+  "judge_on_known_answers": {
+    "references": 164,
+    "yes_on_references": 97,
+    "mutants": 142,
+    "no_on_mutants": 117,
+    "balanced_accuracy_pct": 70.8
+  },
+  "selfcheck": {
+    "references": 164,
+    "compile": 164,
+    "pass_tests": 164,
+    "codebleu_1": 164,
+    "extraction_ok": 164,
+    "mutants": 298,
+    "mutants_compile": 288,
+    "mutants_rejected": 242
+  },
+  "tasks_with_disagreement": 76
+}

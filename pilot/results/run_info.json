@@ -1,0 +1,71 @@
+{
+  "stages": [
+    {
+      "stage": "selfcheck",
+      "finished": "2026-10-25 15:46:46 UTC",
+      "models": {}
+    },
+    {
+      "stage": "translate",
+      "finished": "2026-10-25 15:58:44 UTC",
+      "models": {
+        "translator": {
+          "model": "qwen2.5-coder:7b-instruct-q4_K_M",
+          "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+          "ollama": "0.40.11",
+          "temperature": 0,
+          "seed": 1234
+        }
+      }
+    },
+    {
+      "stage": "check",
+      "finished": "2026-10-25 16:01:36 UTC",
+      "models": {}
+    },
+    {
+      "stage": "judge",
+      "finished": "2026-10-25 16:07:09 UTC",
+      "models": {
+        "judge": {
+          "model": "llama3.1:8b-instruct-q4_K_M",
+          "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+          "ollama": "0.40.11",
+          "temperature": 0,
+          "seed": 1234
+        }
+      }
+    },
+    {
+      "stage": "controls",
+      "finished": "2026-10-25 16:16:35 UTC",
+      "models": {
+        "judge": {
+          "model": "llama3.1:8b-instruct-q4_K_M",
+          "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+          "ollama": "0.40.11",
+          "temperature": 0,
+          "seed": 1234
+        }
+      }
+    },
+    {
+      "stage": "analyze",
+      "finished": "2026-10-25 16:16:35 UTC",
+      "models": {}
+    }
+  ],
+  "environment": {
+    "python": "3.13.15",
+    "java": "openjdk version \"21.0.12\" 2026-07-21",
+    "gpu": "Tesla T4, 15360 MiB",
+    "dataset_sha256": {
+      "python": "5752fb122efddb0e9b47c77907ae6ce9a15aac4dea14e44c46032c831e6b987a",
+      "java": "276f36db2eb7aeb864f36a19a2f4e1bb2460fb6e22ff100f0b5bedabe3799967"
+    },
+    "prompt_sha256": {
+      "translate": "f10582de6941281a",
+      "judge": "93cc5f0ecdde51d0"
+    }
+  }
+}
