@@ -184,9 +184,18 @@ technique (for example a compiler in a repair loop, or a filter on training data
 tables, numbers under two or more oracle categories for the same outputs:
 - `figure3`: the paper reports both a compile (or well-formedness) rate and a behavioral pass rate. Data in
   `figure3_compile_vs_behavior.csv`.
-- `table8`: the paper shows another disagreement between oracles. Data in `table8_other_disagreements.csv`.
+- `table8`: the paper reports one of the three groups of other comparisons in RQ3: a similarity score next to a
+  pass rate; how many outputs that pass tests or fuzzing also pass a further check; or a mutation score next to CA.
+  Data in `table8_other_disagreements.csv`, with one or two settings per paper; the `note` column says what holds
+  across the paper's other settings. A paper can be both `figure3` and `table8`.
 - `other`: the paper reports per-oracle numbers in another form.
 - `none`: none of the above.
+
+Papers close to these three groups but not in them: RustAssure runs differential fuzzing and symbolic testing on
+different transpilations (FLUORINE's and its own); RISE does not report how many outputs its manual step rejects;
+EvoC2Rust reports similarity at project level and tests at module level; Python library migration runs tests on 25
+of its 314 outputs; Rule synthesis compares similarity with manual review, without a pass rate; AlphaTrans and
+ReCodeAgent compare two test suites, which is not one of the three groups.
 
 **Other flags**:
 - `targets_rust`: Rust is a target language.

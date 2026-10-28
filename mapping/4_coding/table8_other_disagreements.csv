@@ -1,9 +1,18 @@
-candidate_id,short_name,oracles_compared,result,location_in_paper
-C155,UniTrans,Tests (CA) vs exact match,GPT-3.5: 87.92% vs 18.04%,Table 2
-C246,CAST,Tests (CA) vs exact match,"GPT-4o, 1-shot: 69.72% vs 16.23%",Table I
-C259,TransAgent,Tests (CA) vs CodeBLEU,"TransCoder, Python to Java: CA 2.4%, CodeBLEU 40.1",Table 2
-C372,TerraMod,Execution (Pass@1) vs CrystalBLEU,LLaMA-4-Maverick: baseline 44% / 0.78 vs TerraMod 76% / 0.66 (opposite ranking; one of four models),Table 1
-C075,VERT,"Compile, property-based tests, bounded and full verification","C++, 569 programs: 539, 295, 233 and 19 pass","results table, C++ row"
-C295,MBTA,Tests (CA) vs mutation-based score,"168 programs reach CA = 1, yet TransCoder mistranslates at least one of their mutants",results section
-C212,BDUpdater,Existing tests vs developer's fix,1 of 24 adaptations passes the tests but is not equivalent,Tables 6 and 8
-C192,Code hints,Fuzzing check vs manual review,"symbolic engine without hints: 23 candidates pass the check, 7 are correct",Table 1
+candidate_id,short_name,group,outputs_judged,oracles_compared,result,location_in_paper,note
+C155,UniTrans,Similarity next to a pass rate,"LLaMA-33B, 1-shot, average of four translation directions",Tests (CA) vs exact match,47.63% vs 9.16%,"Table 2, Average column",EM is below CA for every model; LLaMA-33B and TransCoder-ST are ranked in opposite order
+C155,UniTrans,Similarity next to a pass rate,"TransCoder-ST, average of four translation directions",Tests (CA) vs exact match,52.15% vs 7.70%,"Table 2, Average column",
+C246,CAST,Similarity next to a pass rate,"Qwen2.5-72B, 1-shot, average of four translation directions",Tests (CA) vs exact match,68.36% vs 15.67%,"Table I, Average columns",EM is below CA for every model; several pairs of models are ranked in opposite order
+C246,CAST,Similarity next to a pass rate,"LLaMA3-70B, 1-shot, average of four translation directions",Tests (CA) vs exact match,65.67% vs 16.76%,"Table I, Average columns",
+C259,TransAgent,Similarity next to a pass rate,"TransCoder (a baseline), Python to Java",Tests (CA) vs CodeBLEU,2.4% vs 40.1,Table 2,CodeBLEU ranks the three systems in the same order as CA in all six directions
+C259,TransAgent,Similarity next to a pass rate,"TransAgent, Python to Java",Tests (CA) vs CodeBLEU,89.5% vs 69.8,Table 2,
+C372,TerraMod,Similarity next to a pass rate,LLaMA-4-Maverick without migration context (Base),Execution (Pass@1) vs CrystalBLEU,44% vs 0.78,Table 1,"Opposite order only for LLaMA-4-Maverick, one of four models"
+C372,TerraMod,Similarity next to a pass rate,LLaMA-4-Maverick with migration context (TerraMod),Execution (Pass@1) vs CrystalBLEU,76% vs 0.66,Table 1,
+C223,DepTrans,Similarity next to a pass rate,"RAST-7B, compile and test reward weights 1:1, both benchmarks",Tests (CA) vs CodeBLEU,43.5% vs 65.4,"Table 5, TOTAL columns",CodeBLEU ranks the 1:2 and 0:1 variants above 1:1; CA ranks 1:1 first
+C223,DepTrans,Similarity next to a pass rate,"RAST-7B, compile and test reward weights 1:2 (ablation), both benchmarks",Tests (CA) vs CodeBLEU,40.8% vs 66.5,"Table 5, TOTAL columns",
+C212,BDUpdater,Further check on outputs that pass tests or fuzzing,"GPT-4.1, 24 updates",Existing tests vs developer's fix,24 vs 23,Table 8,Reported for the default model only; the 24 are successful updates with a developer fix
+C192,Code hints,Further check on outputs that pass tests or fuzzing,"Symbolic engine, deprecated methods with code hints",Fuzzing check vs manual review,112 vs 104,"Table 1, RefSym (CH)",All eight rows of Table 1 have outputs that pass the check but are not equivalent
+C192,Code hints,Further check on outputs that pass tests or fuzzing,"Symbolic engine, deprecated methods without code hints",Fuzzing check vs manual review,23 vs 7,"Table 1, RefSym",
+C169,Fruntke & Krinke,Further check on outputs that pass tests or fuzzing,"Zero-shot, 20% sample of the patches that pass the tests",Existing tests vs manual grading by two engineers,10 vs 9 and 8,"Table 1, Section 4.3",Sample of 10 of 48 (zero-shot) and 16 of 78 (agentic) test-passing patches; both reviewers rate some incorrect
+C169,Fruntke & Krinke,Further check on outputs that pass tests or fuzzing,"Agentic, 20% sample of the patches that pass the tests",Existing tests vs manual grading by two engineers,16 vs 13 and 11,"Table 1, Section 4.3",
+C075,VERT,Further check on outputs that pass tests or fuzzing,"Claude-2 + VERT, 569 C++ programs",Compilation vs property-based tests vs bounded verification vs full verification,539 vs 295 vs 233 vs 19,"Table 1, C++ row",Bounded verification confirms fewer programs than property-based tests in all 18 rows of Table 1
+C295,MBTA,Mutation score next to CA,"TransCoder, each of 168 programs",Tests (CA) vs MTS,CA = 1 vs MTS > 0,"Section 5, RQ2",TransCoder reaches CA = 1 on 29.62% of the programs; 168 of them have MTS > 0 (147 for j2py)

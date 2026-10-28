@@ -96,7 +96,7 @@ Journal-first              5    1    5    5    0    0    1    0    0    0
 existing-test origin, library or version migration: {'c:P': 6, 'c:B': 1}  translation (XL): {'c:B': 12, 'c:P': 6, 'c:BP': 2}
 
 == RQ3: several oracles on the same outputs ==
-papers: 33  by group: {'figure3': 18, 'other': 9, 'table8': 8}
+papers: 33  by group: {'figure3': 18, 'other': 9, 'table8': 10}
 Figure 3 rows: 18  gap range: 3 to 98 points
   DepTrans                    97.90   0.00  gap  98
   AlphaTrans                  98.80  25.14  gap  74
@@ -116,7 +116,7 @@ Figure 3 rows: 18  gap range: 3 to 98 points
   Translation Tag Team        78.29  72.29  gap   6
   BatFix                      86.68  81.23  gap   5
   EvoC2Rust                   92.25  89.53  gap   3
-Table 8 rows: 8
+Table 8 rows: 17
 
 == RQ3: stated limitations (Table 9) ==
   15  Weak or few tests, so passing tests does not imply equivalence
