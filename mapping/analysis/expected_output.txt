@@ -98,8 +98,8 @@ existing-test origin, library or version migration: {'c:P': 6, 'c:B': 1}  transl
 == RQ3: several oracles on the same outputs ==
 papers: 33  by group: {'figure3': 18, 'other': 9, 'table8': 8}
 Figure 3 rows: 18  gap range: 3 to 98 points
-  DGIR                        97.90   0.00  gap  98
-  AlphaTrans                  98.80  24.50  gap  74
+  DepTrans                    97.90   0.00  gap  98
+  AlphaTrans                  98.80  25.14  gap  74
   DepUpgrade                  96.75  50.41  gap  46
   Fruntke & Krinke            61.54  18.46  gap  43
   VERT                        94.73  51.85  gap  43
