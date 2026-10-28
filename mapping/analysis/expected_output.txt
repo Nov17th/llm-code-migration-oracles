@@ -120,13 +120,13 @@ Table 8 rows: 17
 
 == RQ3: stated limitations (Table 9) ==
   15  Weak or few tests, so passing tests does not imply equivalence
-   9  No limitation of the own oracle stated
+  10  No limitation of the own oracle stated
    6  Incomplete differential, fuzzing, symbolic or bounded checks
-   4  Subjective human evaluation, or no agreement measured
    3  Oracle derived from the same source as the output
+   3  Subjective human evaluation, or no agreement measured
    3  Misleading surface similarity
    3  The LLM games the oracle
-   2  A limitation of the oracle unrelated to equivalence
+   2  Other limitation of the oracle
    2  No executable oracle available
    2  Compiling does not imply correct behavior
 
