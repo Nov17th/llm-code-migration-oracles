@@ -1,0 +1,43 @@
+%% ===== 1 Introduction =====
+\section{Introduction}
+\label{sec:intro}
+
+% [27/10] Bỏ "taking a growing share" (không có số đỡ); "LLM-assisted" vì ở Google người vẫn duyệt thay đổi; thêm trích
+% dẫn cho các ví dụ và "a similarity metric" (O-a) cho đủ các nhóm oracle của Bảng 1.
+\new{Code migration is routine industrial work, and large language models (LLMs) now take on part of it. Google reports LLM-assisted migrations across its monorepo, such as JUnit~3 to JUnit~4~\cite{googlemig}. LLM-based approaches also target C-to-Rust ports~\cite{evoc2rust}, COBOL modernization~\cite{kcobagent} and dependency upgrades~\cite{depupgrade}.} In every case someone must decide whether the migrated code still does what the original did. That decision rests on an \emph{oracle}: a compiler, a test suite, \new{a similarity metric,} a comparison with the original program, a formal check, a human or another LLM.
+
+% [27/10] Số kiểm với bài gốc: DepWareTrans 38,16%/9,39% (file-by-file có feedback, hệ thống STAR); DepTrans là tên hệ thống
+% (DGIR chỉ là khung suy luận), 97,9%/0% là biến thể chỉ thưởng biên dịch còn bản đầy đủ đạt 60,7%/43,5%; DepUpgrade 62/119
+% bản vá biên dịch được (không phải 62/123); ChangeGuard recall 7,6%. Bỏ ví dụ Copilot vì bài gốc ghi median lúc 39,75%, lúc
+% 53,61%. "translation" thành "migration" vì DepUpgrade là nâng cấp thư viện.
+\new{The oracle is not neutral. Published studies report very different success rates for the same outputs under different oracles:}
+\begin{itemize}
+  \item DepWareTrans~\cite{depwaretrans}: \new{on an industrial repository,} file-by-file Java-to-Kotlin migration \new{with iterative feedback} reaches \new{a 38.16\% compile rate} but only \new{a 9.39\% test pass rate}.
+  \item \new{DepTrans}~\cite{dgir}: \new{in C-to-Rust translation, a variant trained with a compile-only reward} reaches \new{a 97.9\% compile rate but a 0\% test pass rate}.
+  \item DepUpgrade~\cite{depupgrade}: \new{dependency upgrades compile in 119 of 123 tasks (96.7\%), but reviewers judge only 62 of these 119 patches (52.1\%) semantically equivalent.}
+\end{itemize}
+\new{We observe the same in a pilot that applies four oracles to one fixed set of 164 LLM translations: 52\% to 90\% of them count as correct, depending on the oracle and its threshold (Section~\ref{sec:pilot}). A reported success rate can therefore say as much about the oracle as about the technique.} \new{Weak oracles are not specific to migration: existing regression tests catch only 7.6\% of the semantics-changing code changes studied by Gr\"oninger et al.~\cite{changeguard}.}
+
+% [27/10] Nêu câu hỏi trước rồi mới so với nghiên cứu đã có. Khoảng trống chỉ nói về các review: Jiao et al. có so BLEU,
+% CodeBLEU và CA trên cùng output nên chuyển sang Related Work; "quantifies" vì Zhang et al. chỉ nhận xét định tính; ground
+% truth giới hạn ở O-c đến O-f như RQ2. RQ dùng "use" chứ không "rely on" (Hà Cao); RQ2 gọn, bốn ngữ cảnh nêu ở Results 5.3
+% (comment 2); RQ4 hỏi về oracle không thực thi code (biên dịch chỉ chạy javac) và không hỏi "bao nhiêu" để khỏi khái quát
+% quá một pilot; RQ5 là RQ4 cũ, đánh số lại theo thứ tự mục.
+\new{These examples raise two questions: which oracles does research on LLM-based migration use, and how far can their verdicts be trusted? Reviews that cover code translation examine its techniques, evaluation metrics, publication trends and security issues (Section~\ref{sec:related}). One recent survey also orders evaluation signals into six levels and discusses how reliable each is~\cite{c2csurvey}. None of these reviews traces where the ground truth of test-based oracles comes from, quantifies how far oracles disagree on the same outputs or compares oracle use across contexts. We address this gap with a systematic mapping study of the main proceedings of ICSE, FSE and ASE from 2024 to 2026 and with the pilot. The mapping answers RQ1 to RQ3 and the pilot answers RQ4; RQ5 draws on both:}
+\begin{itemize}
+  \item[\textbf{RQ1.}] Which oracles are used to evaluate behavioral equivalence in LLM-based code translation and migration?
+  \item[\textbf{RQ2.}] \new{Where do test-based oracles get their ground truth, and how does oracle use differ by context?}
+  \item[\textbf{RQ3.}] Which threats to oracle reliability do the studies acknowledge or demonstrate?
+  \item[\new{\textbf{RQ4.}}] \new{How do automatic oracles that do not execute the code compare with existing tests on the same LLM translations?}
+  \item[\new{\textbf{RQ5.}}] \new{What gaps separate current evaluation practice from the needs of real migration projects, and what should studies report and investigate next?}
+\end{itemize}
+
+% [27/10] Đóng góp (1) theo ngữ cảnh như RQ2, ô trống chỉ nói "no study covers" (comment 3 của Hà Cao); thêm công cụ và
+% pilot; thứ tự (4), (5) theo RQ4, RQ5.
+% [29/10] Đóng góp (5): "six gaps" thành "five gaps" theo Discussion (G1--G5).
+Our contributions are: (1) a coded map of 49 primary studies by oracle, \new{ground-truth origin and context of use, including the combinations that no study covers}; (2) \new{a catalog of the 33 studies that report two or more oracles on the same outputs, showing how far those oracles disagree}; (3) a classification of the \new{limitations that studies report about their own oracles}; \new{(4) an open harness that applies four oracles to the same LLM translations, used in a pilot on 164 HumanEval-X tasks; and (5) five gaps between evaluation practice and real migration, along with} a checklist for reporting oracle provenance. \new{We release all data and code} (Section~\ref{sec:conclusion}).
+
+\begin{added}
+% [27/10] Thêm mục Pilot; viết lại để không câu nào cũng mở đầu bằng "Section X".
+\paragraph{Structure.} Section~\ref{sec:background} defines the migration kinds and oracle categories we code, and Section~\ref{sec:related} reviews related studies. Section~\ref{sec:method} describes the search, selection and extraction. Results for RQ1 to RQ3 follow in Section~\ref{sec:results}, and the pilot answers RQ4 in Section~\ref{sec:pilot}. Section~\ref{sec:discussion} answers RQ5 and proposes the checklist. We close with threats to validity (Section~\ref{sec:threats}) and conclusions (Section~\ref{sec:conclusion}). Appendix~\ref{app:primary} lists every included paper with its coding.
+\end{added}

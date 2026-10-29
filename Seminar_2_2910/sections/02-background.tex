@@ -1,0 +1,46 @@
+%% ===== 2 Background =====
+\section{Background}
+\label{sec:background}
+
+% [27/10] Background chỉ định nghĩa; nguồn gốc hai bảng phân loại và quy tắc mã ở Method 4.5, độ nhạy của định nghĩa legacy
+% ở Results 5.3. Ví dụ kiểm với bài gốc (FreshBrew, Google, RISE, GUIMigrator); legacy theo công nghệ nguồn (comment 4 của
+% Hà Cao); thêm câu migration là từ bao trùm, translation là XL và DIA.
+\paragraph{Kinds of migration.} \new{We distinguish five kinds of migration:} between programming languages (XL, e.g.\ C to Rust \new{or} COBOL to Java); between versions of a language or platform (VER, e.g.\ Java~8 to~17); between libraries or APIs, including dependency upgrades with breaking changes (LIB, e.g.\ JUnit~3 to~4); between dialects (DIA, e.g.\ PostgreSQL to MySQL); and between frameworks or application platforms (FW, e.g.\ \new{Android XML views to SwiftUI}). \new{We use migration as the umbrella term and call the XL and DIA kinds translation, because they rewrite code in another language or dialect. A study may involve several kinds. Independently of the kind, a \emph{legacy} flag marks a source written for a language or platform that is no longer in mainstream use for new development, such as COBOL, PL/I, mainframe systems or ASP.NET Web Forms. The flag follows the source technology, not the authors' description of their code.}
+
+\begin{added}
+% [27/10] Danh sách có dấu phẩy bên trong nên tách bằng chấm phẩy; "run" thành "execute" như RQ4.
+\paragraph{Behavioral equivalence.} Two programs are behaviorally equivalent if they produce the same observable behavior for every input: the same outputs; the same effects on files, databases or other state; and the same termination or failure. Checking this exactly is undecidable in general, so every practical check approximates it. Tests and differential runs sample the input space; bounded model checking and symbolic execution cover it up to a bound; formal proofs cover it completely but only for a model of the program; and compilation, similarity metrics and human or LLM judgment do not execute the program. Migration also relaxes this definition in ways that an evaluation should make explicit. A translation may map types whose ranges differ, such as \new{32-bit integers in C into Python's unbounded integers}; a library migration may keep the functional result but change logging, performance or error messages; and a framework migration may be judged on what a user sees rather than on internal state. ``Equivalent'' therefore always means equivalent with respect to some oracle and some notion of observable behavior.
+\end{added}
+
+% [27/10] Oracle là "the check a study uses" vì O-a, O-b không trực tiếp xét hành vi. Bảng 1: sửa O-b, O-d, O-e, O-f, O-h
+% cho bớt tuyệt đối và rõ nghĩa; cột "What it checks" rộng hơn (0,24/0,32/0,28). Trục nguồn của kết quả mong đợi theo
+% comment 5 của Hà Cao; BatFix vẫn là O-c vì test của TransCoder có trước nghiên cứu.
+\paragraph{Oracles.} \new{An oracle is the check a study uses to decide} whether the migrated program behaves like the original. We use nine categories (Table~\ref{tab:oracles}).
+
+\begin{table*}[t]
+  \centering
+  \caption{Oracle categories used throughout the paper.}
+  \label{tab:oracles}
+  \small
+  \begin{tabular}{@{}l P{0.24\linewidth} P{0.32\linewidth} P{0.28\linewidth}@{}}
+    \toprule
+    Code & Oracle & What it checks & Known weakness \\
+    \midrule
+    O-a & Surface similarity (BLEU, CodeBLEU, exact match, AST match) & Closeness to a reference translation & Equivalent code can look different, and similar code can behave differently \\
+    O-b & Compilation, type checking \new{or another well-formedness check} & The output is well-formed in the target & \new{Does not check behavior} \\
+    O-c & Existing tests & \new{Behavior on a test suite that existed before the study, built for a benchmark or by the project's developers} & Only as strong as the tests; benchmarks often have few \\
+    O-d & \new{Translated tests} & \new{Behavior on the original program's own tests after they are translated with the code; in test migration, on the migrated tests themselves} & Test and code may share the same translation error\new{; a migrated test that passes may no longer check what the original did} \\
+    O-e & LLM-generated tests & \new{Behavior on new tests whose expected outputs come from an LLM or a specification} & \new{Expected outputs can be wrong or share a source with the output under test} \\
+    O-f & \new{Differential testing} & \new{Same outputs as the original program, run by the study on the same inputs (from fuzzing, existing tests or an LLM)} & Limited by input generation; needs the original to run \\
+    O-g & \new{Formal verification} & Equivalence proven or bounded-checked \new{against the original or a specification} & Costly; bounds and models limit coverage \\
+    O-h & \new{LLM judge} & An LLM's verdict on equivalence & \new{The judge's own accuracy is rarely validated} \\
+    O-i & Human evaluation & A person's judgment & Subjective, small samples, rarely agreement-measured \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+% [27/10] "source" thành "origin" để khỏi nhầm với chương trình nguồn, thống nhất với "ground-truth origin" và bảng tab:origin ở Results 5.3.
+% O-d "translated with the code" thành "translated for the study" cho đối xứng với O-c (quy tắc ở 4.5).
+\new{The four test-based categories (O-c to O-f) differ in the origin of their ground truth, the expected outputs: a test suite that existed before the study (O-c); the original program's tests, translated for the study (O-d); an LLM or a specification (O-e); or a run of the original program during the study (O-f). Tests that an LLM writes therefore fall under O-f when their expected outputs come from running the original, because the LLM then supplies only the inputs.}
+
+The categories are not exclusive. Many studies combine several, and some use one inside the technique (for example to filter training data or to drive a repair loop) and another to report results. \new{Section~\ref{sec:extraction} states which of these uses we code.}

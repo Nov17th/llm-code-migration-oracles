@@ -1,0 +1,25 @@
+%% ===== 9 Conclusion and Data Availability =====
+\section{Conclusion and Data Availability}
+\label{sec:conclusion}
+
+% [29/10] Viết lại phần kết theo năm RQ. Bỏ danh sách sáu ý cũ ("legacy settings are rare" và "9 papers state no limitation" không còn
+% là gap sau khi Discussion còn năm gap G1--G5); 10 bài không nêu hạn chế (Bảng 10); thêm pilot (RQ4) và checklist (Bảng 12).
+% Mọi số lấy từ mục 5 đến 7, không thêm số mới: 35/28/14 (Hình 2), 12/20 và 6/7 (5.3), 5 legacy, 9/12 LIB, 18 bài và 3 đến 98 điểm
+% (Hình 3), 4/5 (Bảng 9), 15 (Bảng 10), 3/17, 52% đến 90% và 76/164 = 46% (Bảng 11), 16/32, 67/164 = 41%.
+We mapped how 49 papers at ICSE, FSE and ASE from 2024 to 2026 decide whether LLM-translated or migrated code behaves like the original. \new{Compilation (35 papers) and existing tests (28) dominate, while only 14 papers run the original program to compare behavior (RQ1). In translation between languages, tests come mostly from benchmarks, whereas library and version migrations run the project's own suite; none of the 5 papers with a legacy source uses existing tests, and 9 of the 12 papers on library migration include a human check (RQ2). Where papers report several oracles on the same outputs, the oracles disagree. In the 18 papers that give both a compile rate and a behavioral rate, behavior trails compilation by 3 to 98 percentage points, and in 4 of the 5 papers that report a similarity score next to a pass rate, the score reverses at least one ranking. Weak or few tests are the limitation that papers name most often, only 3 of the 17 papers with human evaluation report agreement between raters, and 10 papers state no limitation of their own oracle (RQ3).}
+
+\new{The pilot shows the same effect when only the oracle varies. Depending on the oracle and its threshold, 52\% to 90\% of one fixed set of 164 translations count as correct, and at least one of the three oracles that do not execute the code disagrees with the tests on 46\% of the tasks. A small LLM judge accepts half of the translations that fail the tests and rejects 41\% of the benchmark's own reference solutions (RQ4). A reported success rate therefore describes the oracle as much as the technique.}
+
+\new{Measured against what a migration needs, evidence that the migrated code behaves like the original, current practice leaves five gaps (RQ5): compile rates and similarity scores diverge from behavioral results (G1); judgments by people or LLMs are rarely validated (G2); test evidence for translation rests largely on benchmarks (G3); some tests are not independent of the system under evaluation (G4); and most studies do not run the original program (G5). The Oracle Provenance Checklist in Section~\ref{sec:checklist} turns these gaps into seven items that studies can report and reviewers can check, and the directions in Section~\ref{sec:rq5} raise the questions that better reporting alone cannot answer, such as which oracles catch which faults. These findings hold for three venues over three years (Section~\ref{sec:threats}).} Before we trust LLMs to translate the software that runs the world, we must agree on how to check their work; \new{the checklist} is a first step.
+
+% [29/10] Data availability: chọn bản A (công khai trên GitHub). Trỏ tới release có tag, không trỏ nhánh main, để link luôn khớp dữ liệu
+% mà bài mô tả. Trước khi nộp: thêm LICENSE, tạo release, điền tag vào \fillin (xem Repo_Release_Checklist.md). Phần pilot liệt kê theo
+% mục 6.1 (harness, selfcheck với lời giải tham chiếu và mutant, prompt, verdicts, notebook kèm digest và hash). Nếu nộp EASE double-blind:
+% thay link bằng bản ẩn danh (ví dụ anonymous.4open.science), để link thật cho camera-ready.
+\paragraph{Data availability.} \new{The replication package is available at \url{https://github.com/Nov17th/llm-code-migration-oracles} (release \fillin{v1.0}). For the map, it contains the search log with dates and counts for every proceedings volume, the codebook, every screening decision with its reason and evidence basis, the extraction form and coded data for all 51 papers, the data behind every table and figure, and a script that recomputes every count in the paper. For the pilot, it contains the harness that applies the four oracles, its checks on the reference solutions and seeded faults, the prompts, the verdict of every oracle on every task, and the executed notebook of the run with the model digests and dataset hashes.}
+
+% [29/10] Acknowledgments: điền tên giảng viên và môn học, hoặc bỏ cả đoạn. Dùng \paragraph thay cho môi trường ack của NeurIPS vì
+% main-ease.tex (acmart) không có môi trường đó. Bản EASE ẩn danh thì bỏ đoạn này khi nộp.
+\begin{added}
+\paragraph{Acknowledgments.} We thank \fillin{instructor} for guidance and feedback during \fillin{course name}.
+\end{added}

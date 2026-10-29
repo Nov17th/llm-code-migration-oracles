@@ -1,0 +1,25 @@
+%% ===== 3 Related Work =====
+\section{Related Work}
+\label{sec:related}
+
+% [27/10] Kiểm với bài gốc: Chen et al. đếm năm metric phổ biến nhất trên 57 bài (BLEU 24, CodeBLEU 18, CA 17), không tách
+% theo nhóm; Zhang et al. (Algorithms, 10/2026) xếp sáu mức và bàn độ tin cậy nhưng không đếm, chỉ nhận xét định tính rằng
+% compile cao hơn hẳn tương đương I/O; SoK chỉ đo độ tin cậy của công cụ kiểm bảo mật nên viết "functional verification".
+% Cả bốn review chỉ xét dịch giữa ngôn ngữ, nên thêm khác biệt về phạm vi và ba câu hỏi bỏ ngỏ; ground truth chỉ nói cho
+% O-c đến O-f. Related Work không báo số liệu của bài này (số theo kiểu di trú nằm ở Results 5.1).
+\paragraph{\new{Reviews of code translation.}} \new{Chen et al.'s systematic literature review of neural code translation analyzes 57 primary studies from seven perspectives and counts how many of them use the most common evaluation metrics~\cite{nctslr}. A later survey by Zhang et al.\ follows PRISMA to review 47 methods from 2013 to 2026 and orders evaluation signals into six levels, from text matching to testing the translation inside its project~\cite{c2csurvey}. It discusses how reliable each level is but does not count the methods that use it. In a systematic mapping study, Rgaguena et al.\ classify 53 studies of generative AI for code translation by publication year and channel, research type, publication type, empirical study type, AI model and dataset~\cite{genaisms}. The security-focused systematization of knowledge of AI4Code by Wu et al.\ catalogs the functional verification techniques used for translation without measuring their reliability~\cite{ai4codesok}. These reviews cover translation between programming languages, whereas our map also includes library, version and framework migration. It further addresses three questions that the reviews leave open: where the ground truth of test-based oracles comes from, how far oracles disagree on the same outputs and how oracle use differs between legacy and non-legacy sources or between kinds of migration.}
+
+% [27/10] Jiao et al. đánh giá chủ yếu model trước LLM; hai vấn đề về test và bản dịch tham chiếu là của TransCoder-test.
+% Thêm câu theo Bảng VII (gpt-3.5-turbo hơn về CA, StarCoderBase hơn về BLEU, CodeBLEU) để phân biệt: họ so metric trong một
+% benchmark, bài này so trên 49 nghiên cứu, không phải "the LLM-era literature".
+\paragraph{\new{Evaluation of code translation.}} \new{Jiao et al.\ classify translation tasks into four types by complexity and build a benchmark on which they evaluate mainly pre-LLM models~\cite{jiao23}. They also find few unit tests and unverified reference translations in the widely used TransCoder-test. On their own benchmark, test pass rates and similarity scores rank two LLMs differently. Whereas they compare metrics within one benchmark, we map evaluation practice across 49 studies from the LLM era, including LLM-generated tests and LLM judges.}
+
+% [27/10] Bỏ câu số 14/49: Related Work chỉ định vị, số liệu để ở Results (RQ1, Hình 2); câu cuối chỉ trỏ tới RQ1.
+% "equivalence checking" khớp O-g ở Bảng 1. [28/10] "compare outputs with" thành "execute … to compare behavior" như câu ở RQ1.
+\paragraph{The oracle problem.} Barr et al.\ survey the test oracle problem in general~\cite{barr}. Migration is a special case in which the original program is available as a reference, so \new{differential testing and equivalence checking} become possible. \new{RQ1 counts how many of the studies in our map execute the original program to compare behavior (Section~\ref{sec:rq1}).}
+
+% [27/10] Nêu tên từng công trình ngay ở câu đầu để câu "FreshBrew and AlphaTrans are among the 49" không cần trích lại;
+% ngưỡng 5 điểm phần trăm lấy từ bài gốc của FreshBrew.
+% Bài của Dristi và Dwyer ở workshop LLMTrust của FSE 2026, bị loại vì chỉ refactor trong một ngôn ngữ (C202); PolyHuman
+% đã kiểm là ESEM 2026 (LIPIcs 394, bài 41), refs.bib đổi từ arXiv sang kỷ yếu. Câu thứ hai nối với RQ3.
+\paragraph{\new{Individual studies.}} \new{Several benchmarks and techniques address parts of the oracle problem: FreshBrew accepts a migration only if test coverage falls by at most 5 percentage points, which exposes reward hacking~\cite{freshbrew}; AlphaTrans translates the tests together with the code~\cite{alphatrans}; Dristi and Dwyer check equivalence by differential fuzzing without predefined tests~\cite{dristi}; and Sun et al.\ test whether LLMs can judge functional equivalence across languages on their PolyHuman dataset~\cite{polyhuman}. These works document defenses and failure modes one study at a time; RQ3 classifies such threats across the 49 studies in our map. FreshBrew and AlphaTrans are among the 49. The other two are not: Dristi and Dwyer study refactoring within a single language, and Sun et al.\ published at ESEM.}
