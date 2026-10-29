@@ -12,7 +12,7 @@
 % 53,61%. "translation" thành "migration" vì DepUpgrade là nâng cấp thư viện.
 \new{The oracle is not neutral. Published studies report very different success rates for the same outputs under different oracles:}
 \begin{itemize}
-  \item DepWareTrans~\cite{depwaretrans}: \new{on an industrial repository,} file-by-file Java-to-Kotlin migration \new{with iterative feedback} reaches \new{a 38.16\% compile rate} but only \new{a 9.39\% test pass rate}.
+  \item DepWareTrans~\cite{depwaretrans}: \new{on an industrial repository,} file-by-file Java-to-Kotlin migration \new{with iterative feedback} reaches \new{a 38.16\% compile rate} but only \new{a 9.39\% test pass rate}. \cmt{Claude}{[R05] Per the Figure 3 caption and its data file, this configuration (STAR, file by file with feedback) is a baseline, not DepWareTrans's own system. Say so, as the DepTrans bullet does for its ablation; otherwise 9.39\% reads as the proposed tool's result.}
   \item \new{DepTrans}~\cite{dgir}: \new{in C-to-Rust translation, a variant trained with a compile-only reward} reaches \new{a 97.9\% compile rate but a 0\% test pass rate}.
   \item DepUpgrade~\cite{depupgrade}: \new{dependency upgrades compile in 119 of 123 tasks (96.7\%), but reviewers judge only 62 of these 119 patches (52.1\%) semantically equivalent.}
 \end{itemize}
@@ -26,7 +26,7 @@
 \new{These examples raise two questions: which oracles does research on LLM-based migration use, and how far can their verdicts be trusted? Reviews that cover code translation examine its techniques, evaluation metrics, publication trends and security issues (Section~\ref{sec:related}). One recent survey also orders evaluation signals into six levels and discusses how reliable each is~\cite{c2csurvey}. None of these reviews traces where the ground truth of test-based oracles comes from, quantifies how far oracles disagree on the same outputs or compares oracle use across contexts. We address this gap with a systematic mapping study of the main proceedings of ICSE, FSE and ASE from 2024 to 2026 and with the pilot. The mapping answers RQ1 to RQ3 and the pilot answers RQ4; RQ5 draws on both:}
 \begin{itemize}
   \item[\textbf{RQ1.}] Which oracles are used to evaluate behavioral equivalence in LLM-based code translation and migration?
-  \item[\textbf{RQ2.}] \new{Where do test-based oracles get their ground truth, and how does oracle use differ by context?}
+  \item[\textbf{RQ2.}] \new{Where do test-based oracles get their ground truth, and how does oracle use differ by context?} \cmt{Claude}{[R06, optional] RQ2 joins two questions (origin of ground truth; differences by context). Consider splitting it or adding a sentence on why they belong together.}
   \item[\textbf{RQ3.}] Which threats to oracle reliability do the studies acknowledge or demonstrate?
   \item[\new{\textbf{RQ4.}}] \new{How do automatic oracles that do not execute the code compare with existing tests on the same LLM translations?}
   \item[\new{\textbf{RQ5.}}] \new{What gaps separate current evaluation practice from the needs of real migration projects, and what should studies report and investigate next?}

@@ -38,6 +38,11 @@
   \newcommand{\fillin}[1]{\colorbox{orange!25}{\textbf{#1}}}
   \newcommand{\hcrev}[1]{\textcolor{magenta!70!black}{#1}}
   \newcommand{\revtag}{\textcolor{magenta!70!black}{\textbf{[revised]}}~}
+% [Claude review R01, 30/10, MAJOR] \hcrev và \revtag chỉ được định nghĩa khi \reviewtrue. Đã thử đặt
+% \reviewfalse: biên dịch DỪNG với "Undefined control sequence \hcrev" (05-results.tex dòng 16), không ra PDF.
+% Cần thêm hai dòng sau vào nhánh \else bên dưới:
+%   \newcommand{\hcrev}[1]{#1}
+%   \newcommand{\revtag}{}
 \else
   \newcommand{\TODO}[1]{}
   \newcommand{\cmt}[2]{}

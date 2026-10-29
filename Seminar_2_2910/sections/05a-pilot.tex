@@ -33,7 +33,7 @@ Compilation runs \texttt{javac} on the extracted Java class\new{, preceded by} t
 \label{sec:pilot-results}
 
 % [29/10] Thêm câu 25 và 4 trong 32 bản trượt test (verdicts.csv, ngưỡng chính 0.6; ở 0.5 là 27 và 5, ở 0.7 là 23 và 2), làm chỗ dựa cho hướng nghiên cứu 1 ở Discussion.
-\new{The three oracles that do not execute the code often depart from the test verdicts: at least one of them disagrees with the tests on 76 of the 164 tasks (46.3\%). Of the 32 failing translations, 25 are accepted by one or more of these oracles but only 4 by all three. Compilation agrees with the tests most often (on 90.9\% of the tasks) and errs only by accepting translations that the tests reject, whereas similarity and the judge also reject translations that pass.} A reported \new{success} rate therefore needs its oracle, \new{its} threshold and \new{the scope of the evaluation} to be interpretable\new{; Section~\ref{sec:threats} discusses the limits of this pilot.}
+\new{The three oracles that do not execute the code often depart from the test verdicts: at least one of them disagrees with the tests on 76 of the 164 tasks (46.3\%). Of the 32 failing translations, 25 are accepted by one or more of these oracles but only 4 by all three. \cmt{Claude}{[R26] State that 76, 25 and 4 use CodeBLEU at 0.6. Recomputed from verdicts.csv: at 0.5 they are 64, 27 and 5; at 0.7 they are 86, 23 and 2.} Compilation agrees with the tests most often (on 90.9\% of the tasks) and errs only by accepting translations that the tests reject, whereas similarity and the judge also reject translations that pass.} A reported \new{success} rate therefore needs its oracle, \new{its} threshold and \new{the scope of the evaluation} to be interpretable\new{; Section~\ref{sec:threats} discusses the limits of this pilot.}
 
 % [28/10] Thêm cột Agrees mà đoạn Analysis hứa; định nghĩa cột chuyển vào chú thích, bỏ đoạn Analysis (câu "recomputed…" trùng
 % Threats). Mọi cột ghi phần trăm cho cùng đơn vị (bỏ cột số lượng). "Accept / test reject", "Reject / test pass" thành "False accept",
@@ -57,6 +57,8 @@ Compilation runs \texttt{javac} on the extracted Java class\new{, preceded by} t
     \bottomrule
   \end{tabular}
 \end{table}
+
+\cmt{Claude}{[R25] Accepts and Agrees are both 73.8\% for the judge. This is a coincidence (it accepts exactly half, 16 of 32, of the failing translations, so its false accepts equal its correct rejections), but readers will suspect a copy error; add a short footnote.}
 
 % [28/10] Tiêu đề ba đoạn kết quả thành nhãn theo oracle (bản gốc là câu nhận định); ý "tùy oracle và ngưỡng" giữ ở câu đầu.
 % 15 bài biên dịch được mà trượt test = 14 lỗi lúc chạy + 1 lỗi giao diện (signature và test của benchmark viết "filterIntergers",
