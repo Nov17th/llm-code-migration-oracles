@@ -1,0 +1,977 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{65}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter does
+%%% not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+\makeatletter
+\@ifundefined{NAT@parse@date}{}{\let\NAT@parse@date@orig\NAT@parse@date}
+\@ifundefined{NAT@parse@date}{}{\def\NAT@parse@date#1#2#3#4#5#6@@{\NAT@parse@date@orig#1#2#3#4#5#6@@\def\NAT@tempyear{0000}\def\NAT@tempexlab{{?}}\ifx\NAT@year\NAT@tempyear\ifx\NAT@exlab\NAT@tempexlab\def\NAT@date{[n.\,d.]}\else\edef\NAT@date{[n.\,d.]\NAT@exlab}\fi\fi}}
+\makeatother
+
+\bibitem[Allain et~al\mbox{.}(2026)]%
+        {rulesynth}
+\bibfield{author}{\bibinfo{person}{Axel Allain}, \bibinfo{person}{Aymeric
+  Blot}, \bibinfo{person}{Djamel~Eddine Khelladi}, {and}
+  \bibinfo{person}{Mathieu Acher}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Code Transformation Rule Synthesis using LLMs:
+  Potential and Limits}}. In \bibinfo{booktitle}{\emph{Proceedings of the 41st
+  IEEE/ACM International Conference on Automated Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{2639--2651}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3837504}{doi:\nolinkurl{10.1145/3832783.3837504}}
+
+
+\bibitem[Arafat and Nagy(2026)]%
+        {prognosticator}
+\bibfield{author}{\bibinfo{person}{Yeaseen Arafat} {and}
+  \bibinfo{person}{Stefan Nagy}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{PROGnosticator: Testing Source-to-Source Code
+  Translators via Construct-Oriented Fuzzing}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{876--898}.
+\newblock
+\href{https://doi.org/10.1145/3797135}{doi:\nolinkurl{10.1145/3797135}}
+
+
+\bibitem[Bai and Palit(2025)]%
+        {rustassure}
+\bibfield{author}{\bibinfo{person}{Yubo Bai} {and} \bibinfo{person}{Tapti
+  Palit}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{RustAssure: Differential Symbolic Testing for
+  LLM-Transpiled C-to-Rust Code}}. In \bibinfo{booktitle}{\emph{2025 40th
+  IEEE/ACM International Conference on Automated Software Engineering (ASE)}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{pages}{534--546}.
+\newblock
+\href{https://doi.org/10.1109/ase63991.2025.00051}{doi:\nolinkurl{10.1109/ase63991.2025.00051}}
+
+
+\bibitem[Bairi et~al\mbox{.}(2024)]%
+        {codeplan}
+\bibfield{author}{\bibinfo{person}{Ramakrishna Bairi}, \bibinfo{person}{Atharv
+  Sonwane}, \bibinfo{person}{Aditya Kanade}, \bibinfo{person}{Vageesh~D. C.},
+  \bibinfo{person}{Arun Iyer}, \bibinfo{person}{Suresh Parthasarathy},
+  \bibinfo{person}{Sriram Rajamani}, \bibinfo{person}{B. Ashok}, {and}
+  \bibinfo{person}{Shashank Shet}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{CodePlan: Repository-Level Coding using LLMs and
+  Planning}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{1}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2024}), \bibinfo{pages}{675--698}.
+\newblock
+\href{https://doi.org/10.1145/3643757}{doi:\nolinkurl{10.1145/3643757}}
+
+
+\bibitem[Barr et~al\mbox{.}(2015)]%
+        {barr}
+\bibfield{author}{\bibinfo{person}{Earl~T. Barr}, \bibinfo{person}{Mark
+  Harman}, \bibinfo{person}{Phil McMinn}, \bibinfo{person}{Muzammil Shahbaz},
+  {and} \bibinfo{person}{Shin Yoo}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{The Oracle Problem in Software Testing: A
+  Survey}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
+  \bibinfo{volume}{41}, \bibinfo{number}{5} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{507--525}.
+\newblock
+\href{https://doi.org/10.1109/tse.2014.2372785}{doi:\nolinkurl{10.1109/tse.2014.2372785}}
+
+
+\bibitem[Biesdorf et~al\mbox{.}(2026)]%
+        {ipmodern}
+\bibfield{author}{\bibinfo{person}{Andreas Biesdorf}, \bibinfo{person}{Eckhard
+  Seibert}, \bibinfo{person}{Nicole Wengatz}, \bibinfo{person}{Bart Carpels},
+  {and} \bibinfo{person}{Tom Schoonbaert}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{IP-Preserving Enterprise System Modernization via
+  LLM-Driven Specification Extraction and Multi-target Code Generation}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 41st IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{4463--4468}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3834533}{doi:\nolinkurl{10.1145/3832783.3834533}}
+
+
+\bibitem[Chakaravarthy et~al\mbox{.}(2026)]%
+        {wca4z}
+\bibfield{author}{\bibinfo{person}{Venkatesan~T. Chakaravarthy},
+  \bibinfo{person}{Anamitra~Roy Choudhury}, \bibinfo{person}{Dinesh Garg},
+  \bibinfo{person}{Vini Kanvar}, \bibinfo{person}{Shivmaran~S. Pandian},
+  \bibinfo{person}{Aditya Raghuvanshi}, \bibinfo{person}{Yogish Sabharwal},
+  {and} \bibinfo{person}{Amith Singhee}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Enterprise-Scale COBOL-to-Java Translation: LLMs
+  Augmented with Program Analysis}}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the IEEE/ACM 48th International Conference on Software Engineering:
+  Software Engineering in Practice}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{775--785}.
+\newblock
+\href{https://doi.org/10.1145/3786583.3786915}{doi:\nolinkurl{10.1145/3786583.3786915}}
+
+
+\bibitem[Chand et~al\mbox{.}(2026)]%
+        {depwaretrans}
+\bibfield{author}{\bibinfo{person}{Sivajeet Chand}, \bibinfo{person}{Alexander
+  Pretschner}, \bibinfo{person}{Steve Haupt}, \bibinfo{person}{Derui Zhu},
+  {and} \bibinfo{person}{Sushant~Kumar Pandey}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{DepWareTrans: Dependency-Aware Incremental
+  Repository Migration across Co-executable Languages}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 41st IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{4164--4174}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3834505}{doi:\nolinkurl{10.1145/3832783.3834505}}
+
+
+\bibitem[Chen et~al\mbox{.}(2025)]%
+        {nctslr}
+\bibfield{author}{\bibinfo{person}{Xiang Chen}, \bibinfo{person}{Jiacheng Xue},
+  \bibinfo{person}{Xiaofei Xie}, \bibinfo{person}{Caokai Liang}, {and}
+  \bibinfo{person}{Xiaolin Ju}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{A Systematic Literature Review on Neural Code
+  Translation}}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2505.07425}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2505.07425}
+\showURL{%
+\tempurl}
+
+
+\bibitem[David et~al\mbox{.}(2025)]%
+        {codehints}
+\bibfield{author}{\bibinfo{person}{Cristina David}, \bibinfo{person}{Pascal
+  Kesseli}, \bibinfo{person}{Daniel Kroening}, {and} \bibinfo{person}{Hanliang
+  Zhang}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Quantifying the Benefits of Code Hints for
+  Refactoring Deprecated Java APIs}}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 33rd ACM International Conference on the Foundations of Software
+  Engineering}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{444--455}.
+\newblock
+\href{https://doi.org/10.1145/3696630.3728567}{doi:\nolinkurl{10.1145/3696630.3728567}}
+
+
+\bibitem[Dristi and Dwyer(2026)]%
+        {dristi}
+\bibfield{author}{\bibinfo{person}{Simantika~Bhattacharjee Dristi} {and}
+  \bibinfo{person}{Matthew~B. Dwyer}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{A Differential Fuzzing-Based Evaluation of
+  Functional Equivalence in LLM-Generated Code Refactorings}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 34th ACM International
+  Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{1708--1712}.
+\newblock
+\href{https://doi.org/10.1145/3803437.3806717}{doi:\nolinkurl{10.1145/3803437.3806717}}
+
+
+\bibitem[Du et~al\mbox{.}(2024)]%
+        {vimpt}
+\bibfield{author}{\bibinfo{person}{Yali Du}, \bibinfo{person}{Hui Sun}, {and}
+  \bibinfo{person}{Ming Li}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{A Joint Learning Model with Variational
+  Interaction for Multilingual Program Translation}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 39th IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{1907--1918}.
+\newblock
+\href{https://doi.org/10.1145/3691620.3695553}{doi:\nolinkurl{10.1145/3691620.3695553}}
+
+
+\bibitem[Du et~al\mbox{.}(2025)]%
+        {cast}
+\bibfield{author}{\bibinfo{person}{Yali Du}, \bibinfo{person}{Hui Sun}, {and}
+  \bibinfo{person}{Ming Li}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Post-Incorporating Code Structural Knowledge Into
+  Pretrained Models via ICL for Code Translation}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
+  \bibinfo{volume}{51}, \bibinfo{number}{11} (\bibinfo{year}{2025}),
+  \bibinfo{pages}{3038--3055}.
+\newblock
+\href{https://doi.org/10.1109/tse.2025.3605768}{doi:\nolinkurl{10.1109/tse.2025.3605768}}
+
+
+\bibitem[Feng et~al\mbox{.}(2026)]%
+        {dgir}
+\bibfield{author}{\bibinfo{person}{Jia Feng}, \bibinfo{person}{Wenjie Gan},
+  \bibinfo{person}{Cuiyun Gao}, \bibinfo{person}{Chaozheng Wang},
+  \bibinfo{person}{Feng Luo}, \bibinfo{person}{Xin Xia}, \bibinfo{person}{Ge
+  Li}, {and} \bibinfo{person}{Kui Liu}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Dependency-Guided Repository-Level C-to-Rust
+  Translation with Reinforcement Alignment}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 34th ACM International
+  Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{954--965}.
+\newblock
+\href{https://doi.org/10.1145/3803437.3805266}{doi:\nolinkurl{10.1145/3803437.3805266}}
+
+
+\bibitem[Fruntke and Krinke(2025)]%
+        {fruntke}
+\bibfield{author}{\bibinfo{person}{Lukas Fruntke} {and} \bibinfo{person}{Jens
+  Krinke}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Automatically Fixing Dependency Breaking
+  Changes}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{2}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2025}), \bibinfo{pages}{2146--2168}.
+\newblock
+\href{https://doi.org/10.1145/3729366}{doi:\nolinkurl{10.1145/3729366}}
+
+
+\bibitem[Gajula et~al\mbox{.}(2026)]%
+        {kcobagent}
+\bibfield{author}{\bibinfo{person}{Kavyasri Gajula}, \bibinfo{person}{Phanindra
+  Kodela}, {and} \bibinfo{person}{Sridhar Chimalakonda}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{K-COBAgent: A Knowledge-Driven Multi-agent
+  Framework for COBOL Modernization}}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 41st IEEE/ACM International Conference on Automated Software
+  Engineering}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{4631--4635}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3834560}{doi:\nolinkurl{10.1145/3832783.3834560}}
+
+
+\bibitem[Gao et~al\mbox{.}(2026a)]%
+        {guimigrator}
+\bibfield{author}{\bibinfo{person}{Yi Gao}, \bibinfo{person}{Xing Hu},
+  \bibinfo{person}{Xiaohu Yang}, {and} \bibinfo{person}{Xin Xia}.}
+  \bibinfo{year}{2026}\natexlab{a}.
+\newblock \showarticletitle{{GUIMigrator: Semantics-Preserving Transpilation
+  from Android XML to Compose and SwiftUI}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{4737--4759}.
+\newblock
+\href{https://doi.org/10.1145/3808215}{doi:\nolinkurl{10.1145/3808215}}
+
+
+\bibitem[Gao et~al\mbox{.}(2026b)]%
+        {intenttester}
+\bibfield{author}{\bibinfo{person}{Yi Gao}, \bibinfo{person}{Ziyuan Zhang},
+  \bibinfo{person}{Xing Hu}, \bibinfo{person}{Xiaohu Yang}, {and}
+  \bibinfo{person}{Xin Xia}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \showarticletitle{{IntentTester: Intent-Driven Multi-agent Framework
+  for Cross-Library Test Migration}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{1515--1535}.
+\newblock
+\href{https://doi.org/10.1145/3797096}{doi:\nolinkurl{10.1145/3797096}}
+
+
+\bibitem[Grattafiori et~al\mbox{.}(2024)]%
+        {llama3}
+\bibfield{author}{\bibinfo{person}{Aaron Grattafiori},
+  \bibinfo{person}{Abhimanyu Dubey}, \bibinfo{person}{Abhinav Jauhri},
+  \bibinfo{person}{Abhinav Pandey}, \bibinfo{person}{Abhishek Kadian},
+  {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{The Llama 3 Herd of Models}}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2407.21783}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2407.21783}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Gröninger et~al\mbox{.}(2025)]%
+        {changeguard}
+\bibfield{author}{\bibinfo{person}{Lars Gröninger}, \bibinfo{person}{Beatriz
+  Souza}, {and} \bibinfo{person}{Michael Pradel}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{ChangeGuard: Validating Code Changes via Pairwise
+  Learning-Guided Execution}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{2}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2025}), \bibinfo{pages}{936--956}.
+\newblock
+\href{https://doi.org/10.1145/3715760}{doi:\nolinkurl{10.1145/3715760}}
+
+
+\bibitem[Guizzo et~al\mbox{.}(2023)]%
+        {mbta}
+\bibfield{author}{\bibinfo{person}{Giovani Guizzo}, \bibinfo{person}{Jie~M.
+  Zhang}, \bibinfo{person}{Federica Sarro}, \bibinfo{person}{Christoph Treude},
+  {and} \bibinfo{person}{Mark Harman}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{Mutation Analysis for Evaluating Code
+  Translation}}.
+\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}
+  \bibinfo{volume}{29}, \bibinfo{number}{1} (\bibinfo{year}{2023}).
+\newblock
+\href{https://doi.org/10.1007/s10664-023-10385-w}{doi:\nolinkurl{10.1007/s10664-023-10385-w}}
+
+
+\bibitem[Gupta et~al\mbox{.}(2026)]%
+        {terramod}
+\bibfield{author}{\bibinfo{person}{Pranjal Gupta}, \bibinfo{person}{Pooja
+  Aggarwal}, \bibinfo{person}{Brent Paulovicks}, \bibinfo{person}{Prateeti
+  Mohapatra}, \bibinfo{person}{Rong Lee}, {and} \bibinfo{person}{Vadim
+  Sheinin}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Automating Terraform Code Migration through
+  Provider Evolution Knowledge}}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the IEEE/ACM 48th International Conference on Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{211--215}.
+\newblock
+\href{https://doi.org/10.1145/3786582.3786841}{doi:\nolinkurl{10.1145/3786582.3786841}}
+
+
+\bibitem[Hans et~al\mbox{.}(2025)]%
+        {coboljava}
+\bibfield{author}{\bibinfo{person}{Sandeep Hans}, \bibinfo{person}{Atul Kumar},
+  \bibinfo{person}{Toshiaki Yasue}, \bibinfo{person}{Kouichi Ono},
+  \bibinfo{person}{Saravanan Krishnan}, \bibinfo{person}{Devika Sondhi},
+  \bibinfo{person}{Fumiko Satoh}, \bibinfo{person}{Gerald Mitchell},
+  \bibinfo{person}{Sachin Kumar}, {and} \bibinfo{person}{Diptikalyan Saha}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Automated Testing of COBOL to Java
+  Transformation}}. In \bibinfo{booktitle}{\emph{Proceedings of the 33rd ACM
+  International Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{227--237}.
+\newblock
+\href{https://doi.org/10.1145/3696630.3728548}{doi:\nolinkurl{10.1145/3696630.3728548}}
+
+
+\bibitem[Hui et~al\mbox{.}(2024)]%
+        {qwencoder}
+\bibfield{author}{\bibinfo{person}{Binyuan Hui}, \bibinfo{person}{Jian Yang},
+  \bibinfo{person}{Zeyu Cui}, \bibinfo{person}{Jiaxi Yang},
+  \bibinfo{person}{Dayiheng Liu}, \bibinfo{person}{Lei Zhang}, {et~al\mbox{.}}}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{Qwen2.5-Coder Technical Report}}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2409.12186}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2409.12186}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Ibrahimzada et~al\mbox{.}(2025)]%
+        {alphatrans}
+\bibfield{author}{\bibinfo{person}{Ali~Reza Ibrahimzada},
+  \bibinfo{person}{Kaiyao Ke}, \bibinfo{person}{Mrigank Pawagi},
+  \bibinfo{person}{Muhammad~Salman Abid}, \bibinfo{person}{Rangeet Pan},
+  \bibinfo{person}{Saurabh Sinha}, {and} \bibinfo{person}{Reyhaneh
+  Jabbarvand}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{AlphaTrans: A Neuro-Symbolic Compositional
+  Approach for Repository-Level Code Translation and Validation}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{2}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2025}), \bibinfo{pages}{2454--2476}.
+\newblock
+\href{https://doi.org/10.1145/3729379}{doi:\nolinkurl{10.1145/3729379}}
+
+
+\bibitem[Ibrahimzada et~al\mbox{.}(2026)]%
+        {recodeagent}
+\bibfield{author}{\bibinfo{person}{Ali~Reza Ibrahimzada},
+  \bibinfo{person}{Brandon Paulsen}, \bibinfo{person}{Daniel Kroening}, {and}
+  \bibinfo{person}{Reyhaneh Jabbarvand}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{ReCodeAgent: A Multi-agent Workflow for
+  Language-Agnostic Translation and Validation of Large-Scale Repositories}}.
+  In \bibinfo{booktitle}{\emph{Proceedings of the 41st IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{2409--2421}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3837486}{doi:\nolinkurl{10.1145/3832783.3837486}}
+
+
+\bibitem[Islam et~al\mbox{.}(2025)]%
+        {pylibmig}
+\bibfield{author}{\bibinfo{person}{Mohayeminul Islam},
+  \bibinfo{person}{Ajay~Kumar Jha}, \bibinfo{person}{May Mahmoud},
+  \bibinfo{person}{Ildar Akhmetov}, {and} \bibinfo{person}{Sarah Nadi}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{An Empirical Study of Python Library Migration
+  Using Large Language Models}}. In \bibinfo{booktitle}{\emph{2025 40th
+  IEEE/ACM International Conference on Automated Software Engineering (ASE)}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{pages}{867--879}.
+\newblock
+\href{https://doi.org/10.1109/ase63991.2025.00077}{doi:\nolinkurl{10.1109/ase63991.2025.00077}}
+
+
+\bibitem[Jiao et~al\mbox{.}(2023)]%
+        {jiao23}
+\bibfield{author}{\bibinfo{person}{Mingsheng Jiao}, \bibinfo{person}{Tingrui
+  Yu}, \bibinfo{person}{Xuan Li}, \bibinfo{person}{Guanjie Qiu},
+  \bibinfo{person}{Xiaodong Gu}, {and} \bibinfo{person}{Beijun Shen}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{On the Evaluation of Neural Code Translation:
+  Taxonomy and Benchmark}}. In \bibinfo{booktitle}{\emph{2023 38th IEEE/ACM
+  International Conference on Automated Software Engineering (ASE)}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{pages}{1529--1541}.
+\newblock
+\href{https://doi.org/10.1109/ase56229.2023.00114}{doi:\nolinkurl{10.1109/ase56229.2023.00114}}
+
+
+\bibitem[Kang et~al\mbox{.}(2026)]%
+        {pig}
+\bibfield{author}{\bibinfo{person}{Miryeong Kang}, \bibinfo{person}{Wonseok
+  Oh}, \bibinfo{person}{Gabin An}, {and} \bibinfo{person}{Hakjoo Oh}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Pig: Leveraging Large Language Models for Python
+  Library Migrations}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{967--988}.
+\newblock
+\href{https://doi.org/10.1145/3797072}{doi:\nolinkurl{10.1145/3797072}}
+
+
+\bibitem[Karanjai et~al\mbox{.}(2025)]%
+        {collaboration}
+\bibfield{author}{\bibinfo{person}{Rabimba Karanjai}, \bibinfo{person}{Sam
+  Blackshear}, \bibinfo{person}{Lei Xu}, {and} \bibinfo{person}{Weidong Shi}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Collaboration Is All You Need: LLM Assisted Safe
+  Code Translation}}. In \bibinfo{booktitle}{\emph{Proceedings of the 33rd ACM
+  International Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{671--675}.
+\newblock
+\href{https://doi.org/10.1145/3696630.3728521}{doi:\nolinkurl{10.1145/3696630.3728521}}
+
+
+\bibitem[Li et~al\mbox{.}(2025)]%
+        {deepmodelx}
+\bibfield{author}{\bibinfo{person}{Xingpei Li}, \bibinfo{person}{Zhijie Jiang},
+  \bibinfo{person}{Zhouyang Jia}, \bibinfo{person}{Yuanliang Zhang},
+  \bibinfo{person}{Zheng Si}, \bibinfo{person}{Haifang Zhou}, {and}
+  \bibinfo{person}{Shanshan Li}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Enhancing Deep Learning Transpilation with LLMs:
+  Automation and Semantic Consistency}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 33rd ACM International
+  Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{1238--1239}.
+\newblock
+\href{https://doi.org/10.1145/3696630.3731431}{doi:\nolinkurl{10.1145/3696630.3731431}}
+
+
+\bibitem[Liu et~al\mbox{.}(2024)]%
+        {arkts}
+\bibfield{author}{\bibinfo{person}{Runlin Liu}, \bibinfo{person}{Yuhang Lin},
+  \bibinfo{person}{Yunge Hu}, \bibinfo{person}{Zhe Zhang}, {and}
+  \bibinfo{person}{Xiang Gao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{LLM-Based Java Concurrent Program to ArkTS
+  Converter}}. In \bibinfo{booktitle}{\emph{Proceedings of the 39th IEEE/ACM
+  International Conference on Automated Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{2403--2406}.
+\newblock
+\href{https://doi.org/10.1145/3691620.3695362}{doi:\nolinkurl{10.1145/3691620.3695362}}
+
+
+\bibitem[Luo et~al\mbox{.}(2026)]%
+        {travel}
+\bibfield{author}{\bibinfo{person}{Feng Luo}, \bibinfo{person}{Jiachen Liu},
+  \bibinfo{person}{Cuiyun Gao}, \bibinfo{person}{Jia Feng}, {and}
+  \bibinfo{person}{Kui Liu}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Towards Reliable C-to-Rust Translation with
+  Rule-Guided Reasoning and Reinforcement Learning}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 41st IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{4469--4480}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3834534}{doi:\nolinkurl{10.1145/3832783.3834534}}
+
+
+\bibitem[Luo et~al\mbox{.}(2024)]%
+        {transgraph}
+\bibfield{author}{\bibinfo{person}{Yang Luo}, \bibinfo{person}{Richard Yu},
+  \bibinfo{person}{Fajun Zhang}, \bibinfo{person}{Ling Liang}, {and}
+  \bibinfo{person}{Yongqiang Xiong}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Bridging Gaps in LLM Code Translation: Reducing
+  Errors with Call Graphs and Bridged Debuggers}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 39th IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{2448--2449}.
+\newblock
+\href{https://doi.org/10.1145/3691620.3695322}{doi:\nolinkurl{10.1145/3691620.3695322}}
+
+
+\bibitem[Ma et~al\mbox{.}(2026)]%
+        {depupgrade}
+\bibfield{author}{\bibinfo{person}{Xiangxi Ma}, \bibinfo{person}{Yifan An},
+  \bibinfo{person}{Wentong Tian}, \bibinfo{person}{Xuanqi Wang},
+  \bibinfo{person}{Qingao Dong}, \bibinfo{person}{Xiang Gao}, {and}
+  \bibinfo{person}{Hailong Sun}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{DepUpgrade: Automating Dependency Upgrade through
+  State-Path Exploration}}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  41st IEEE/ACM International Conference on Automated Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{1844--1856}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3837442}{doi:\nolinkurl{10.1145/3832783.3837442}}
+
+
+\bibitem[Macedo et~al\mbox{.}(2025)]%
+        {intertrans}
+\bibfield{author}{\bibinfo{person}{Marcos Macedo}, \bibinfo{person}{Yuan Tian},
+  \bibinfo{person}{Pengyu Nie}, \bibinfo{person}{Filipe~R. Cogo}, {and}
+  \bibinfo{person}{Bram Adams}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{INTERTRANS: Leveraging Transitive Intermediate
+  Translations to Enhance LLM-Based Code Translation}}. In
+  \bibinfo{booktitle}{\emph{2025 IEEE/ACM 47th International Conference on
+  Software Engineering (ICSE)}}. \bibinfo{publisher}{IEEE},
+  \bibinfo{pages}{1153--1164}.
+\newblock
+\href{https://doi.org/10.1109/icse55347.2025.00236}{doi:\nolinkurl{10.1109/icse55347.2025.00236}}
+
+
+\bibitem[May et~al\mbox{.}(2026)]%
+        {freshbrew}
+\bibfield{author}{\bibinfo{person}{Victor May}, \bibinfo{person}{Diganta
+  Misra}, \bibinfo{person}{Yanqi Luo}, \bibinfo{person}{Anjali Sridhar},
+  \bibinfo{person}{Justine Gehring}, {and} \bibinfo{person}{Silvio~Soares
+  Ribeiro}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{FreshBrew: A Benchmark for Evaluating AI Agents on
+  Java Code Migration}}. In \bibinfo{booktitle}{\emph{Proceedings of the 2026
+  IEEE/ACM 48th International Conference on Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{944--955}.
+\newblock
+\href{https://doi.org/10.1145/3744916.3773214}{doi:\nolinkurl{10.1145/3744916.3773214}}
+
+
+\bibitem[Mohammed et~al\mbox{.}(2025)]%
+        {msa}
+\bibfield{author}{\bibinfo{person}{Nausheen Mohammed}, \bibinfo{person}{Akash
+  Lal}, \bibinfo{person}{Aseem Rastogi}, \bibinfo{person}{Rahul Sharma}, {and}
+  \bibinfo{person}{Subhajit Roy}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{LLM Assistance for Memory Safety}}. In
+  \bibinfo{booktitle}{\emph{2025 IEEE/ACM 47th International Conference on
+  Software Engineering (ICSE)}}. \bibinfo{publisher}{IEEE},
+  \bibinfo{pages}{1717--1728}.
+\newblock
+\href{https://doi.org/10.1109/icse55347.2025.00023}{doi:\nolinkurl{10.1109/icse55347.2025.00023}}
+
+
+\bibitem[Moumoula et~al\mbox{.}(2025)]%
+        {moumoula}
+\bibfield{author}{\bibinfo{person}{Micheline~Bénédicte Moumoula},
+  \bibinfo{person}{Abdoul~Kader Kaboré}, \bibinfo{person}{Jacques Klein},
+  {and} \bibinfo{person}{Tegawendé~F. Bissyandé}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{The Struggles of LLMs in Cross-Lingual Code Clone
+  Detection}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{2}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2025}), \bibinfo{pages}{1023--1045}.
+\newblock
+\href{https://doi.org/10.1145/3715764}{doi:\nolinkurl{10.1145/3715764}}
+
+
+\bibitem[Nikolov et~al\mbox{.}(2025)]%
+        {googlemig}
+\bibfield{author}{\bibinfo{person}{Stoyan Nikolov}, \bibinfo{person}{Daniele
+  Codecasa}, \bibinfo{person}{Anna Sjövall}, \bibinfo{person}{Maxim
+  Tabachnyk}, \bibinfo{person}{Satish Chandra}, \bibinfo{person}{Siddharth
+  Taneja}, {and} \bibinfo{person}{Celal Ziftci}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{How is Google Using AI for Internal Code
+  Migrations?}}. In \bibinfo{booktitle}{\emph{2025 IEEE/ACM 47th International
+  Conference on Software Engineering: Software Engineering in Practice
+  (ICSE-SEIP)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{481--492}.
+\newblock
+\href{https://doi.org/10.1109/icse-seip66354.2025.00048}{doi:\nolinkurl{10.1109/icse-seip66354.2025.00048}}
+
+
+\bibitem[Nitin et~al\mbox{.}(2026)]%
+        {c2saferrust}
+\bibfield{author}{\bibinfo{person}{Vikram Nitin}, \bibinfo{person}{Rahul
+  Krishna}, \bibinfo{person}{Luiz Lemos~do Valle}, {and}
+  \bibinfo{person}{Baishakhi Ray}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{C2SaferRust: Transforming C Projects Into Safer
+  Rust With NeuroSymbolic Techniques}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
+  \bibinfo{volume}{52}, \bibinfo{number}{2} (\bibinfo{year}{2026}),
+  \bibinfo{pages}{618--630}.
+\newblock
+\href{https://doi.org/10.1109/tse.2025.3641486}{doi:\nolinkurl{10.1109/tse.2025.3641486}}
+
+
+\bibitem[Ou et~al\mbox{.}(2025)]%
+        {rustrepotrans}
+\bibfield{author}{\bibinfo{person}{Guangsheng Ou}, \bibinfo{person}{Mingwei
+  Liu}, \bibinfo{person}{Yuxuan Chen}, \bibinfo{person}{Yanlin Wang},
+  \bibinfo{person}{Xin Peng}, {and} \bibinfo{person}{Zibin Zheng}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{RustRepoTrans: Repository-level Context Code
+  Translation Benchmark Targeting Rust}}. In \bibinfo{booktitle}{\emph{2025
+  40th IEEE/ACM International Conference on Automated Software Engineering
+  (ASE)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{610--622}.
+\newblock
+\href{https://doi.org/10.1109/ase63991.2025.00057}{doi:\nolinkurl{10.1109/ase63991.2025.00057}}
+
+
+\bibitem[Pan et~al\mbox{.}(2024)]%
+        {lostintranslation}
+\bibfield{author}{\bibinfo{person}{Rangeet Pan}, \bibinfo{person}{Ali~Reza
+  Ibrahimzada}, \bibinfo{person}{Rahul Krishna}, \bibinfo{person}{Divya
+  Sankar}, \bibinfo{person}{Lambert~Pouguem Wassi}, \bibinfo{person}{Michele
+  Merler}, \bibinfo{person}{Boris Sobolev}, \bibinfo{person}{Raju Pavuluri},
+  \bibinfo{person}{Saurabh Sinha}, {and} \bibinfo{person}{Reyhaneh
+  Jabbarvand}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Lost in Translation: A Study of Bugs Introduced by
+  Large Language Models while Translating Code}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/ACM 46th International
+  Conference on Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{1--13}.
+\newblock
+\href{https://doi.org/10.1145/3597503.3639226}{doi:\nolinkurl{10.1145/3597503.3639226}}
+
+
+\bibitem[Pappas et~al\mbox{.}(2026)]%
+        {tagteam}
+\bibfield{author}{\bibinfo{person}{Brent Pappas}, \bibinfo{person}{Joseph
+  Zalusky}, \bibinfo{person}{Zachary Burkett}, {and} \bibinfo{person}{Paul
+  Gazzillo}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Translation Tag Team: Formal Rules and LLMs
+  Translate More Macros Together Than Apart}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 41st IEEE/ACM International
+  Conference on Automated Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{1457--1469}.
+\newblock
+\href{https://doi.org/10.1145/3832783.3837412}{doi:\nolinkurl{10.1145/3832783.3837412}}
+
+
+\bibitem[Petersen et~al\mbox{.}(2015)]%
+        {petersen}
+\bibfield{author}{\bibinfo{person}{Kai Petersen}, \bibinfo{person}{Sairam
+  Vakkalanka}, {and} \bibinfo{person}{Ludwik Kuzniarz}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{Guidelines for Conducting Systematic Mapping
+  Studies in Software Engineering: An Update}}.
+\newblock \bibinfo{journal}{\emph{Information and Software Technology}}
+  \bibinfo{volume}{64} (\bibinfo{year}{2015}), \bibinfo{pages}{1--18}.
+\newblock
+\href{https://doi.org/10.1016/j.infsof.2015.03.007}{doi:\nolinkurl{10.1016/j.infsof.2015.03.007}}
+
+
+\bibitem[Ramos et~al\mbox{.}(2024)]%
+        {batfix}
+\bibfield{author}{\bibinfo{person}{Daniel Ramos}, \bibinfo{person}{Inês
+  Lynce}, \bibinfo{person}{Vasco Manquinho}, \bibinfo{person}{Ruben Martins},
+  {and} \bibinfo{person}{Claire Le~Goues}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{BatFix: Repairing Language Model-Based
+  Transpilation}}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Software Engineering and
+  Methodology}} \bibinfo{volume}{33}, \bibinfo{number}{6}
+  (\bibinfo{year}{2024}), \bibinfo{pages}{1--29}.
+\newblock
+\href{https://doi.org/10.1145/3658668}{doi:\nolinkurl{10.1145/3658668}}
+
+
+\bibitem[Ren et~al\mbox{.}(2020)]%
+        {codebleu}
+\bibfield{author}{\bibinfo{person}{Shuo Ren}, \bibinfo{person}{Daya Guo},
+  \bibinfo{person}{Shuai Lu}, \bibinfo{person}{Long Zhou},
+  \bibinfo{person}{Shujie Liu}, \bibinfo{person}{Duyu Tang},
+  \bibinfo{person}{Neel Sundaresan}, \bibinfo{person}{Ming Zhou},
+  \bibinfo{person}{Ambrosio Blanco}, {and} \bibinfo{person}{Shuai Ma}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{title}{{CodeBLEU: a Method for Automatic Evaluation of Code
+  Synthesis}}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2009.10297}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2009.10297}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Reyes et~al\mbox{.}(2026)]%
+        {byam}
+\bibfield{author}{\bibinfo{person}{Frank Reyes}, \bibinfo{person}{May Mahmoud},
+  \bibinfo{person}{Federico Bono}, \bibinfo{person}{Sarah Nadi},
+  \bibinfo{person}{Benoit Baudry}, {and} \bibinfo{person}{Martin Monperrus}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Byam: Fixing Breaking Dependency Updates with
+  Large Language Models}}.
+\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}
+  \bibinfo{volume}{31}, \bibinfo{number}{4} (\bibinfo{year}{2026}).
+\newblock
+\href{https://doi.org/10.1007/s10664-026-10835-1}{doi:\nolinkurl{10.1007/s10664-026-10835-1}}
+
+
+\bibitem[Rgaguena et~al\mbox{.}(2025)]%
+        {genaisms}
+\bibfield{author}{\bibinfo{person}{Aymane Rgaguena}, \bibinfo{person}{Imane
+  Chlioui}, {and} \bibinfo{person}{Maryam Radgui}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Generative AI for Code Translation: A Systematic
+  Mapping Study}}.
+\newblock \bibinfo{journal}{\emph{Engineering Proceedings}}
+  \bibinfo{volume}{112}, \bibinfo{number}{1} (\bibinfo{year}{2025}),
+  \bibinfo{pages}{33}.
+\newblock
+\href{https://doi.org/10.3390/engproc2025112033}{doi:\nolinkurl{10.3390/engproc2025112033}}
+\newblock
+\shownote{Presented at ICATH 2025}.
+
+
+\bibitem[Shiraishi et~al\mbox{.}(2026)]%
+        {smartc2rust}
+\bibfield{author}{\bibinfo{person}{Momoko Shiraishi}, \bibinfo{person}{Yinzhi
+  Cao}, {and} \bibinfo{person}{Takahiro Shinagawa}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{SmartC2Rust: Iterative, Feedback-Driven C-to-Rust
+  Translation via Large Language Models for Safety and Equivalence}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2026 IEEE/ACM 48th International
+  Conference on Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{980--991}.
+\newblock
+\href{https://doi.org/10.1145/3744916.3773259}{doi:\nolinkurl{10.1145/3744916.3773259}}
+
+
+\bibitem[Sun et~al\mbox{.}(2026)]%
+        {polyhuman}
+\bibfield{author}{\bibinfo{person}{Hui Sun}, \bibinfo{person}{Anderson
+  Uch{\^o}a}, \bibinfo{person}{Rohit Gheyi}, {and} \bibinfo{person}{Wesley
+  K.~G. Assun{\c{c}}{\~a}o}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Evaluating Language Models on Cross-Language Code
+  Functional Equivalence}}. In \bibinfo{booktitle}{\emph{20th International
+  Symposium on Empirical Software Engineering and Measurement (ESEM 2026)}}
+  \emph{(\bibinfo{series}{LIPIcs}, Vol.~\bibinfo{volume}{394})}.
+  \bibinfo{publisher}{Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik},
+  \bibinfo{address}{Dagstuhl, Germany}, \bibinfo{pages}{41:1--41:21}.
+\newblock
+\href{https://doi.org/10.4230/LIPIcs.ESEM.2026.41}{doi:\nolinkurl{10.4230/LIPIcs.ESEM.2026.41}}
+
+
+\bibitem[Tateishi and Katsuno(2026)]%
+        {pli}
+\bibfield{author}{\bibinfo{person}{Takaaki Tateishi} {and}
+  \bibinfo{person}{Yasuharu Katsuno}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Translating PL/I Macro Procedures into Java Using
+  Automatic Templatization and Large Language Models}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/ACM 48th International
+  Conference on Software Engineering}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{46--50}.
+\newblock
+\href{https://doi.org/10.1145/3786582.3786808}{doi:\nolinkurl{10.1145/3786582.3786808}}
+
+
+\bibitem[Wang et~al\mbox{.}(2026)]%
+        {evoc2rust}
+\bibfield{author}{\bibinfo{person}{Chaofan Wang}, \bibinfo{person}{Tingrui Yu},
+  \bibinfo{person}{Beijun Shen}, \bibinfo{person}{Jie Wang},
+  \bibinfo{person}{Dong Chen}, \bibinfo{person}{Wenrui Zhang},
+  \bibinfo{person}{Yuling Shi}, \bibinfo{person}{Chen Xie}, {and}
+  \bibinfo{person}{Xiaodong Gu}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{EvoC2Rust: A Skeleton-guided Framework for
+  Project-Level C-to-Rust Translation}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/ACM 48th International
+  Conference on Software Engineering: Software Engineering in Practice}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{94--105}.
+\newblock
+\href{https://doi.org/10.1145/3786583.3786856}{doi:\nolinkurl{10.1145/3786583.3786856}}
+
+
+\bibitem[Wu et~al\mbox{.}(2025)]%
+        {ai4codesok}
+\bibfield{author}{\bibinfo{person}{Qilong Wu}, \bibinfo{person}{Taoran Li},
+  \bibinfo{person}{Tianyang Zhou}, {and} \bibinfo{person}{Varun
+  Chandrasekaran}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{{SoK: Understanding (New) Security Issues Across
+  AI4Code Use Cases}}.
+\newblock \bibinfo{howpublished}{arXiv preprint arXiv:2512.18456}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2512.18456}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Xia et~al\mbox{.}(2026)]%
+        {bdupdater}
+\bibfield{author}{\bibinfo{person}{Yifan Xia}, \bibinfo{person}{Chengwei Liu},
+  \bibinfo{person}{Zifan Xie}, \bibinfo{person}{Lyuye Zhang},
+  \bibinfo{person}{Peiyu Liu}, \bibinfo{person}{Kangjie Lu},
+  \bibinfo{person}{Yang Liu}, \bibinfo{person}{Wenhai Wang}, {and}
+  \bibinfo{person}{Shouling Ji}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{Break to Adapt: Knowledge-Based Updates of
+  Breaking Dependencies in JavaScript}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{2442--2464}.
+\newblock
+\href{https://doi.org/10.1145/3808116}{doi:\nolinkurl{10.1145/3808116}}
+
+
+\bibitem[Xie et~al\mbox{.}(2026)]%
+        {rise}
+\bibfield{author}{\bibinfo{person}{Xudong Xie}, \bibinfo{person}{Yuwei Zhang},
+  \bibinfo{person}{Wensheng Dou}, \bibinfo{person}{Yu Gao},
+  \bibinfo{person}{Ziyu Cui}, \bibinfo{person}{Jiansen Song},
+  \bibinfo{person}{Rui Yang}, {and} \bibinfo{person}{Jun Wei}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{RISE: Rule-Driven SQL Dialect Translation via
+  Query Reduction}}. In \bibinfo{booktitle}{\emph{Proceedings of the 2026
+  IEEE/ACM 48th International Conference on Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{968--979}.
+\newblock
+\href{https://doi.org/10.1145/3744916.3773257}{doi:\nolinkurl{10.1145/3744916.3773257}}
+
+
+\bibitem[Xue et~al\mbox{.}(2026)]%
+        {translibeval}
+\bibfield{author}{\bibinfo{person}{Pengyu Xue}, \bibinfo{person}{Kunwu Zheng},
+  \bibinfo{person}{Zhen Yang}, \bibinfo{person}{Yifei Pei},
+  \bibinfo{person}{Linhao Wu}, \bibinfo{person}{Jiahui Dong},
+  \bibinfo{person}{Xiapu Luo}, \bibinfo{person}{Yan Xiao}, \bibinfo{person}{Fei
+  Liu}, \bibinfo{person}{Yuxuan Zhang}, \bibinfo{person}{Xiran Lyu},
+  \bibinfo{person}{Xianhang Li}, \bibinfo{person}{Xuanyu Zhu}, {and}
+  \bibinfo{person}{Chengyi Wang}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{TransLibEval: Demystify Large Language Models'
+  Capability in Third-Party Library-Targeted Code Translation}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{920--942}.
+\newblock
+\href{https://doi.org/10.1145/3797137}{doi:\nolinkurl{10.1145/3797137}}
+
+
+\bibitem[Yang et~al\mbox{.}(2025)]%
+        {vert}
+\bibfield{author}{\bibinfo{person}{Aidan~Z.H. Yang}, \bibinfo{person}{Yoshiki
+  Takashima}, \bibinfo{person}{Brandon Paulsen}, \bibinfo{person}{Josiah
+  Dodds}, {and} \bibinfo{person}{Daniel Kroening}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{VERT: Polyglot Verified Equivalent Rust
+  Transpilation with Large Language Models}}. In \bibinfo{booktitle}{\emph{2025
+  40th IEEE/ACM International Conference on Automated Software Engineering
+  (ASE)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{1453--1463}.
+\newblock
+\href{https://doi.org/10.1109/ase63991.2025.00123}{doi:\nolinkurl{10.1109/ase63991.2025.00123}}
+
+
+\bibitem[Yang et~al\mbox{.}(2024)]%
+        {unitrans}
+\bibfield{author}{\bibinfo{person}{Zhen Yang}, \bibinfo{person}{Fang Liu},
+  \bibinfo{person}{Zhongxing Yu}, \bibinfo{person}{Jacky~Wai Keung},
+  \bibinfo{person}{Jia Li}, \bibinfo{person}{Shuo Liu}, \bibinfo{person}{Yifan
+  Hong}, \bibinfo{person}{Xiaoxue Ma}, \bibinfo{person}{Zhi Jin}, {and}
+  \bibinfo{person}{Ge Li}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Exploring and Unleashing the Power of Large
+  Language Models in Automated Code Translation}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{1}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2024}), \bibinfo{pages}{1585--1608}.
+\newblock
+\href{https://doi.org/10.1145/3660778}{doi:\nolinkurl{10.1145/3660778}}
+
+
+\bibitem[Yuan et~al\mbox{.}(2026a)]%
+        {transagent}
+\bibfield{author}{\bibinfo{person}{Zhiqiang Yuan}, \bibinfo{person}{Weitong
+  Chen}, \bibinfo{person}{Hanlin Wang}, \bibinfo{person}{Xin Peng},
+  \bibinfo{person}{Zhenpeng Chen}, {and} \bibinfo{person}{Yiling Lou}.}
+  \bibinfo{year}{2026}\natexlab{a}.
+\newblock \showarticletitle{{TransAgent: Enhancing LLM-Based Code Translation
+  via Fine-Grained Execution Alignment}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{1582--1604}.
+\newblock
+\href{https://doi.org/10.1145/3797099}{doi:\nolinkurl{10.1145/3797099}}
+
+
+\bibitem[Yuan et~al\mbox{.}(2026b)]%
+        {ptrtrans}
+\bibfield{author}{\bibinfo{person}{Zhiqiang Yuan}, \bibinfo{person}{Wenjun
+  Mao}, \bibinfo{person}{Zhuo Chen}, \bibinfo{person}{Xiyue Shang},
+  \bibinfo{person}{Chong Wang}, \bibinfo{person}{Yiling Lou}, {and}
+  \bibinfo{person}{Xin Peng}.} \bibinfo{year}{2026}\natexlab{b}.
+\newblock \showarticletitle{{Project-Level C-to-Rust Translation via Pointer
+  Knowledge Graphs}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Software
+  Engineering}} \bibinfo{volume}{3}, \bibinfo{number}{FSE}
+  (\bibinfo{year}{2026}), \bibinfo{pages}{3675--3698}.
+\newblock
+\href{https://doi.org/10.1145/3808169}{doi:\nolinkurl{10.1145/3808169}}
+
+
+\bibitem[Zhang et~al\mbox{.}(2026)]%
+        {c2csurvey}
+\bibfield{author}{\bibinfo{person}{Zhiwang Zhang}, \bibinfo{person}{Shiting
+  Wen}, \bibinfo{person}{Zhengkai Yan}, \bibinfo{person}{Bang Zhu},
+  \bibinfo{person}{Chengtao Shen}, {and} \bibinfo{person}{Hui Guo}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{A Survey of Code-to-Code Translation: From
+  Statistical Rule-Based Systems to LLM Agents}}.
+\newblock \bibinfo{journal}{\emph{Algorithms}} \bibinfo{volume}{19},
+  \bibinfo{number}{10} (\bibinfo{year}{2026}), \bibinfo{pages}{857}.
+\newblock
+\href{https://doi.org/10.3390/a19100857}{doi:\nolinkurl{10.3390/a19100857}}
+
+
+\bibitem[Zheng et~al\mbox{.}(2023)]%
+        {humanevalx}
+\bibfield{author}{\bibinfo{person}{Qinkai Zheng}, \bibinfo{person}{Xiao Xia},
+  \bibinfo{person}{Xu Zou}, \bibinfo{person}{Yuxiao Dong},
+  \bibinfo{person}{Shan Wang}, \bibinfo{person}{Yufei Xue}, {et~al\mbox{.}}}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{CodeGeeX: A Pre-Trained Model for Code Generation
+  with Multilingual Benchmarking on HumanEval-X}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGKDD Conference on
+  Knowledge Discovery and Data Mining (KDD)}}. \bibinfo{pages}{5673--5684}.
+\newblock
+\href{https://doi.org/10.1145/3580305.3599790}{doi:\nolinkurl{10.1145/3580305.3599790}}
+
+
+\bibitem[Zhu et~al\mbox{.}(2026)]%
+        {equivfusion}
+\bibfield{author}{\bibinfo{person}{Jiaying Zhu}, \bibinfo{person}{Baoqi Zhang},
+  \bibinfo{person}{Mengxia Tao}, \bibinfo{person}{Kezhi Li},
+  \bibinfo{person}{Hao Yan}, \bibinfo{person}{Qiang Xu}, {and}
+  \bibinfo{person}{Min Li}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{EquivFusion: Unifying Hardware Equivalence
+  Checking from Algorithms to Netlists via MLIR}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 34th ACM International
+  Conference on the Foundations of Software Engineering}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{pages}{102--106}.
+\newblock
+\href{https://doi.org/10.1145/3803437.3806400}{doi:\nolinkurl{10.1145/3803437.3806400}}
+
+
+\bibitem[Zhu et~al\mbox{.}(2024)]%
+        {semisup}
+\bibfield{author}{\bibinfo{person}{Ming Zhu}, \bibinfo{person}{Mohimenul
+  Karim}, \bibinfo{person}{Ismini Lourentzou}, {and} \bibinfo{person}{Daphne
+  Yao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Semi-Supervised Code Translation Overcoming the
+  Scarcity of Parallel Code Data}}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the 39th IEEE/ACM International Conference on Automated Software
+  Engineering}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{1545--1556}.
+\newblock
+\href{https://doi.org/10.1145/3691620.3695524}{doi:\nolinkurl{10.1145/3691620.3695524}}
+
+
+\end{thebibliography}

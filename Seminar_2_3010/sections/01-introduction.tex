@@ -1,0 +1,51 @@
+%% ===== 1 Introduction =====
+\section{Introduction}
+\label{sec:intro}
+
+% [27/10] Bỏ "taking a growing share" (không có số đỡ); "LLM-assisted" vì ở Google người vẫn duyệt thay đổi; thêm trích
+% dẫn cho các ví dụ và "a similarity metric" (O-a) cho đủ các nhóm oracle của Bảng 1.
+\new{Code migration is routine industrial work, and large language models (LLMs) now take on part of it. Google reports LLM-assisted migrations across its monorepo, such as JUnit~3 to JUnit~4~\cite{googlemig}. LLM-based approaches also target C-to-Rust ports~\cite{evoc2rust}, COBOL modernization~\cite{kcobagent} and dependency upgrades~\cite{depupgrade}.} In every case someone must decide whether the migrated code still does what the original did. That decision rests on an \emph{oracle}: a compiler, a test suite, \new{a similarity metric,} a comparison with the original program, a formal check, a human or another LLM.
+
+% [27/10] Số kiểm với bài gốc: DepWareTrans 38,16%/9,39% (file-by-file có feedback, hệ thống STAR); DepTrans là tên hệ thống
+% (DGIR chỉ là khung suy luận), 97,9%/0% là biến thể chỉ thưởng biên dịch còn bản đầy đủ đạt 60,7%/43,5%; DepUpgrade 62/119
+% bản vá biên dịch được (không phải 62/123); ChangeGuard recall 7,6%. Bỏ ví dụ Copilot vì bài gốc ghi median lúc 39,75%, lúc
+% 53,61%. "translation" thành "migration" vì DepUpgrade là nâng cấp thư viện.
+% [30/10] ", depending on the oracle" thay "under different oracles" (lặp "different"). DepWareTrans là XL nên "translation" như ví dụ DepTrans.
+% [30/10] Câu pilot tách đôi để không có hai dấu hai chấm liền nhau; "Across oracles and thresholds" như Abstract; "of the translations" thay "of them" (câu có "oracles").
+% [30/10] "the system under evaluation" như Conclusion. Câu Gröninger nối bằng "Even tests can be a weak oracle" thay "Weak oracles are not specific to migration" (đứng lẻ).
+% DepUpgrade 52,1% (trên 119) khác Hình 3 50,4% (trên 123); giữ vì mẫu số ghi rõ.
+\new{The oracle is not neutral. Published studies report very different success rates for the same outputs, depending on the oracle:}
+\begin{itemize}
+  \item DepWareTrans~\cite{depwaretrans}: \new{on an industrial repository,} file-by-file Java-to-Kotlin \new{translation} \new{with iterative feedback} reaches \new{a 38.16\% compile rate} but only \new{a 9.39\% test pass rate}.\cmtpink{P14, Major; R2, DA, EIC; open since R05}{These numbers are the file-by-file baseline (STAR) that DepWareTrans improves on, as the Figure 3 caption says. Per R2, DepWareTrans itself reports 100\% compilation and test success (arXiv 2608.14128), with compile- and test-driven validation in its loop, which is itself a G4 case. As written, readers attribute 9.39\% to the proposed system. Write a file-by-file baseline in the DepWareTrans study, or replace the example.}
+  \item \new{DepTrans}~\cite{dgir}: \new{in C-to-Rust translation, a variant trained with a compile-only reward} reaches \new{a 97.9\% compile rate but a 0\% test pass rate}.\cmtpink{P15, Major; R2, DA, EIC}{This is an ablation rewarded only for compiling, built to show reward hacking (the model emits panic!), and it is the 98-point extreme of Figure 3: it shows oracle gaming, not two oracles disagreeing on realistic outputs. Use a main configuration (e.g. VERT, 94.7\% compile vs 51.9\% property-based tests, or DepTrans's full system, 60.7\% vs 43.5\%) and move the ablation to the oracle-gaming paragraph. All three examples also compare compilation with a behavioral check, which are nested (code must compile to pass); add one non-nested example from Table 9 (e.g. TerraMod, similarity vs execution).}
+  \item DepUpgrade~\cite{depupgrade}: \new{dependency upgrades compile in 119 of 123 tasks (96.7\%), but reviewers judge only 62 of these 119 patches (52.1\%) semantically equivalent.}
+\end{itemize}
+\new{We observe the same in a pilot that applies four oracles to one fixed set of 164 LLM translations (Section~\ref{sec:pilot}). Across oracles and thresholds, 52\% to 90\% of the translations count as correct. A reported success rate therefore depends on the oracle as well as on the system under evaluation. Even tests can be a weak oracle. Outside migration, existing regression tests catch only 7.6\% of the semantics-changing code changes studied by Gr\"oninger et al.~\cite{changeguard}.\cmtpink{P16, Minor; R2, DR}{The figure is correct (10 of 131 changes), but the low recall partly reflects changes that no test covers or that cannot be built; add partly because many of these changes are not covered by any test.}}
+
+% [27/10] Nêu câu hỏi trước rồi mới so với nghiên cứu đã có. Khoảng trống chỉ nói về các review: Jiao et al. có so BLEU,
+% CodeBLEU và CA trên cùng output nên chuyển sang Related Work; "quantifies" vì Zhang et al. chỉ nhận xét định tính; ground
+% truth giới hạn ở O-c đến O-f như RQ2. RQ dùng "use" chứ không "rely on" (Hà Cao); RQ2 gọn, bốn ngữ cảnh nêu ở Results 5.3
+% (comment 2); RQ4 hỏi về oracle không thực thi code (biên dịch chỉ chạy javac) và không hỏi "bao nhiêu" để khỏi khái quát
+% quá một pilot; RQ5 là RQ4 cũ, đánh số lại theo thứ tự mục.
+% [30/10] "We address this gap" thành "addresses all three" (ba việc ở câu trước, như "addresses three questions" ở Related Work) để không lẫn với gap G1–G5; bỏ "and with the pilot" vì câu sau đã nêu; "the map" như phần còn lại của bài.
+\new{These examples raise two questions: which oracles does research on LLM-based migration use, and how far can their verdicts be trusted? Reviews that cover code translation examine its techniques, evaluation metrics, publication trends and security issues (Section~\ref{sec:related}). One recent survey also orders evaluation signals into six levels and discusses how reliable each is~\cite{c2csurvey}. None of these reviews traces where the ground truth of test-based oracles comes from, quantifies how far oracles disagree on the same outputs or compares oracle use across contexts. Our systematic mapping study of the main proceedings of ICSE, FSE and ASE from 2024 to 2026 addresses all three.\cmtpink{P17, Minor; EIC, R1, DA}{The title and RQ5 read as field-wide, while the evidence is 3 venues over 3 years (49 papers) plus a single-run pilot. Consider putting the venues and the pilot in the title, e.g. ... at ICSE, FSE and ASE 2024--2026, with a Four-Oracle Pilot.} The map answers RQ1 to RQ3 and the pilot answers RQ4; RQ5 draws on both:}
+\begin{itemize}
+  \item[\textbf{RQ1.}] Which oracles are used to evaluate behavioral equivalence in LLM-based code translation and migration?
+  \item[\textbf{RQ2.}] \new{Where do test-based oracles get their ground truth, and how does oracle use differ by context?}
+  \item[\textbf{RQ3.}] Which threats to oracle reliability do the studies acknowledge or demonstrate?
+  \item[\new{\textbf{RQ4.}}] \new{How do automatic oracles that do not execute the code compare with existing tests on the same LLM translations?}
+  \item[\new{\textbf{RQ5.}}] \new{What gaps separate current evaluation practice from the needs of real migration projects, and what should studies report and investigate next?}
+\end{itemize}
+
+% [27/10] Đóng góp (1) theo ngữ cảnh như RQ2, ô trống chỉ nói "no study covers" (comment 3 của Hà Cao); thêm công cụ và
+% pilot; thứ tự (4), (5) theo RQ4, RQ5.
+% [29/10] Đóng góp (5): "six gaps" thành "five gaps" theo Discussion (G1--G5).
+% [30/10] (2): "report separate results" vì 40 bài kết hợp oracle, 33 bài báo kết quả riêng; chỉ 24 bài so được (18 ở Hình 3, 6 ở Bảng 9); "numbers" để không lặp "results".
+% [30/10] (5) theo RQ5; "our data" vì không phải mọi dữ liệu đều công khai; bỏ dấu hai chấm sau "are".
+Our contributions are (1) a coded map of 49 primary studies by oracle, \new{ground-truth origin and context of use, including the combinations that no study covers\cmtpink{P18, Minor; DA}{Results says each empty cell would hold at most 1.3 papers by chance and that an empty cell says little on its own, so presenting empty combinations as a contribution conflicts with it. Reword, e.g. combinations that no study in the map covers, most of them uninformative at this sample size.}}; (2) \new{a catalog of the 33 studies that report separate results from two or more oracles on the same outputs, showing how far the oracles disagree in the 24 whose numbers can be compared}; (3) a classification of the \new{limitations that studies report about their own oracles}; \new{(4) an open harness that applies four oracles to the same LLM translations, used in a pilot on 164 HumanEval-X tasks\cmtpink{P19, Major; EIC, DA, R2}{Position the pilot against what is known: similarity vs execution (TransCoder introduced computational accuracy because BLEU misleads, Roziere et al. 2020; Evtikhiev et al., JSS 2023), weak benchmark tests (EvalPlus, NeurIPS 2023) and LLM judges for code (Wang et al., ISSTA 2025; CodeJudge; ICE-Score). Without them the pilot reads as new evidence rather than a replication in a translation setting. Its genuinely new parts are the known-answer check of the judge and the mutation check that exposes test cases lost in porting (HumanEval/131); say so in one sentence here and in Related Work.}; and (5) five gaps between current evaluation practice and the needs of real migration projects, along with} a checklist for reporting oracle provenance. \new{We release our data and code} (Section~\ref{sec:conclusion}).
+
+\begin{added}
+% [27/10] Thêm mục Pilot; viết lại để không câu nào cũng mở đầu bằng "Section X".
+% [30/10] Câu 1 và 2 vẫn cùng mở đầu "Section", nên câu 2 mở bằng "After a review of related studies"; mỗi câu một "and".
+\paragraph{Structure.} Section~\ref{sec:background} defines the migration kinds and oracle categories we code. After a review of related studies (Section~\ref{sec:related}), Section~\ref{sec:method} describes the search, selection and extraction. Results for RQ1 to RQ3 follow in Section~\ref{sec:results}, and the pilot answers RQ4 in Section~\ref{sec:pilot}. Section~\ref{sec:discussion} answers RQ5 and proposes the checklist. We close with threats to validity (Section~\ref{sec:threats}) and conclusions (Section~\ref{sec:conclusion}). Appendix~\ref{app:primary} lists every included paper with its coding.
+\end{added}

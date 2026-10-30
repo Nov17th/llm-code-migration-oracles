@@ -1,0 +1,82 @@
+%% ===== Appendix: primary studies =====
+% [29/10] Bảng cũ sinh từ sheet trước các đợt mã lại, nên lệch Results ở nhiều số (O-a 14, O-b 33, O-e 5, O-h 3, O-i 18; 9 "none stated").
+% Nay sửa tay cho khớp coding.csv trên GitHub; đã đếm lại mọi số ở Results, Pilot, Discussion từ bảng này. Bỏ ghi chú "GENERATED":
+% script không có trong repo. Mã lại bài nào thì sửa cả coding.csv và bảng này.
+% Theo review 26/10 và quy tắc ở 4.5: TRAVEL, PtrTrans: test có expected output từ chạy bản gốc là O-f, bỏ O-e, e:R (TRAVEL f:L).
+% ReCodeAgent: similarity và người chấm chỉ áp lên test đã dịch, Validator agent nằm trong kỹ thuật, test sinh thêm chạy cả hai bản là O-f (f:L).
+% MBTA báo tỷ lệ biên dịch (91,11%), thêm O-b. VIM-PT, Semi-supervised: kỹ thuật không dùng LLM, LLM chỉ là baseline (B).
+% CAST: phân rã lỗi có Compile Error, thêm O-b (phương án B, 27/10). Google "none stated"; Byam, Semi-supervised "other" (Bảng 10, 28/10).
+% DGIR thành DepTrans như Results, Hình 3, Bảng 9; dòng chuyển lên theo thứ tự chữ cái.
+% Chú thích: Kind trỏ Background; "P, E" viết như "A/B"; giữ N vì EquivFusion dùng; "test-based" như Background; nêu cả origin
+% của input O-f như chú thích bảng origin; e:S ghi rõ expected outputs; bỏ e:R.
+\section{Primary Studies}
+\label{app:primary}
+
+Table~\ref{tab:primary} lists the 51 included papers, 49 in the main corpus and 2 in the I3 tier, with the coded fields behind the frequency tables and figures of Section~\ref{sec:results}.\cmtpink{P77, Minor; R2, DR}{Metadata fixes. MBTA's LLM role should be N (TransCoder and j2py, no LLM). refs.bib: mbta year 2024 (EMSE 29(1), article 19); byam article 113; seven FSE Companion entries (coboljava, codehints, collaboration, deepmodelx, dgir, equivfusion, dristi) carry main-proceedings booktitles; pli and terramod are ICSE-NIER 2026 but not labelled; ICSE 2026 venue strings come in three variants and the publisher field is mixed; the uncited syzygy and manyshot entries have wrong authors (Syzygy: Shetty, Jain, Godbole, Seshia, Sen). All 65 cited works exist and match Crossref or DataCite.}
+
+\begin{table*}[p]
+  \centering
+  \caption{Included papers and their coding. Venue: conference, year and track (Res.\ research, Ind.\ industry/SEIP, JF journal-first, IVR Ideas, Visions and Reflections). Kind: migration kind \new{(Section~\ref{sec:background})}; A/B means both kinds, and +L marks a legacy source. LLM: role of the LLM (P proposed technique, E evaluated subject, B baseline only, T evaluation tooling, N no LLM)\new{; P, E means both roles}. Oracles: letters of Table~\ref{tab:oracles}. Origin of \new{the ground truth of test-based oracles and of the inputs for O-f} (Table~\ref{tab:origin}): c:B benchmark tests, c:P project test suite, c:BP both; d:S translated by the system, d:H translated by hand; e:S \new{expected outputs} derived from the specification, e:U not stated; f:F fuzzing, property-based or symbolic inputs, f:T existing tests or data, f:L LLM-generated inputs, f:C curated samples or screens, f:U not described. Stated limitation: theme of Table~\ref{tab:limits}.}
+  \label{tab:primary}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}P{0.22\linewidth} P{0.14\linewidth} P{0.08\linewidth} P{0.05\linewidth} P{0.12\linewidth} P{0.12\linewidth} P{0.17\linewidth}@{}}
+    \toprule
+    Paper & Venue & Kind & LLM & Oracles (O-) & Origin & Stated limitation \\
+    \midrule
+    AlphaTrans~\cite{alphatrans} & FSE 2025 Res. & XL & P & b, c, d & c:P, d:S & same source as output \\
+    BatFix~\cite{batfix} & ICSE 2025 JF & XL & E & b, c & c:B & weak tests \\
+    BDUpdater~\cite{bdupdater} & FSE 2026 Res. & LIB & P & c, i & c:P & weak tests \\
+    Byam~\cite{byam} & ASE 2026 JF & LIB & P & b, c & c:P & \new{other} \\
+    C2SaferRust~\cite{c2saferrust} & FSE 2026 JF & XL & P & b, c & c:P & weak tests \\
+    CAST~\cite{cast} & FSE 2026 JF & XL & P, E & \new{a, b, c} & c:B & weak tests \\
+    COBOL-to-Java testing~\cite{coboljava} & FSE 2025 Ind. & XL+L & E & f & f:F & incomplete checks \\
+    Code hints~\cite{codehints} & FSE 2025 Ind. & LIB & P & b, f, i & f:F & incomplete checks \\
+    CodePlan~\cite{codeplan} & FSE 2024 Res. & LIB & P & a, b & -- & compiling is not behaving \\
+    Collaboration~\cite{collaboration} & FSE 2025 IVR & XL & P & a & -- & none stated \\
+    DeepModelX~\cite{deepmodelx} & FSE 2025 Poster & FW & P & b, c & c:B & none stated \\
+    \new{DepTrans}~\cite{dgir} & FSE 2026 Ind. & XL & P & a, b, c & c:BP & oracle gaming \\
+    DepUpgrade~\cite{depupgrade} & ASE 2026 Res. & LIB & P & b, h, i & -- & compiling is not behaving \\
+    DepWareTrans~\cite{depwaretrans} & ASE 2026 Ind. & XL & P & b, c & c:P & weak tests \\
+    EvoC2Rust~\cite{evoc2rust} & ICSE 2026 Ind. & XL & P & a, b, c & c:B & weak tests \\
+    FreshBrew~\cite{freshbrew} & ICSE 2026 Res. & VER & E & b, c & c:P & oracle gaming \\
+    Fruntke \& Krinke~\cite{fruntke} & FSE 2025 Res. & LIB & P & b, c, i & c:P & weak tests \\
+    Google migrations~\cite{googlemig} & ICSE 2025 Ind. & LIB & P & b, c, d, i & c:P, d:S & \new{none stated} \\
+    GUIMigrator~\cite{guimigrator} & FSE 2026 Res. & FW & B & a, b, f, i & f:C & misleading similarity \\
+    IntentTester~\cite{intenttester} & FSE 2026 Res. & LIB/XL & P & b, d, i & d:S & subjective judgment \\
+    InterTrans~\cite{intertrans} & ICSE 2025 Res. & XL & P & c & c:B & weak tests \\
+    IP-preserving modernization~\cite{ipmodern} & ASE 2026 Ind. & FW/XL+L & P & b, e & e:S & same source as output \\
+    Java-to-ArkTS converter~\cite{arkts} & ASE 2024 Demo & XL & P & b, f, i & f:C & none stated \\
+    K-COBAgent~\cite{kcobagent} & ASE 2026 NIER & XL+L & P & f & f:U & same source as output \\
+    Lost in Translation~\cite{lostintranslation} & ICSE 2024 Res. & XL & E & b, c, d & c:B, d:H & weak tests \\
+    MBTA~\cite{mbta} & ICSE 2024 JF & XL & E & \new{b, c, f} & c:B, f:T & weak tests \\
+    MSA (Checked C)~\cite{msa} & ICSE 2025 Res. & DIA & P & a, i & -- & subjective judgment \\
+    Pig~\cite{pig} & FSE 2026 Res. & LIB & P & i & -- & no executable oracle \\
+    PL/I templatization~\cite{pli} & ICSE 2026 NIER & XL+L & P & i & -- & none stated \\
+    PROGnosticator~\cite{prognosticator} & FSE 2026 Res. & VER/XL & T & b, f & f:L & incomplete checks \\
+    PtrTrans~\cite{ptrtrans} & FSE 2026 Res. & XL & P & \new{b, f} & \new{f:F} & weak tests \\
+    Python library migration~\cite{pylibmig} & ASE 2025 Res. & LIB & E & a, b, c, i & c:P & weak tests \\
+    ReCodeAgent~\cite{recodeagent} & ASE 2026 Res. & XL & P & \new{b, c, d, f} & \new{c:BP, d:S, d:H, f:L, f:U} & weak tests \\
+    RISE~\cite{rise} & ICSE 2026 Res. & DIA & P & b, f, i & f:T & incomplete checks \\
+    Rule synthesis~\cite{rulesynth} & ASE 2026 Res. & LIB/VER & E & a, i & -- & no executable oracle \\
+    RustAssure~\cite{rustassure} & ASE 2025 Res. & XL & P, E & b, d, f, g, i & d:H, f:F & incomplete checks \\
+    RustRepoTrans~\cite{rustrepotrans} & ASE 2025 Res. & XL & E & b, c & c:P & none stated \\
+    Semi-supervised translation~\cite{semisup} & ASE 2024 Res. & XL & \new{B} & c & c:B & \new{other} \\
+    SmartC2Rust~\cite{smartc2rust} & ICSE 2026 Res. & XL & P & b, c, d, f & c:P, d:S, f:T & oracle gaming \\
+    TerraMod~\cite{terramod} & ICSE 2026 NIER & LIB & P & a, b, c & c:B & misleading similarity \\
+    TransAgent~\cite{transagent} & FSE 2026 Res. & XL & P & a, c, e & c:B, e:U & weak tests \\
+    TransGraph~\cite{transgraph} & ASE 2024 Poster & XL & P & b, c & c:B & none stated \\
+    Translation Tag Team~\cite{tagteam} & ASE 2026 Res. & XL & P, E & b, c, i & c:P & subjective judgment \\
+    TransLibEval~\cite{translibeval} & FSE 2026 Res. & XL & E & b, c, i & c:B & none stated \\
+    TRAVEL~\cite{travel} & ASE 2026 Ind. & XL & P & \new{b, c, f} & \new{c:B, f:L} & weak tests \\
+    UniTrans~\cite{unitrans} & FSE 2024 Res. & XL & P, E & a, c & c:B & misleading similarity \\
+    VERT~\cite{vert} & ASE 2025 Res. & XL & P & b, f, g & f:F & incomplete checks \\
+    VIM-PT~\cite{vimpt} & ASE 2024 Res. & XL & \new{B} & a & -- & none stated \\
+    WCA4Z COBOL-to-Java~\cite{wca4z} & ICSE 2026 Ind. & XL+L & P & h & -- & none stated \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{I3 tier: cross-language equivalence detection}} \\
+    EquivFusion~\cite{equivfusion} & FSE 2026 Demo & XL & N & g & -- & -- \\
+    Moumoula et al.~\cite{moumoula} & FSE 2025 Res. & XL & E & h & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table*}

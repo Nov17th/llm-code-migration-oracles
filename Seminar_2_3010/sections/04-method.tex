@@ -1,0 +1,177 @@
+%% ===== 4 Method =====
+\section{Method}
+\label{sec:method}
+
+% [27/10] Thêm câu định hướng: mục này chỉ mô tả phần mapping (RQ1 đến RQ3); thiết kế pilot ở mục Pilot, RQ5 ở Discussion.
+\new{This section describes how we built and coded the map that answers RQ1 to RQ3. The pilot for RQ4 has its own design (Section~\ref{sec:pilot}), and RQ5 draws on both (Section~\ref{sec:discussion}).} We followed the guidelines for systematic mapping studies in software engineering~\cite{petersen}. The protocol, search log, codebook and all decisions are in the replication package.
+
+\subsection{Scope}
+\label{sec:scope}
+
+% [27/10] Phạm vi viết theo đúng tập đã quét (scanned_papers.csv): mọi track, kể cả DS, SRC, và bài chỉ có trong main hoặc
+% Companion volume (có bài workshop đăng trong Companion, như C202); chỉ loại sự kiện có kỷ yếu riêng, nên "main proceedings"
+% thêm vế đối lập với các sự kiện đó. Câu lý do bỏ "where legacy settings without tests appear" (là kết quả, không phải lý do).
+A paper is in scope if it appears in the 2024, 2025 or 2026 edition of ICSE, FSE or ASE: \new{in any track of the conference program, including the poster, doctoral symposium and student research competition tracks; in the conference's main or Companion volume; or, for journal-first papers, as a presentation at the conference.} We call this set the main proceedings\new{, as opposed to co-located events with proceedings of their own}. 
+%\new{ ICSE, FSE and ASE are the flagship venues of software engineering, so their papers show which evaluation practices reviewers accept. Their industry tracks also report migrations of industrial and legacy systems. Co-located workshops and conferences that publish their own proceedings}
+\new{ICSE, FSE and ASE were selected as major general software engineering conferences with both research and industry tracks.\cmtpink{P30, Major; R1, EIC, DA}{This does not explain why ISSTA, the flagship testing venue where oracle work concentrates, is excluded in 2024 and 2026, when it was not co-located, or why TSE, TOSEM and EMSE count only as journal-first. Venue choice can bias exactly the RQ1 shares the paper stresses (formal 4\%, differential 29\%). Scan ISSTA 2024--2026 with the frozen string as a sensitivity set, or give a substantive reason and scope the title and general statements to the three venues.} We examine the evaluation practices reported in their peer-reviewed papers, including studies of industrial and legacy-system migrations. Co-located workshops and conferences that publish their own proceedings} (ReCode, LLM4Code, FORGE, AGENT, AIware, AISM, ICPC, MSR and others) are out of scope: the set of events changes from year to year, so counting them would make years incomparable.\cmtpink{P31, Minor; R1; open since R10}{Workshops that publish in the Companion volume also change from year to year (Companion-only papers: FSE 4, 74 and 95 in 2024--2026; ASE none), so the same argument applies to them, and they sit in the yearly denominators of Section 5.1. Exclude them and recompute, or justify keeping them and report their number per year.} ISSTA~2025 and Internetware~2025, which were co-hosted with FSE that year only, are excluded for the same reason. \new{Related papers outside the corpus} are cited in Sections~\ref{sec:intro}, \new{\ref{sec:related}} and~\ref{sec:discussion} but not counted.
+
+
+\subsection{Search}
+\label{sec:search}
+
+% [27/10] "the LLM criterion" viết lại theo I1 (neural model hoặc LLM). Thêm 216 bài chỉ có trên Crossref (13 hit, đều bị
+% loại; đếm từ scanned_papers.csv) để khớp với phạm vi. Bỏ ICSE 2025 khỏi các track poster "không có danh sách": trang
+% track ghi rõ ICSE 2025 không nhận poster riêng, poster chỉ đến từ bài đã được nhận ở track khác, nên không có gì bị sót.
+% Mã I1 và I3 chưa được định nghĩa ở đây (Bảng tiêu chí ở mục 4.3), nên câu và chú thích Bảng 2 trỏ tới mục 4.3 thay vì
+% dùng mã trần.
+We applied one frozen keyword string to titles and abstracts:
+\begin{center}
+\fbox{\parbox{0.94\columnwidth}{\small\ttfamily translat* OR transpil* OR migrat* OR moderni* OR legacy OR porting OR ported OR upgrad* OR deprecat* OR \textquotedbl cross-language\textquotedbl{} OR \textquotedbl cross-lingual\textquotedbl{} OR equivalen*}}
+\end{center}
+The string omits ``oracle'' and ``behavior*'', \new{because they} pulled in unrelated testing papers, and omits ``LLM'', because many neural papers do not use the word; \new{whether a paper uses a neural model or an LLM is checked at screening (Section~\ref{sec:selection}).} Paper lists came from each conference program on conf.researchr.org, covering every track \new{that had a published paper list (the FSE~2026 and ASE~2026 poster tracks did not; Section~\ref{sec:threats}). We cross-checked them against the main and Companion volumes of each conference through Crossref, which added 216 papers that appear in no track program. Some of them come from workshops that publish in the Companion volume, and none of their 13 keyword hits was included.} Missing abstracts were taken from Semantic Scholar and arXiv. \new{The final scan, on October 23, 2026,} covered 4,451 main-proceedings papers and returned 430 keyword hits; \new{for 80 papers without an available abstract, the string was matched against the title only}.\cmtpink{P32, Minor; R1}{Publisher pages (ACM DL, IEEE Xplore) normally have these abstracts. Fetch the 80, rerun the string and screen any new hits; this removes the limitation instead of discussing it, including its effect on the 2024 share in Section 5.1.}
+\new{Table~\ref{tab:search} gives the counts for each conference and year. Most papers without an abstract are from ICSE~2024 (61 of 80).}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Search and selection by conference and year. Papers: main-proceedings papers scanned; \new{No abstract: papers matched on their title only; Hits: keyword hits; Candidates: hits plus the one known paper the search missed; Included: main corpus; I3: papers in the separate cross-language equivalence-detection tier (Section~\ref{sec:selection}).}}
+  \label{tab:search}
+  \small
+  \begin{tabular}{@{}lrrrrrr@{}}
+    \toprule
+    Venue & Papers & No abstract & Hits & Candidates & Included & I3 \\
+    \midrule
+    ICSE 2024 & 611 & 61 & 58 & 58 & 2 & 0 \\
+    ICSE 2025 & 526 & 0 & 41 & 41 & 4 & 0 \\
+    ICSE 2026 & 796 & 1 & 68 & 68 & 7 & 0 \\
+    FSE 2024 & 261 & 6 & 17 & 17 & 2 & 0 \\
+    FSE 2025 & 451 & 1 & 35 & 36 & 6 & 1 \\
+    FSE 2026 & 563 & 2 & 64 & 64 & 11 & 1 \\
+    ASE 2024 & 299 & 1 & 25 & 25 & 4 & 0 \\
+    ASE 2025 & 447 & 1 & 53 & 53 & 4 & 0 \\
+    ASE 2026 & 497 & 7 & 69 & 69 & 9 & 0 \\
+    \midrule
+    Total & 4,451 & 80 & 430 & 431 & 49 & 2 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\new{To estimate recall, we used 40 in-scope papers that meet our criteria and that we had identified before the scan, in exploratory searches of the same proceedings and while reading related work. The string retrieved 39 of the 40 (97.5\%).\cmtpink{P33, Major; R1, R2, DR; open since R11}{The check is not independent of the string: the 40 papers make up 40 of the 51 included, came from exploratory searches with similar words and were known while the protocol was written. Give the interval (Wilson 87--99.6\%) and the date the string was frozen. Deep research found a second miss in the same sub-area: DependaFix (FSE 2026 demo, doi 10.1145/3803437.3806404) repairs breaking dependency updates via Byam and was not a keyword hit. Run a supplementary string over the 4,021 non-hits (convert*, rewrit*, update*, port, breaking change, dependency update, API evolution) and one round of snowballing (Wohlin, EASE 2014) from the 51 included papers, and report what they add.} We added the one miss, a dependency-repair paper whose title and abstract use none of our terms~\cite{fruntke}, to the candidates as a known paper, which gives 431 candidates.}
+
+\subsection{Selection}
+\label{sec:selection}
+
+% [27/10] Thêm lý do cho từng tiêu chí I (I3 là tầng riêng, báo ở 5.4); E4 viết thành quy tắc vì không bài nào bị loại theo E4.
+% Chín luật L tách thành Bảng 4 (trước chỉ là văn xuôi) để mã được định nghĩa trước khi dùng; cột N đếm trên 431 candidate (cột clarification_rule).
+% Mỗi luật ghi rõ tiêu chí nó áp vào (L-TEST vẫn cần LLM; L-TASK áp cả I2 vì có benchmark); bỏ "recurring" vì L-DATA chưa dùng.
+% I2: "uses" thành "studies" cho khớp cách đã áp: bài chỉ dùng oracle chấm công cụ của mình (bộ dịch rule-based, ModelX) bị loại;
+% 4 bài chỉ đạt I2 (RustRepoTrans, PROGnosticator, MBTA, FreshBrew) đều đề xuất hoặc nghiên cứu cách đánh giá.
+A paper is included if it satisfies I4 and at least one of I1--I3, \new{provided that no exclusion criterion applies} (Table~\ref{tab:criteria}). \new{The criteria follow from the RQs. I1 admits papers that use a neural model or an LLM to migrate code and say how equivalence is checked, even if only by BLEU, so that every included paper has an oracle to code.\cmtpink{P34, Minor; R2; open since R12}{The title says LLM-based, but I1 admits any neural model: MBTA evaluates TransCoder and j2py (rule-based) with no LLM, yet its LLM role is E (it should be N), and the BatFix row of Figure 3 and the UniTrans and TransAgent-baseline rows of Table 9 show TransCoder outputs. Define LLM inclusively in Section 2 or adjust the title, and report how many papers evaluate only pre-LLM models.} I2 adds papers on benchmarks and evaluation methods, since these define oracles even when no translator is proposed. I3 covers papers on detecting whether two programs in different languages are equivalent. Their detectors could serve as oracles, but the papers evaluate the detectors rather than migrations, so they form a separate tier, which the results report apart from the main corpus (Section~\ref{sec:i3}). Secondary studies (E4) belong in related work (Section~\ref{sec:related}), not in the map.}
+
+\begin{table}[t]
+  \centering
+  \caption{Inclusion (I) and exclusion (E) criteria.}
+  \label{tab:criteria}
+  \small
+  \begin{tabular}{@{}l P{0.86\linewidth}@{}}
+    \toprule
+    Code & Criterion \\
+    \midrule
+    I1 & Uses a neural model or LLM to translate or migrate code between a named source and target (language, version, dialect, library or API, framework) and describes how equivalence is checked, even if only by BLEU \\
+    I2 & Proposes or \new{studies} a method, benchmark or oracle to evaluate translations or migrations \\
+    I3 & Detects equivalence between programs in two different languages; reported as a separate tier \\
+    I4 & English, peer-reviewed \\
+    \midrule
+    E1 & Natural-language translation, or NL-to-code tasks with no code-to-code translation \\
+    E2 & No information at all on how outputs are evaluated \\
+    E3 & Clone or similarity detection that neither targets functional equivalence nor relates to translation \\
+    E4 & Secondary study \\
+    E5 & Duplicate of the same work (we keep the most complete version) \\
+    E6 & Full text unavailable \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{\new{Clarification rules: how the criteria in Table~\ref{tab:criteria} apply to hard cases. N: number of the 431 candidates that the rule decided.}}
+  \label{tab:rules}
+  \small
+  \begin{tabular}{@{}l P{0.66\linewidth} r@{}}
+    \toprule
+    \new{Rule} & \new{Decision} & \new{N} \\
+    \midrule
+    \new{L-TEST} & \new{Tests count as code: migrating tests with a neural model or LLM meets I1} & \new{1} \\
+    \new{L-BASE} & \new{A study proposing a deterministic technique meets I1 if the technique and an LLM baseline are evaluated with the same oracle and both results are reported. This requirement aligns paper-level oracle coding with the evaluation of LLM-generated outputs.} & \new{2} \\
+    \new{L-ARCH} & \new{Microservice extraction and other architecture changes do not meet I1: they restructure a system rather than move its code to another language, version, library, dialect or framework} & \new{6} \\
+    \new{L-DECOMP} & \new{Decompilation does not meet I1: it starts from a binary rather than from source code} & \new{5} \\
+    \new{L-DATA} & \new{A dataset without an evaluation protocol is E2; one with a protocol meets I2} & \new{0} \\
+    \new{L-RB} & \new{An oracle or benchmark for rule-based translators still meets I2} & \new{1} \\
+    \new{L-XEQ} & \new{Cross-language equivalence detection meets I3, even when a paper frames it as clone detection} & \new{2} \\
+    \new{L-TASK} & \new{Translation must be a main goal or research question to meet I1 or I2; general models or benchmarks in which translation is one of three or more tasks, and papers that use translation only as a means, are excluded} & \new{16} \\
+    \new{L-SUM} & \new{A paper that summarizes its authors' published results counts as a duplicate (E5)} & \new{3} \\
+    \midrule
+    \new{Total} & & \new{36} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\new{Hard cases were discussed within the team until agreement was reached\cmtpink{P35, Major; R1, EIC; open since R13, R30}{The most likely reason for a major revision at EASE. The paper never says how many people screened the 431 candidates, read the 66 full texts or coded the 49 papers, whether any step was independent, how agreement was measured, or whether papers coded before the scheme was refined were recoded. The 30/10 version deleted the calibration paragraph without replacing it. Yet G2 and checklist item 3 fault primary studies because only 3 of 17 report rater agreement. Minimum: state who did each step and report agreement on a calibration sample (e.g. a second author, blind, recodes 10--15 papers on fields 4, 5 and 7 and re-screens a random sample of title/abstract exclusions; Cohen's kappa per field, raw agreement or PABAK for rare codes). If that is impossible, say that one person coded and list it under Reliability.}, and nine clarification rules record the outcome (Table~\ref{tab:rules}). Each rule settles how the criteria apply to papers that their wording leaves open.\cmtpink{P36, Minor; R1, R2}{State when each rule was introduced and confirm that all 431 candidates were re-screened under the final rule set (four rules decide only one or two papers each). Justify L-TASK's three-or-more-tasks cut: deep research suggests it excluded Galapagos on its abstract (see Section 5.3).} The rules decided 36 of the 431 candidates (31 exclusions and 5 inclusions), and the replication package lists the rule for each.} \new{In total, 51 candidates were included and 380 excluded.} The \new{reasons for exclusion} were: neither translation nor its evaluation (174)\cmtpink{P37, Minor; R1; open since R14}{270 of the 380 exclusions use two catch-all reasons that Table 3 does not define, plus same-language equivalence detection (15); no precedence says which reason is recorded when several apply, and rule-based exclusions are counted unevenly (L-TASK has its own line, L-ARCH, L-DECOMP and L-BASE sit inside the 96, L-SUM inside E5). Define or merge these reasons in Table 3.}; \new{related topics that meet none of I1--I3}, such as purely rule-based translation, refactoring with no target or program repair (\new{96}); natural-language tasks (E1, 47); translation as a minor task (L-TASK, 16); same-language equivalence detection (\new{15}); no evaluation information (E2, 14); clone detection unrelated to equivalence (E3, 8); duplicates (E5, 7); and no available full text (E6, 3).
+
+
+\begin{added}
+Figure~\ref{fig:flow} shows the flow. \new{We excluded 362 of the 431 candidates on title and abstract, 3 of them on the title alone because no abstract was available; Section~\ref{sec:fulltext} reports the full-text stage.}
+\end{added}
+
+\begin{figure}[t]
+  \centering
+  \input{figures/selection-flow}
+  \caption{\addedtag Selection flow. Counts are papers; reasons follow Tables~\ref{tab:criteria} and~\ref{tab:rules}.}
+  \Description{Flow diagram. The 4,451 papers yield 430 keyword hits; adding one known paper that the search missed gives 431 candidates. Of these, 362 are excluded on title and abstract, 3 have no available full text, 15 are excluded after reading the full text, and 51 are included: 49 in the main corpus and 2 in the I3 tier.}
+  \label{fig:flow}
+\end{figure}
+
+\subsection{Full-text confirmation}
+\label{sec:fulltext}
+
+% [27/10] Số kiểm từ candidates.csv: 69 = 51 + 15 + 3, mọi bài Include có decision_basis là full text. Nguồn theo cột basis_note
+% (arXiv, ORBilu, PubMed Central; ô trống là bản ACM DL), bỏ "author pages" vì không có bài nào. Bỏ "first looked eligible"
+% vì dữ liệu không ghi quyết định vòng đầu; giữ ba ca ranh giới (C304, C365, C190) và ca ModelX, vì poster C179 cùng tác giả
+% đầu nằm trong 49 bài (tự đạt I1). Bỏ ví dụ poster trùng (E5) vì không phải ca ranh giới. C365 và C190 không đạt cả I1--I3
+% (nhóm ¬I1 và I3-instr trong candidates.csv, tức "related topic" và "same-language equivalence" ở Hình 1).
+\new{No paper was included on title and abstract alone. We sought the full text of 69 candidates: those that looked eligible and those that could not be decided without it. Three were available only behind an IEEE paywall and were excluded under E6;\cmtpink{P38, Major; R2, R1, DR; open since R15}{Now easy to fix. DLBench (ASE 2025 research track, an LLM benchmark for SQL dialect translation) has a free author copy at matafeiyanll.github.io/paper/ASE25.pdf; it argues that execution-only checking misses semantic equivalence and dependency integrity and would be I2, DIA (a kind with only 2 papers). Request Polyglot (ASE 2025) from the authors or the library; Rubhus (ICSE 2024 JF) is in an open PhD thesis (I3 tier at most). PRISMA 2020 reports unobtainable papers as not retrieved, not as an exclusion criterion.} the other 66 came from freely available versions (arXiv, an institutional repository, PubMed Central) or the ACM Digital Library. Of these 66, 51 were included and 15 excluded; Figure~\ref{fig:flow} gives the reasons. The full text decided several borderline cases.\cmtpink{P39, Minor; DR, R2}{Deep research found three decisions to recheck. (1) Migrating Code At Scale With LLMs At Google (FSE 2025 Industry, C185) was excluded as having no named source-target pair, but it reports a named int32-to-int64 ID migration checked by build, regression tests and human review, which the included googlemig also covers: include it, or add a rule for type migrations and correct the stated reason. (2) C317 (ICSE 2024 poster) was excluded under E5 in favour of a later MSR 2024 version that lies outside the scope, so the work leaves the map. (3) C320's E2 reason (problem statement) does not match E2's definition.} One translation paper states that it does not check whether its output is correct (E2). 
+% Two others meet none of I1--I3: one only adds type annotations to JavaScript code, which remains JavaScript, and one verifies an upgraded PLC program against its previous version in the same language. 
+Two others meet none of I1--I3: one only adds type annotations to JavaScript code, and the other verifies whether a PLC program preserves its existing functionality after feature additions. Neither study concerns migration between the source and target technologies covered by our scope.
+A deterministic converter between deep learning frameworks fails L-BASE because its LLM baselines are scored by a different oracle; a poster by the same group, which converts between the same frameworks with LLMs, meets I1 and is included~\cite{deepmodelx}.}
+
+\subsection{Classification and extraction}
+\label{sec:extraction}
+
+% [27/10] Ba đoạn: trích gì (hai bộ phân loại, bảy trường, bằng chứng ở cột evidence của extraction.csv), mã thế nào (quy tắc
+% chính và bảy quy tắc ranh giới theo comment 7, 10, 11 và V2 (phương án B) của Hà Cao; ví dụ test dịch kèm code: AlphaTrans), phân tích ra sao
+% (trường nào trả lời RQ nào). Bớt lặp "come from", "benchmark", "We code".
+\new{We code each paper with the two classification schemes of Section~\ref{sec:background}. The migration kinds correspond one to one to the source and target types that criterion I1 lists (Table~\ref{tab:criteria}); every included paper has at least one. The nine oracle categories began as a scheme that we drafted during protocol development from the papers we knew before the search, and we refined it during extraction. For example, formal verification was separated from property-based testing, and the test-based categories were redefined by the origin of their expected outputs.} For each included paper we \new{drafted values for the seven fields of Table~\ref{tab:form} from the full text and recorded short quotations, with their locations, as evidence. Field~5 splits the four test-based categories into the subtypes listed in the table; for differential testing it records the source of the inputs, because the expected outputs are always those of the original.}
+
+\new{We then applied the following rules to turn the drafts into final codes. Only oracles that judge the final output count; one} used solely inside the technique, such as a compiler in a repair loop or a filter on training data, \new{does not.} \new{Seven further rules handle boundary cases. The paper must report the oracle's result on the evaluated outputs. Compilation or a syntax check counts as O-b whenever the paper reports how many outputs pass it, even if only as a breakdown of failures by stage or in a figure; compilation implied only by passing tests is not coded.\cmtpink{P40, Minor; R2, R1}{Two identical evaluations can be coded differently (one prints a failure breakdown, the other does not), and a compile count in a breakdown does not decide whether the migrated program behaves like the original (your definition of an oracle). Report compile rates used as a success metric separately, and consider a strongest-oracle-per-paper view (no executing oracle / tests / differential / formal) that answers RQ1 directly.} If a system translates tests along with the code, checks that touch only the translated tests, such as compiling them, are not oracles of the translation. In test migration, where the migrated test is itself the output, running it on the target counts as O-d. Tests translated by hand when a benchmark was built are benchmark tests (O-c), whereas tests that a paper's authors translate for their own evaluation are translated tests (O-d).\cmtpink{P41, Minor; R2}{The O-c/O-d boundary follows timing, not origin: hand-translated tests are O-c if a benchmark builder translated them and O-d if the study's authors did, and HumanEval/131 shows that O-c tests share O-d's failure mode. O-d also merges tests translated by the system under evaluation (not independent) with tests translated by hand (independent). Add independence (pre-existing, built by the authors, produced by the system) as an explicit axis; G4 needs exactly that.} LLM-written tests whose expected outputs have no stated source are coded O-e, since nothing shows that they were checked against the original. The role of the LLM follows what the LLM does in the study, whatever kind of technique is proposed; a non-LLM technique compared with LLM baselines is coded as baseline only. We also re-checked every} number in the disagreement analysis (Section~\ref{sec:rq3}) against the paper.
+
+% [28/10] RQ3 thêm câu nguồn của đoạn người chấm (cờ reports_rater_agreement, ngoài form). Câu Appendix tách riêng vì không thuộc RQ3.
+\new{The analysis counts papers. Section~\ref{sec:overview} describes the corpus with fields~1 to~3, and RQ1 counts the oracles of field~4 (Section~\ref{sec:rq1}). RQ2 reports the origins of field~5 and compares oracle use across four contexts: a legacy source or not, the migration kind, the track and the publication year (Section~\ref{sec:rq2}). RQ3 draws on fields~6 and~7. For the papers with human evaluation, we also record whether they report agreement between raters (Section~\ref{sec:rq3}). Appendix~\ref{app:primary} gives the codes for every paper. We did not score the quality of the included papers: the RQs ask how they evaluate equivalence, and RQ3 covers the weaknesses that they state or show.}
+
+\begin{table}[t]
+  \centering
+  \caption{\addedtag Extraction form.}
+  \label{tab:form}
+  \small
+  \begin{tabular}{@{}P{0.3\linewidth} P{0.64\linewidth}@{}}
+    \toprule
+    Field & Values \\
+    \midrule
+    1. Migration kind & XL, VER, LIB, DIA, FW (several allowed); legacy flag \\
+    2. Track & Research, industry/SEIP, journal-first, NIER, \new{Ideas, Visions and Reflections}, poster, demonstration \\
+    3. Role of the LLM & Proposed technique; evaluated subject; both; baseline only; part of the evaluation tooling; no LLM (\new{a smaller neural model or no model}) \\
+    4. Oracles & O-a to O-i (Table~\ref{tab:oracles}); final-output oracles only \\
+    \new{5. Origin of test-based oracles} & \new{O-c: benchmark or project tests; O-d: translated by the system or by hand; O-e: expected outputs from a specification or not stated; O-f: where its inputs come from (fuzzing, property-based testing or symbolic execution; existing tests or data; an LLM; curated samples; not described)} \\
+    6. Oracles on the same outputs & Yes or no; if yes, the numbers under each oracle \\
+    7. Stated limitations & Free text with location, later grouped into themes \new{with one main theme per paper}\cmtpink{P42, Major; R1; open since R16}{How is the main theme chosen when a paper states several (first mentioned, most space, most severe)? RQ3 asks which threats studies acknowledge, so one label per paper undercounts every secondary theme, yet the text reads theme counts as mention counts (named by half of the 28 papers; 3 of these 14 name subjective evaluation). Code several themes per paper (the free text exists) and report any-mention counts next to the main-theme counts. Field 2 also lacks the doctoral symposium and SRC tracks that Section 4.1 puts in scope.} (Table~\ref{tab:limits}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}

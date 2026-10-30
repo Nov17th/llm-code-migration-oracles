@@ -1,0 +1,43 @@
+%% Selection flow (PRISMA-style). Candidates = the 430 keyword hits in the main
+%% proceedings plus one known paper the search missed (FSE 26, Fruntke & Krinke).
+%% Papers that only the team's exploratory tabs contained (FSE 9, 23, 27, 28,
+%% 29, 32) are not candidates.
+% [27/10] Số đếm lại từ scanned_papers.csv (4,451 bài, 430 hit) và candidates.csv (cột decision, decision_basis,
+% criterion, clarification_rule); đổi số thì đổi cả mục 4, Bảng 2, Bảng 4. Ô lý do: không ngắt giữa từ, số liền nhãn.
+\begin{tikzpicture}[
+  font=\footnotesize,
+  box/.style={draw, rounded corners=1pt, align=center, text width=3.3cm, inner sep=3pt},
+  side/.style={draw, rounded corners=1pt, align=flush left, text width=3.9cm, inner sep=3pt, font=\scriptsize},
+  arr/.style={-{Stealth[length=4pt]}, semithick}]
+
+  %% Left column (x = 0): the flow. Right column (x = \R): what leaves it.
+  \def\R{4.0}
+  \node[box] (scan) at (0,0) {Main proceedings of\\ ICSE, FSE and ASE\\ 2024--2026: \textbf{4,451} papers};
+  \node[box, below=0.45cm of scan] (hits) {Keyword hits\\ \textbf{430}};
+  \node[side, align=center] (team) at (\R,0 |- hits) {Known paper missed\\ by the keyword search: \textbf{1}};
+  \node[box, below=0.45cm of hits] (cand) {Candidates\\ \textbf{431}};
+
+  \path (cand.south) ++(0,-0.35) coordinate (c1);
+  \node[side, anchor=north] (ta) at (\R,0 |- c1) {Excluded on title and abstract: \textbf{362}\\[1pt]
+    neither translation nor its evaluation:~173; related topic meeting none of \mbox{I1--I3}:~92; natural-language task (E1):~47; same-language equivalence:~13; no evaluation (E2):~12; translation as a minor task \mbox{(L-TASK)}:~11; clone detection (E3):~8; duplicate (E5):~6};
+  \path (ta.south) ++(0,-0.35) coordinate (c2);
+  \node[box, anchor=north] (sought) at (0,0 |- c2) {Full text sought\\ \textbf{69}};
+  \node[side] (e6) at (\R,0 |- sought) {No full text available (E6): \textbf{3}};
+  \node[box, below=0.45cm of sought] (read) {Full text read\\ \textbf{66}};
+
+  \path (read.south) ++(0,-0.35) coordinate (c3);
+  \node[side, anchor=north] (ft) at (\R,0 |- c3) {Excluded after full text: \textbf{15}\\[1pt]
+    translation as a minor task \mbox{(L-TASK)}:~5; related topic meeting none of \mbox{I1--I3}:~4; no evaluation (E2):~2; same-language equivalence:~2; neither translation nor its evaluation:~1; duplicate (E5):~1};
+  \path (ft.south) ++(0,-0.35) coordinate (c4);
+  \node[box, anchor=north, fill=gray!12] (inc) at (0,0 |- c4) {\textbf{Included: 51}\\ 49 main corpus, 2 in the I3 tier};
+
+  \draw[arr] (scan) -- (hits);
+  \draw[arr] (hits) -- (cand);
+  \draw[arr] (team.south) |- (cand.east);
+  \draw[arr] (cand) -- (sought);
+  \draw[arr] (0,0 |- ta.west) -- (ta.west);
+  \draw[arr] (sought) -- (e6);
+  \draw[arr] (sought) -- (read);
+  \draw[arr] (read) -- (inc);
+  \draw[arr] (0,0 |- ft.west) -- (ft.west);
+\end{tikzpicture}

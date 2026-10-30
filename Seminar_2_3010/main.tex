@@ -1,0 +1,91 @@
+%% =====================================================================
+%% How Is Behavioral Equivalence Evaluated in LLM-Based Code Translation
+%% and Migration? A Systematic Mapping Study
+%%
+%% COURSE VERSION: NeurIPS 2025 style (neurips_2025.sty), single column.
+%% The EASE version of the same paper is main-ease.tex (ACM sigconf).
+%% Both files read the same sections/, figures/ and refs.bib, so edit the
+%% content once and compile whichever main file you need.
+%%
+%% Numbers match the workbook Kiem_tra_3_tab_ICSE_FSE_ASE.xlsx (23 Oct 2026).
+%% See README.md for the editing rules.
+%% =====================================================================
+
+%% Numbered citations [1], [2,3] instead of author-year.
+\PassOptionsToPackage{numbers,compress,sort}{natbib}
+\documentclass{article}
+
+%% `preprint` prints the author names (the default mode hides them for
+%% double-blind review). We also blank the footer notice, which would
+%% otherwise say "Preprint."; this is a course paper, not a NeurIPS paper.
+%% Do not use the `final` option: it prints "NeurIPS 2025" in the footer.
+\usepackage[preprint]{neurips_2025}
+\makeatletter
+\renewcommand{\@noticestring}{}
+\makeatother
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{nicefrac}
+\usepackage{microtype}
+
+\input{macros}
+
+%% Line numbers are OFF (course submission). To turn them back on for an
+%% internal review round, uncomment the two lines below.
+% \usepackage{lineno}
+% \linenumbers
+
+\title{How Is Behavioral Equivalence Evaluated in LLM-Based Code Translation and Migration? A Systematic Mapping Study}
+
+%% Five authors. \And lets LaTeX break the line; \AND forces a new line.
+%% Replace every placeholder (name, institute, email).
+\author{%
+  Author Name 1 \\
+  Institute 1 \\
+  \texttt{author1@example.com} \\
+  \And
+  Author Name 2 \\
+  Institute 2 \\
+  \texttt{author2@example.com} \\
+  \And
+  Author Name 3 \\
+  Institute 3 \\
+  \texttt{author3@example.com} \\
+  \AND
+  Author Name 4 \\
+  Institute 4 \\
+  \texttt{author4@example.com} \\
+  \And
+  Author Name 5 \\
+  Institute 5 \\
+  \texttt{author5@example.com} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/00-abstract}
+
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-related-work}
+\input{sections/04-method}
+\input{sections/05-results}
+\input{sections/05a-pilot}
+\input{sections/06-discussion}
+\input{sections/07-threats}
+\input{sections/08-conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\appendix
+\input{sections/09-appendix}
+
+\end{document}

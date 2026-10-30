@@ -26,8 +26,10 @@
 %%                    a whole new paragraph or list (may span paragraphs)
 %% \addedtag          put at the start of a caption to flag a new table/figure
 %% \fillin{...}       a slot the team must fill (number, name, link)
-%% Set \reviewfalse to hide all marks in one go; text inside \new{} and
-%% the added environment stays, in black.
+%% \hcrev{...}        text changed in the RQ1/RQ2 revision after review (Ha Cao)
+%% \revtag            put at the start of a caption whose table/figure changed
+%% Set \reviewfalse to hide all marks in one go; text inside \new{},
+%% \hcrev{} and the added environment stays, in black.
 \newif\ifreview \reviewtrue
 \ifreview
   \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
@@ -36,6 +38,8 @@
   \newenvironment{added}{\color{teal}}{}
   \newcommand{\addedtag}{\textcolor{teal}{\textbf{[new]}}~}
   \newcommand{\fillin}[1]{\colorbox{orange!25}{\textbf{#1}}}
+  \newcommand{\hcrev}[1]{\textcolor{magenta!70!black}{#1}}
+  \newcommand{\revtag}{\textcolor{magenta!70!black}{\textbf{[revised]}}~}
 \else
   \newcommand{\TODO}[1]{}
   \newcommand{\cmt}[2]{}
@@ -43,6 +47,8 @@
   \newenvironment{added}{}{}
   \newcommand{\addedtag}{}
   \newcommand{\fillin}[1]{#1}
+  \newcommand{\hcrev}[1]{#1}
+  \newcommand{\revtag}{}
 \fi
 
 %% ---- Notation -------------------------------------------------------

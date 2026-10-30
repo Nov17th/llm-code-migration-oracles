@@ -1,0 +1,76 @@
+%% ===== Pilot: RQ4 =====
+% [28/10] Tiêu đề viết hoa như các mục khác; $O_b$ thành O-b như cả bài; thêm trích dẫn. Bỏ các giới hạn đã có ở đoạn "The pilot"
+% của Threats. Mọi số đã chạy lại từ pilot/results trên GitHub (lần chạy 25/10).
+\section{Pilot: One \new{Set of Translations, Four Oracles}}
+\label{sec:pilot}
+
+% [28/10] Đoạn RQ4 đưa lên trước \subsection{Design} làm đoạn mở của mục, như mục 4 và 5.
+% [28/10] Thêm lý do chọn bốn oracle (nối với bản đồ). "execution-based comparison reference" nói thẳng vì sao test là mốc so.
+% [28/10] Thêm lý do cần RQ4: hai bài có LLM judge đều không so judge với test (đã kiểm với bài gốc).
+RQ4 asks how automatic oracles that do not execute the \new{code} compare with existing tests on the same LLM translations. We hold the translations fixed and vary \new{only the oracle}: compilation (\new{O-b}), existing tests (\new{O-c}), \new{surface} similarity (\new{O-a}) and an LLM judge (\new{O-h}). \new{The first three are common in the map (35, 28 and 13 of the 49 papers); LLM judges are new, appearing in 2 papers from 2026, neither of which checks its judge against tests and one of which relies on it alone~\cite{depupgrade,wca4z}. Of the four, only existing tests execute the translation, so we use them as the reference, although passing them does not prove equivalence for every input.\cmtpink{P51, Major; R1, DA, R2}{The reference is a suite that your own mutation check shows to be weak (16\% of compiling mutants survive), and no disagreement was adjudicated, yet Table 11's False accept and False reject and the text (errs, only the tests reject it) treat the test verdict as truth. The oracles also use different references (Java reference for CodeBLEU, Python code for the judge, Java tests for O-c). The Python originals run, so add the oracle the paper recommends most (G5): run original and translation on a larger input set (e.g. EvalPlus/HumanEval+ inputs converted to Java) and use passes the tests and matches the original as the reference; adjudicate the 76 disagreement tasks or a sample with two raters. Until then rename the columns (e.g. accepts test failures).}}
+
+\subsection{\new{Design}}
+\label{sec:pilot-design}
+
+% [28/10] Giới thiệu HumanEval-X; nói rõ vì sao dịch sang Java và bỏ docstring; tên model kèm trích dẫn thay cho tag Ollama. Bỏ
+% footnote repo (đã cite bài CodeGeeX), câu loader và vế "does not establish independence"; URL, hash, tag có trong code và run_info.json.
+\paragraph{Tasks and generation.}
+\new{HumanEval-X~\cite{humanevalx} provides each of its 164 problems in several languages, including Python and Java, with a reference solution and tests in each. We translate every task from Python to Java, not the reverse, because only a compiled, statically typed target makes compilation a meaningful check.} The translator receives the Python implementation \new{and} the benchmark's Java class and method signature, but neither the Java reference \new{solution} nor \new{the} tests, \new{and} produces one translation per task, without a test-guided repair loop. \new{We remove the docstring from the Python code so that the model translates the code rather than solving the task from its description.} \new{The translator is Qwen2.5-Coder 7B Instruct~\cite{qwencoder} and the judge Llama~3.1 8B Instruct~\cite{llama3}, both quantized to 4 bits (q4\_K\_M) and} served by Ollama~0.40.11 \new{with} temperature~0, seed~1234\new{,} a 4,096-token context \new{and output limits of} 1,024 tokens for translation and 128 for judgment. \new{A judge from another model family avoids having a model grade its own output. The single run (October~25, 2026; Tesla~T4 GPU; OpenJDK~21.0.12) is saved with the} model digests, prompt and dataset hashes and the executed notebook.
+
+% [28/10] Bỏ chi tiết "public class Solution" (có trong oracles.py). "0.6 … not a validated boundary" viết thành lý do có ba ngưỡng.
+% Thêm: judge trả lời YES/NO kèm một câu lý do (theo prompt trong llm.py).
+\paragraph{Oracle implementation.}
+Compilation runs \texttt{javac} on the extracted Java class\new{, preceded by} the task's imports, \new{and times out after 60 seconds}. The test oracle compiles the translation together with the benchmark \new{tests and} runs \new{them for at most 10 seconds;} any compilation error, nonzero exit or timeout \new{counts as} a rejection. Similarity \new{is} CodeBLEU\new{~\cite{codebleu} (version 0.7.0)\cmtpink{P52, Minor; DR, R2}{0.7.0 is the version of the unofficial codebleu PyPI package, not of Ren et al.'s metric: write the codebleu Python package (version 0.7.0), an implementation of Ren et al.'s metric.}} against the Java reference \new{solution. No CodeBLEU threshold is validated for equivalence, so we report three (0.5, 0.6 and 0.7) and treat the middle one as the main threshold.} The judge \new{sees} the Python implementation and \new{the} generated Java code\new{, but not the tests or their verdicts, and} is asked whether \new{the two} return the same result for every valid input. \new{It answers YES or NO and gives a one-sentence reason; every answer could be parsed.}
+
+% [28/10] Kiểm harness chuyển lên Design; nói rõ lời giải là của benchmark và mục đích của mutant. "Not an estimate of … false-acceptance
+% rate" viết thành cận trên, kèm ví dụ mutant tương đương HumanEval/13 (đã kiểm trong selfcheck). Bỏ câu MBTA.
+% [29/10] Thêm mutant sống sót không tương đương (HumanEval/131; đã chạy Java: với 2468 lời giải trả 0, mutant trả 1; test Java không có số toàn chữ số chẵn, test Python có) để chứng minh test có bỏ sót. Cận 16% chỉ áp cho lỗi đã gieo.
+\paragraph{\new{Checks on the harness.}}
+\new{Before running the models, we checked the harness on answers known to be correct.} All 164 \new{of the benchmark's} Java reference solutions compile, pass their tests, score CodeBLEU~1.0 \new{against themselves and, when wrapped in an answer formatted like a model's, come out of the code-extraction step unchanged}. \new{To see how strong the tests are, we then seeded one small fault at a time into the references: each of the 298 resulting mutants changes one relational or arithmetic operator, flips one returned Boolean value or turns one assigned 0 into 1.\cmtpink{P53, Minor; R1, DA}{298 mutants over 164 tasks implies a selection from the mutation sites: state the tool or script, the operators, the sampling rule and seed, and how the one rejected mutant per task for the judge check was chosen; report survival per operator. Also classify the 46 survivors as equivalent or not and report the non-equivalent survival rate: 84\% killed can equally be read as fairly strong tests, so present both readings.} Of the 288 mutants that compile, the tests reject 242 and the other 46 (16.0\%) survive. Some survivors behave like the reference: in HumanEval/13, changing \texttt{a > b} to \texttt{a >= b} has no effect, because the method has already returned when \texttt{a == b}. Others do not. HumanEval/131 asks for the product of the odd digits of a number, or 0 if there are none. One of its mutants starts the count of odd digits at 1, so for a number whose digits are all even, such as 2468, it returns 1 instead of 0. This mutant survives because every number in the Java tests has at least one odd digit, whereas the Python tests for the same problem also check 2468. The tests therefore miss some of the seeded faults, up to 16\%. This bound does not extend to faults in the translations.}
+
+% [28/10] Mục "RQ4: …" mở bằng câu trả lời, thay cho đoạn "Scope and answer to RQ4" ở cuối; tiêu đề là cụm danh từ như các RQ khác.
+\subsection{\new{RQ4: Agreement with existing tests}}
+\label{sec:pilot-results}
+
+% [29/10] Thêm câu 25 và 4 trong 32 bản trượt test (verdicts.csv, ngưỡng chính 0.6; ở 0.5 là 27 và 5, ở 0.7 là 23 và 2), làm chỗ dựa cho hướng nghiên cứu 1 ở Discussion.
+\new{The three oracles that do not execute the code often depart from the test verdicts: at least one of them disagrees with the tests on 76 of the 164 tasks (46.3\%). Of the 32 failing translations, 25 are accepted by one or more of these oracles but only 4 by all three. Compilation agrees with the tests most often (on 90.9\% of the tasks) and errs only by accepting translations that the tests reject, whereas similarity and the judge also reject translations that pass.\cmtpink{P54, Minor; R1; open since R26}{Raw agreement mostly reflects the 80.5\% pass rate (an oracle that accepts everything agrees on 80.5\%). Chance-corrected, Cohen's kappa against the tests is 0.65 for compilation, 0.38, 0.26 and 0.29 for CodeBLEU at 0.5, 0.6 and 0.7, and 0.26 for the judge: the judge and CodeBLEU at 0.6 are indistinguishable and CodeBLEU at 0.5 does better. Add kappa or balanced accuracy to Table 11 and reword the ordering. Also state that 76, 25 and 4 use CodeBLEU at 0.6 (64, 27, 5 at 0.5; 86, 23, 2 at 0.7).}} A reported \new{success} rate therefore needs its oracle, \new{its} threshold and \new{the scope of the evaluation} to be interpretable\new{; Section~\ref{sec:threats} discusses the limits of this pilot.}
+
+% [28/10] Thêm cột Agrees mà đoạn Analysis hứa; định nghĩa cột chuyển vào chú thích, bỏ đoạn Analysis (câu "recomputed…" trùng
+% Threats). Mọi cột ghi phần trăm cho cùng đơn vị (bỏ cột số lượng). "Accept / test reject", "Reject / test pass" thành "False accept",
+% "False reject", tính trên 32 và 132. Đánh dấu ngưỡng chính 0.6.
+\begin{table}[t]
+  \centering
+  \caption{\new{The same 164 translations under four oracles, in percent. Accepts and Agrees are shares of the 164: the translations that an oracle accepts and the tasks on which it gives the same verdict as the tests. False accept is the share that the oracle accepts of the 32 translations that the tests reject; false reject is the share that it rejects of the 132 that the tests pass. Both are judged against the tests, not against true equivalence.}}
+  \label{tab:pilot-oracles}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lrr@{\hspace{12pt}}rr@{}}
+    \toprule
+    Oracle & \new{Accepts} & \new{Agrees} & \new{False accept} & \new{False reject} \\
+    \midrule
+    Compilation \new{(O-b)} & 89.6 & \new{90.9} & \new{46.9} & \new{0.0} \\
+    Existing tests \new{(O-c)} & 80.5 & --- & --- & --- \\
+    CodeBLEU \new{(O-a)} $\geq 0.5$ & 82.3 & \new{81.1} & \new{53.1} & \new{10.6} \\
+    \quad $\geq 0.6$ \new{(main)} & 67.1 & \new{70.7} & \new{40.6} & \new{26.5} \\
+    \quad $\geq 0.7$ & 51.8 & \new{65.2} & \new{15.6} & \new{39.4} \\
+    LLM judge \new{(O-h)} & 73.8 & \new{73.8} & \new{50.0} & \new{20.5} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% [28/10] Tiêu đề ba đoạn kết quả thành nhãn theo oracle (bản gốc là câu nhận định); ý "tùy oracle và ngưỡng" giữ ở câu đầu.
+% 15 bài biên dịch được mà trượt test = 14 lỗi lúc chạy + 1 lỗi giao diện (signature và test của benchmark viết "filterIntergers",
+% model đổi thành "filterIntegers"). Thêm câu vì sao không ngưỡng CodeBLEU nào tách được hai nhóm (số theo oracles.jsonl).
+\paragraph{\new{Compilation and similarity.}}
+\new{Between 51.8\% (CodeBLEU at 0.7) and 89.6\% (compilation) of the same 164 translations count as correct, depending on the oracle and threshold (Table~\ref{tab:pilot-oracles}). Compilation accepts 15 of the 32 translations that the tests reject, so the compile rate exceeds the test pass rate by 9.1 percentage points. Of these 15, 14 fail at run time and one compiles alone but not with the tests: the benchmark's signature and tests spell the method \texttt{filterIntergers}, and the model renamed it \texttt{filterIntegers} (HumanEval/22). CodeBLEU errs in both directions: at 0.6 it accepts 13 translations that the tests reject and rejects 35 that they pass, and raising the threshold to 0.7 lowers the first number to 5 but raises the second to 52. No threshold can separate the two groups, since a translation that fails the tests scores as high as 0.98 (HumanEval/50) and one that passes as low as 0.30; translations that fail average 0.51 and those that pass 0.76.}
+
+% [28/10] Bỏ câu "happens to equal its acceptance rate" (hai số bằng nhau vì judge nhận đúng 16/32 bản trượt test) và câu rào
+% "general ranking"; câu 76/164 và số 90.9% của compilation chuyển lên đầu mục RQ4. Thêm ví dụ HumanEval/50 (đã kiểm dữ liệu).
+\paragraph{\new{The LLM judge.}}
+The judge accepts \new{16 of the 32 translations that the tests reject and rejects 27 of the 132 that they pass, so it agrees with the tests on 73.8\% of the tasks, against 70.7\% for CodeBLEU at 0.6.\cmtpink{P55, Minor; open since R25}{Accepts and Agrees are both 73.8\% for the judge, because it accepts exactly 16 of the 32 failing translations; add a footnote, or readers will suspect a copy error. See also the kappa comment above.} A wrong verdict can come with a plausible reason. In HumanEval/50 the translation computes \texttt{(ch - 5 - \textquotesingle a\textquotesingle) \% 26}, which, unlike in Python, is negative in Java for the letters \texttt{a} to \texttt{e}. The translation compiles and scores CodeBLEU 0.98, and the judge accepts it because it ``handles wrap-around cases correctly''; only the tests reject it.}
+
+% [28/10] Kiểm judge trên đáp án đã biết tách thành đoạn riêng; thêm câu nêu mục đích và số 25 bài judge bác lời giải tham chiếu
+% nhưng nhận bản dịch (đã kiểm). Câu cuối giữ hai ý của bản gốc: lời giải chưa được chứng minh tương đương, mutant được chọn
+% bằng chính bộ test.
+\paragraph{\new{The judge on known answers.}}
+\new{Disagreeing with the tests does not by itself make the judge wrong, so we also gave it answers whose correctness is known: every reference solution and, for the 142 tasks that have one, a compiling mutant that the tests reject. It rejects 117 of the 142 mutants but also 67 of the 164 references (40.9\%), which all pass the tests; its balanced accuracy, the mean of its accuracy on the references (59.1\%) and on the mutants (82.4\%), is 70.8\%. On 25 tasks, both the reference and the model's translation pass the tests, yet the judge rejects the reference and accepts the translation. These known verdicts still rest partly on the tests: the references are benchmark solutions that pass them but are not proven equivalent to the Python code, and each mutant was chosen because the tests reject it.\cmtpink{P56, Major; DA, R1}{Then the 41\% headline is not yet judge error. A strict every-valid-input question can rightly reject a reference (e.g. 32-bit overflow vs Python's unbounded integers, the Background's own example). Adjudicate the 67 rejected references (or a sample, two raters, with agreement), or label them by running the Python originals and the Java references on generated inputs, and report the judge's accuracy against that label.}}

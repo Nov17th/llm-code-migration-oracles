@@ -1,0 +1,97 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main-ease.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+The style file: ACM-Reference-Format.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: refs.bib
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--empty address in rulesynth
+Warning--empty address in copilotmig
+Warning--empty address in rustassure
+Warning--empty address in ipmodern
+Warning--empty address in wca4z
+Warning--empty address in depwaretrans
+Warning--empty address in codehints
+Warning--empty address in dristi
+Warning--empty address in vimpt
+Warning--empty address in dgir
+Warning--empty address in kcobagent
+Warning--page numbers missing in both pages and numpages fields in mbta
+Warning--empty address in terramod
+Warning--empty address in coboljava
+Warning--empty address in recodeagent
+Warning--empty address in pylibmig
+Warning--empty address in jiao23
+Warning--empty address in collaboration
+Warning--empty address in oracleescape
+Warning--empty address in deepmodelx
+Warning--empty address in arkts
+Warning--empty address in travel
+Warning--empty address in transgraph
+Warning--empty address in depupgrade
+Warning--empty address in intertrans
+Warning--empty address in freshbrew
+Warning--empty address in msa
+Warning--empty address in googlemig
+Warning--empty address in rustrepotrans
+Warning--empty address in lostintranslation
+Warning--empty address in tagteam
+Warning--page numbers missing in both pages and numpages fields in byam
+Warning--empty address in smartc2rust
+Warning--empty address in pli
+Warning--empty address in evoc2rust
+Warning--empty address in rise
+Warning--empty address in vert
+Warning--empty address in equivfusion
+Warning--empty address in semisup
+You've used 62 entries,
+            6335 wiz_defined-function locations,
+            1876 strings with 33136 characters,
+and the built_in function-call counts, 83373 in all, are:
+= -- 10466
+> -- 3082
+< -- 0
++ -- 1062
+- -- 1022
+* -- 6382
+:= -- 7944
+add.period$ -- 312
+call.type$ -- 62
+change.case$ -- 574
+chr.to.int$ -- 60
+cite$ -- 101
+duplicate$ -- 7236
+empty$ -- 5061
+format.name$ -- 1264
+if$ -- 20308
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 273
+newline$ -- 577
+num.names$ -- 432
+pop$ -- 2804
+preamble$ -- 1
+purify$ -- 1066
+quote$ -- 0
+skip$ -- 2665
+stack$ -- 0
+substring$ -- 6548
+swap$ -- 812
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1546
+warning$ -- 39
+while$ -- 379
+width$ -- 0
+write$ -- 1290
+(There were 39 warnings)
