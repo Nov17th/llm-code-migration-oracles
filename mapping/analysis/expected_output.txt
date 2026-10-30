@@ -13,49 +13,54 @@ FSE 2024       261           6    17         17        2   0
 FSE 2025       451           1    35         36        6   1
 FSE 2026       563           2    64         64       11   1
 ASE 2024       299           1    25         25        4   0
-ASE 2025       447           1    53         53        4   0
+ASE 2025       447           1    53         53        5   0
 ASE 2026       497           7    69         69        9   0
+added by Crossref (in no track program): 216  keyword hits among them: 13  included: 0
+recall check: known in-scope papers 40  retrieved by the string 39  missed ['C169']
+included papers that only the scan found: 12
 
 == Selection (Sections 4.3-4.4, Figure 1) ==
 candidates: 431 {'keyword hit': 430, 'known paper missed by the search': 1}
-included: 51 {'main': 49, 'I3': 2}  excluded: 380
-exclusion reasons (all): {'¬I1 ¬I2': 174, '¬I1': 96, 'E1': 47, 'L-TASK': 16, 'I3-instr': 15, 'E2': 14, 'E3': 8, 'E5': 7, 'E6': 3}
+included: 52 {'main': 50, 'I3': 2}  excluded: 379
+exclusion reasons (all): {'¬I1 ¬I2': 174, '¬I1': 96, 'E1': 47, 'L-TASK': 16, 'I3-instr': 15, 'E2': 14, 'E3': 8, 'E5': 7, 'E6': 2}
 excluded on title/abstract: 362 (title only: 3)
    reasons: {'¬I1 ¬I2': 173, '¬I1': 92, 'E1': 47, 'I3-instr': 13, 'E2': 12, 'L-TASK': 11, 'E3': 8, 'E5': 6}
-full text sought: 69  not available (E6): 3  read: 66
+full text sought: 69  not available (E6): 2  read: 67
 excluded after full text: 15 {'L-TASK': 5, '¬I1': 4, 'I3-instr': 2, 'E2': 2, 'E5': 1, '¬I1 ¬I2': 1}
 clarification rules (Table 4): {'L-TASK': 16, 'L-ARCH': 6, 'L-DECOMP': 5, 'L-SUM': 3, 'L-BASE': 2, 'L-XEQ': 2, 'L-TEST': 1, 'L-RB': 1}  total: 36  exclusions: 31  inclusions: 5
 
-== Corpus overview (Section 5.1), main corpus n = 49 ==
-by year: {'2024': 8, '2025': 14, '2026': 27}
-by track: {'Research': 28, 'Industry/SEIP': 9, 'Journal-first': 5, 'NIER': 3, 'Poster': 2, 'Demonstration': 1, 'Ideas, Visions and Reflections': 1}
-migration kinds (a paper can have several): {'XL': 33, 'LIB': 12, 'VER': 3, 'FW': 3, 'DIA': 2}
+== Corpus overview (Section 5.1), main corpus n = 50 ==
+by year: {'2024': 8, '2025': 15, '2026': 27}
+   share of the papers scanned that year: {'2024': '0.68%', '2025': '1.05%', '2026': '1.45%'}
+by track: {'Research': 29, 'Industry/SEIP': 9, 'Journal-first': 5, 'NIER': 3, 'Poster': 2, 'Demonstration': 1, 'Ideas, Visions and Reflections': 1}
+migration kinds (a paper can have several): {'XL': 33, 'LIB': 12, 'DIA': 3, 'VER': 3, 'FW': 3}
 legacy: 5  Rust target: 13
-LLM role: {'proposed technique': 32, 'evaluated subject': 9, 'proposed technique;evaluated subject': 4, 'baseline only': 3, 'evaluation tooling': 1}
+LLM role: {'proposed technique': 32, 'evaluated subject': 9, 'proposed technique;evaluated subject': 4, 'baseline only': 3, 'evaluation tooling': 1, 'no LLM': 1}
 
 == RQ1: oracle frequency (Figure 2) ==
-  O-a 13 (27%)
-  O-b 35 (71%)
-  O-c 28 (57%)
+  O-a 14 (28%)
+  O-b 35 (70%)
+  O-c 29 (58%)
   O-d 7 (14%)
   O-e 2 (4%)
-  O-f 14 (29%)
+  O-f 14 (28%)
   O-g 2 (4%)
   O-h 2 (4%)
-  O-i 17 (35%)
-number of oracles per paper: {1: 9, 2: 16, 3: 18, 4: 5, 5: 1}
-no execution-based oracle (none of O-c..O-f): 9
+  O-i 17 (34%)
+number of oracles per paper: {1: 9, 2: 17, 3: 18, 4: 5, 5: 1}
+no test-based oracle, i.e. no oracle that executes the code (none of O-c..O-f): 9
   of these, a single oracle: 5 ['collaboration', 'pig', 'pli', 'vimpt', 'wca4z']
-compare outputs with the original program (O-f or O-g): 14
-existing tests but no compile rate (O-c without O-b): 5
+  of these, human or LLM judgment: 6 ['depupgrade', 'msa', 'pig', 'pli', 'rulesynth', 'wca4z']
+run the original program to compare (O-f or O-g): 14
+existing tests but no compile rate (O-c without O-b): 6
 differential testing as the only test-based oracle: 9 of 14
 mean oracles by track: {'Demonstration': 3.0, 'Ideas, Visions and Reflections': 1.0, 'Industry/SEIP': 2.4, 'Journal-first': 2.4, 'NIER': 1.7, 'Poster': 2.0, 'Research': 2.6}
 
 == RQ1: oracle combinations (Table 5, lower triangle) ==
       O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
-O-a    13
+O-a    14
 O-b     7   35
-O-c     7   23   28
+O-c     8   23   29
 O-d     0    7    5    7
 O-e     1    1    1    0    2
 O-f     1   12    4    3    0   14
@@ -66,22 +71,24 @@ O-i     4   12    6    3    0    5    1    1   17
 == RQ2: oracle use by context (Table 6) ==
 group                      n  O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
 Legacy                     5    0    1    0    0    1    2    0    1    1
-Not legacy                44   13   34   28    7    1   12    2    1   16
+Not legacy                45   14   34   29    7    1   12    2    1   16
 XL                        33    7   23   20    6    2   11    2    1    6
 LIB                       12    4    9    6    2    0    1    0    1    9
 VER                        3    1    2    1    0    0    1    0    0    1
 FW                         3    1    3    1    0    1    1    0    0    1
-DIA                        2    1    1    0    0    0    1    0    0    2
-Research                  28    8   19   15    6    1    8    2    1   13
+DIA                        3    2    1    1    0    0    1    0    0    2
+Research                  29    9   19   16    6    1    8    2    1   13
 Industry/SEIP              9    2    7    5    1    1    3    0    1    2
 NIER, IVR, demo, poster    7    2    4    3    0    0    2    0    0    2
 Journal-first              5    1    5    5    0    0    1    0    0    0
 2024                       8    3    5    5    1    0    2    0    0    1
-2025                      14    3   10    8    3    0    4    2    0    6
+2025                      15    4   10    9    3    0    4    2    0    6
 2026                      27    7   20   15    3    2    8    0    2   10
+legacy papers expected to use existing tests if legacy made no difference: 2.9 (5 x 29 / 50)
+LIB papers with human evaluation: 9 of 12  of these also executing the code: 6
 
-== RQ2: origin of execution-based oracles (Table 7) ==
-  c:B   14
+== RQ2: origin of test-based oracles (Table 7) ==
+  c:B   15
   c:P   12
   c:BP  2
   d:S   5
@@ -93,11 +100,20 @@ Journal-first              5    1    5    5    0    0    1    0    0    0
   f:L   3
   f:C   2
   f:U   2
+  O-c rows sum to 29
+  O-d rows sum to 8
+  O-e rows sum to 2
+  O-f rows sum to 15
+LIB or VER papers: 14
 existing-test origin, library or version migration: {'c:P': 6, 'c:B': 1}  translation (XL): {'c:B': 12, 'c:P': 6, 'c:BP': 2}
+papers with O-c, O-d or O-e: 32  origin of expected outputs not stated (e:U): 1
+differential-testing papers with inputs not described (f:U): 2 of 14
 
 == RQ3: several oracles on the same outputs ==
-papers: 33  by group: {'figure3': 18, 'other': 9, 'table8': 10}
-Figure 3 rows: 18  gap range: 3 to 98 points
+papers combining oracles: 41  with separate numbers on the same outputs: 34  without: 7
+   by group (a paper can be in two): {'figure3': 18, 'other': 9, 'table8': 11}
+   Figure 3: 18  table of other comparisons only: 7  other: 9  comparable (Figure 3 or table): 25
+Figure 3 rows: 18  gap range: 3 to 98 points  gap above 10 points: 13
   DepTrans                    97.90   0.00  gap  98
   AlphaTrans                  98.80  25.14  gap  74
   DepUpgrade                  96.75  50.41  gap  46
@@ -116,22 +132,52 @@ Figure 3 rows: 18  gap range: 3 to 98 points
   Translation Tag Team        78.29  72.29  gap   6
   BatFix                      86.68  81.23  gap   5
   EvoC2Rust                   92.25  89.53  gap   3
-Table 8 rows: 17
+Table 8 rows: 19  papers by group: {'Further check on outputs that pass tests or fuzzing': 4, 'Mutation score next to CA': 1, 'Similarity next to a pass rate': 6}
+similarity next to a pass rate: 6 papers; the two rows are ranked in opposite order in 5 ['CAST', 'DLBench', 'DepTrans', 'TerraMod', 'UniTrans']
+   papers with exact match: ['CAST', 'DLBench', 'UniTrans']  exact match below the pass rate in every row: True
 
 == RQ3: stated limitations (Table 9) ==
   15  Weak or few tests, so passing tests does not imply equivalence
   10  No limitation of the own oracle stated
    6  Incomplete differential, fuzzing, symbolic or bounded checks
+   4  Misleading surface similarity
    3  Oracle derived from the same source as the output
    3  Subjective human evaluation, or no agreement measured
-   3  Misleading surface similarity
    3  The LLM games the oracle
    2  Other limitation of the oracle
    2  No executable oracle available
    2  Compiling does not imply correct behavior
+limitation of the own oracle stated: 40 of 50
+papers with existing tests naming weak or few tests: 14 of 29  by origin: {'c:P': 5, 'c:BP': 1, 'c:B': 8}
+single oracle without executing the code, no limitation stated: 4 of 5
+differential-testing papers naming incomplete checks: 6 of 14
 
 == RQ3 and RQ4: other counts ==
-human evaluation papers: 17  reporting rater agreement: 3
+human evaluation papers: 17  reporting rater agreement: 3  without: 14  of these naming subjective evaluation: 3
 final oracle also used in the technique: {'trained against the same kind of oracle': 2, 'same oracle selects or repairs outputs': 3}
 formal verification papers targeting Rust: 2 of 2
 LLM-generated tests / LLM judges by year: {'2026': 2} {'2026': 2}
+
+== Counts from reading the full texts (4_coding/reading_counts.csv) ==
+  baseline_smaller_model                        3 papers  {'proposes a smaller neural model': 2, 'proposes a non-neural technique': 1}
+  c_source_called_legacy_with_existing_tests    5 papers  {'calls C legacy': 5}
+  denominator_excludes_noncompiling             2 papers  {'behavioral rate over compiling outputs only': 2}
+  fault_classification                         19 papers
+  hidden_vs_own_tests                           1 papers  {'98.1% own-translated vs 86.5% hidden': 1}
+  judge_accuracy_reported                       2 papers  {'no accuracy figure': 2}
+  no_separate_numbers                           7 papers  {'successive checks, final outcome only': 4, 'per-oracle results only in a chart without values': 1, 'number for a single oracle only': 1, 'oracles applied to different outputs': 1}
+  other_comparison                              9 papers  {'similarity or manual judgment, no behavioral pass rate on the same outputs': 4, 'pools failures over several models': 2, 'counts compile errors or bugs, not outputs': 2, 'compilation and equivalence in different units': 1}
+  partial_human_check                           2 papers  {'20% stratified sample of test-suite-passing patches': 1, '24 successful adaptations that have a developer-authored fix': 1}
+  ranking_benchmark_vs_real                     1 papers  {'DeepSeek-R1: 73.7% -> 51.5%; DeepSeek-V3: 66.3% -> 50.1%; Claude-3.5: 74.3% -> 43.5%; Qwen-2.5-coder-32B: 56.7% -> 34.4%': 1}
+  slip_past_kinds                               5 papers  largest n per paper: 5
+  slip_past_oracles                             5 papers  largest n per paper: 4
+  translated_tests_with_code                    5 papers  {'system translates code and tests': 4, 'system migrates tests only': 1}
+
+== Checklist (Section 7.3, column "In the map") ==
+1. behavioral rate over compiling outputs only: 2 of 18 papers in Figure 3
+2. O-a with a behavioral rate on the same outputs: 6 of 14 ; O-b: 18 of 35
+3. rater agreement: 3 of 17 ; judge accuracy: 0 of 2
+4. origin not stated: 1 of 32 papers with O-c, O-d or O-e
+5. results on tests the system neither produced nor used: 1 paper
+6. compared with the original: 14 of 50 ; inputs not described: 2 of 14
+7. limitations stated: 40 of 50

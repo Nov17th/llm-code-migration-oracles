@@ -30,7 +30,7 @@ Companion volume are scanned with that volume.
   paper list. Main and Companion volumes were cross-checked through Crossref, which added 216 papers that appear
   in no track program (`track` starts with the volume name in `1_search/scanned_papers.csv`); none of their 13
   keyword hits was included. Missing abstracts were taken from
-  Semantic Scholar and arXiv. See `1_search/search_log.csv`.
+  Semantic Scholar and Crossref. See `1_search/search_log.csv`.
 - **Date of the final scan.** October 23, 2026.
 - **String**, applied to titles and abstracts (case-insensitive; `*` is a wildcard):
 
@@ -40,8 +40,10 @@ Companion volume are scanned with that volume.
   ```
 
 - **Papers without an abstract** (80) were matched against the string on their title only, and screened on it.
-- **Recall estimate.** 40 in-scope papers that meet the criteria were known before the scan. The string
-  retrieved 39 of them. The one miss (`C169`) was added to the candidates as a known paper.
+- **Recall estimate.** 40 in-scope papers that meet the criteria were known before the scan, from exploratory
+  searches of the same proceedings and from related work; column `recall_set` of `2_screening/candidates.csv`
+  marks them. The string retrieved 39 of them. The one miss (`C169`) was added to the candidates as a known paper.
+  The scan found the other 12 included papers.
 - **Candidates.** All keyword hits plus that known paper (`2_screening/candidates.csv`, column `source`).
 
 ## 4. Selection criteria (Section 4.3)
@@ -61,6 +63,10 @@ A paper is included if it satisfies I4 and at least one of I1–I3, provided tha
 | E5 | Duplicate of the same work (the most complete version is kept) |
 | E6 | Full text unavailable |
 
+Under E5 the most complete version is kept even when it lies outside the scope; this applies to one candidate
+(`C317`, whose full version appeared at MSR 2024), so that work is not mapped. One candidate first excluded under E6
+(`C041`, DLBench) was included after an author version was found.
+
 Additional codes used in column `criterion` of `candidates.csv` for exclusions:
 
 | Code | Meaning (as worded in the paper) |
@@ -76,7 +82,7 @@ Inclusion codes: `I1`, `I2`, `I3`, or combinations such as `I1/I2`.
 | Rule | Decision |
 | --- | --- |
 | L-TEST | Tests count as code: migrating tests between languages or libraries with a neural model or LLM meets I1 |
-| L-BASE | A deterministic technique meets I1 if it compares against an LLM baseline using the same oracle and reports both results |
+| L-BASE | A study proposing a deterministic technique meets I1 if the technique and an LLM baseline are evaluated with the same oracle and both results are reported |
 | L-ARCH | Microservice extraction and other architecture changes do not meet I1: they restructure a system rather than move its code to another language, version, library, dialect or framework |
 | L-DECOMP | Decompilation does not meet I1: it starts from a binary rather than from source code |
 | L-DATA | A dataset without an evaluation protocol is E2; one with a protocol meets I2 |
@@ -92,6 +98,7 @@ Inclusion codes: `I1`, `I2`, `I3`, or combinations such as `I1/I2`.
 - Column `decision_basis` records the deepest level read: `title`, `abstract` or `full text`.
 - Column `basis_note` records the version read: for example an arXiv preprint, or that only a paywalled
   version existed (E6).
+- Column `recall_set` marks the 40 known papers of the recall estimate (see Search above).
 - Hard cases were discussed within the team until agreement was reached.
 - Study quality was not scored: the RQs ask how studies evaluate equivalence, and RQ3 records the weaknesses that
   the studies state or show.
@@ -124,8 +131,9 @@ The `evidence` column gives short quotations and locations in the paper.
 
 `legacy = yes` marks a source written for a language or platform that is no longer in mainstream use, such as
 COBOL, PL/I, mainframe systems or ASP.NET WebForms. C sources and deprecated APIs are not flagged, even when a paper
-calls them legacy (EvoC2Rust, SmartC2Rust and Code hints do; flagging them would give 2 of 8 legacy papers with
-existing tests).
+calls them legacy. Code hints does so for deprecated APIs, and at least five C-to-Rust papers that use existing tests
+do so for C (`c_source_called_legacy_with_existing_tests` in `4_coding/reading_counts.csv`); flagging these five
+would give 5 of 10 legacy papers with existing tests instead of none of 5.
 
 **Track**: Research, Industry/SEIP, Journal-first, NIER, Ideas, Visions and Reflections, Poster, Demonstration.
 
@@ -151,12 +159,12 @@ technique (for example a compiler in a repair loop, or a filter on training data
 
 | Code | Oracle | What it checks |
 | --- | --- | --- |
-| O-a | Surface similarity (BLEU, CodeBLEU, exact match, AST match) | Closeness to a reference translation |
+| O-a | Surface similarity (BLEU, CodeBLEU, exact match, AST match) | Closeness to a reference solution |
 | O-b | Compilation, type checking or another well-formedness check | The output is well-formed in the target |
 | O-c | Existing tests | Behavior on a test suite that existed before the study, built for a benchmark or by the project's developers |
-| O-d | Translated tests | Behavior on the original program's own tests, translated along with the code, or, in test migration, the migrated tests themselves |
+| O-d | Translated tests | Behavior on the original program's own tests after they are translated for the study; in test migration, on the migrated tests themselves |
 | O-e | LLM-generated tests | Behavior on new tests whose expected outputs come from an LLM or a specification |
-| O-f | Differential testing | Same outputs as the original, which the study runs on the same inputs (from fuzzing, existing tests or an LLM) |
+| O-f | Differential testing | Same results as the original program, run by the study on the same inputs (for example from fuzzing, existing tests or an LLM) |
 | O-g | Formal verification | Equivalence proven or bounded-checked against the original or a specification |
 | O-h | LLM judge | An LLM's verdict on equivalence |
 | O-i | Human evaluation | A person's judgment |
@@ -171,7 +179,7 @@ technique (for example a compiler in a repair loop, or a filter on training data
 | `d:S` | Translated tests, translated by the system under evaluation |
 | `d:H` | Translated tests, translated by hand by the paper's authors |
 | `e:S` | LLM-generated tests derived from the specification that also generates the code |
-| `e:U` | LLM-generated tests; source of expected outputs not stated |
+| `e:U` | LLM-generated tests; origin of expected outputs not stated |
 | `f:F` | Differential testing with inputs from fuzzing, property-based testing or symbolic execution |
 | `f:T` | Differential testing with inputs from existing tests or benchmark data |
 | `f:L` | Differential testing with LLM-generated inputs |
@@ -201,3 +209,27 @@ ReCodeAgent compare two test suites, which is not one of the three groups.
 - `targets_rust`: Rust is a target language.
 - `reports_rater_agreement`: for papers with O-i, whether an agreement figure between raters is reported.
 - `final_oracle_also_used_in_technique`: flagged during extraction, not coded systematically.
+
+## 8. Counts from reading the full texts (`4_coding/reading_counts.csv`)
+
+A few counts in the paper rest on a reading of the full texts rather than on a field of the extraction form. They
+are recorded in `4_coding/reading_counts.csv`, one row per paper and count, with the location in the paper and a
+short quotation. Column `used_in` names the place in the paper where the count appears, `category` the value for
+that paper, and `n` a number where the row needs one: the number of kinds in a classification, of kinds of fault or of
+checks, of LLMs compared, or the size of a sample or a denominator.
+Where the paper says "at least", the rows give a lower bound.
+
+| `count_id` | A paper is counted when it |
+| --- | --- |
+| `fault_classification` | classifies the failures of migrated code into kinds |
+| `slip_past_kinds`, `slip_past_oracles` | describes kinds of fault that pass one check but not another, and which checks |
+| `ranking_benchmark_vs_real` | ranks systems differently on a benchmark and on real projects |
+| `hidden_vs_own_tests` | reports pass rates both on tests the system translated itself and on tests it never saw |
+| `c_source_called_legacy_with_existing_tests` | migrates C to Rust, calls the C code legacy and uses existing tests |
+| `no_separate_numbers` | combines oracles without separate numbers on the same outputs; `category` gives why |
+| `other_comparison` | reports several oracles on the same outputs but fits neither Figure 3 nor the table of other comparisons; `category` gives why |
+| `partial_human_check` | has people check only part of the outputs |
+| `translated_tests_with_code` | evaluates a system that translates the tests; `category` says whether it also translates the code |
+| `baseline_smaller_model` | uses the LLM only as a baseline; `category` gives the kind of technique proposed |
+| `judge_accuracy_reported` | uses an LLM judge; `category` says whether its accuracy on known answers is reported |
+| `denominator_excludes_noncompiling` | computes its behavioral rate over the compiling outputs only (Figure 3 recomputes it over all outputs) |

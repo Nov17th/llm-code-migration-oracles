@@ -1,7 +1,7 @@
 # Pilot: one set of translations, four oracles
 
 An LLM translates the 164 HumanEval-X tasks from Python to Java once, and every translation is judged by four
-oracles. The tests are the only oracle that runs the code, so each other oracle is compared with them.
+oracles. The tests are the only oracle that executes the translation, so each other oracle is compared with them.
 
 | Oracle | Code in the paper | Accepts a translation when |
 | --- | --- | --- |
@@ -45,10 +45,11 @@ prompt hashes.
 
 ## Results
 
-The run on a Kaggle T4 GPU on October 25, 2026 is in `results/`: `summary.md` has every number, and
-`kaggle_run.ipynb` is the executed notebook. Of the 164 translations, 89.6% compile and 80.5% pass the tests.
-Of the 32 translations that fail the tests, compilation accepts 15, CodeBLEU at 0.6 accepts 13 and the LLM judge
-accepts 16. The judge also rejects 27 of the 132 translations that pass, and 67 of the 164 reference solutions.
+The run on a Kaggle T4 GPU on October 25, 2026 is in `results/`: `summary.md` has the rates and counts,
+`verdicts.csv` the verdicts and CodeBLEU score of each translation, and `kaggle_run.ipynb` is the executed
+notebook. Of the 164 translations, 89.6% compile and 80.5% pass the tests. Of the 32 translations that fail the
+tests, compilation accepts 15, CodeBLEU at 0.6 accepts 13 and the LLM judge accepts 16. The judge also rejects 27
+of the 132 translations that pass, and 67 of the 164 reference solutions.
 
 ## Design choices
 
@@ -63,6 +64,8 @@ accepts 16. The judge also rejects 27 of the 132 translations that pass, and 67 
 
 ## Limitations
 
-HumanEval-X tasks are short functions with tests, unlike the legacy systems discussed in the paper. Up to 16% of
-the single-operator mutants survive the tests (some may behave like the reference), and one task fails because of
-a misspelled method name in the benchmark, so the tests are the best available reference, not the truth. Both models are small, and HumanEval-X may be in their training data.
+HumanEval-X tasks are short single functions with tests, unlike repository-scale code. Of the 288 single-operator
+mutants that compile, 46 (16%) survive the tests; some behave like the reference, but at least one does not
+(HumanEval/131). One translation fails only because the benchmark misspells a method name that the model corrected
+(HumanEval/22). The tests are therefore the best available reference, not the truth. Both models are small, and
+HumanEval-X may be in their training data.
