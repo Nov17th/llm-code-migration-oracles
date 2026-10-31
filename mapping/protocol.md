@@ -96,8 +96,9 @@ Inclusion codes: `I1`, `I2`, `I3`, or combinations such as `I1/I2`.
 - Exclusions could be decided on title and abstract, and on the title alone when no abstract was available.
   Every inclusion required reading the full text.
 - Column `decision_basis` records the deepest level read: `title`, `abstract` or `full text`.
-- Column `basis_note` records the version read: for example an arXiv preprint, or that only a paywalled
-  version existed (E6).
+- Column `basis_note` records the version read for each included paper: the published version where it was
+  accessible, otherwise an arXiv preprint or an author version. For the E6 exclusions, it records that only a
+  paywalled version existed.
 - Column `recall_set` marks the 40 known papers of the recall estimate (see Search above).
 - Hard cases were discussed within the team until agreement was reached.
 - Study quality was not scored: the RQs ask how studies evaluate equivalence, and RQ3 records the weaknesses that
