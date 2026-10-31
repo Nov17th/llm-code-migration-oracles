@@ -28,7 +28,8 @@ log = read('1_search/search_log.csv')
 cands = read('2_screening/candidates.csv')
 coding = read('4_coding/coding.csv')
 fig3 = read('4_coding/figure3_compile_vs_behavior.csv')
-tab8 = read('4_coding/table8_other_disagreements.csv')
+tab9 = read('4_coding/table9_other_disagreements.csv')
+fig3_own = read('4_coding/figure3_own_system.csv')
 reading = read('4_coding/reading_counts.csv')
 
 main = [c for c in coding if c['tier'] == 'main']
@@ -120,7 +121,7 @@ print('migration kinds (a paper can have several):', dict(kinds.most_common()))
 print('legacy:', sum(c['legacy'] == 'yes' for c in main), ' Rust target:', sum(c['targets_rust'] == 'yes' for c in main))
 print('LLM role:', dict(Counter(c['llm_role'] for c in main).most_common()))
 
-# ---------------------------------------------------------------- RQ1 (Figure 2, Table 5)
+# ---------------------------------------------------------------- RQ1 (Figure 2, Table 6)
 section('RQ1: oracle frequency (Figure 2)')
 for o in ORACLES:
     print('  %s %s' % (o, pct(sum(has(c, o) for c in main), N)))
@@ -137,13 +138,13 @@ print('differential testing as the only test-based oracle:',
       sum(has(c, 'O-f') and not any(has(c, o) for o in ('O-c', 'O-d', 'O-e')) for c in main), 'of', sum(has(c, 'O-f') for c in main))
 print('mean oracles by track:', {t: round(sum(int(c['n_oracles']) for c in main if c['track'] == t) /
                                      sum(c['track'] == t for c in main), 1) for t in sorted(set(c['track'] for c in main))})
-section('RQ1: oracle combinations (Table 5, lower triangle)')
+section('RQ1: oracle combinations (Table 6, lower triangle)')
 print('     ' + ' '.join('%4s' % o for o in ORACLES))
 for i, a in enumerate(ORACLES):
     print('%-4s ' % a + ' '.join('%4d' % sum(has(c, a) and has(c, b) for c in main) for b in ORACLES[:i + 1]))
 
-# ---------------------------------------------------------------- RQ2 (Table 6, Table 7)
-section('RQ2: oracle use by context (Table 6)')
+# ---------------------------------------------------------------- RQ2 (Table 7, Table 8)
+section('RQ2: oracle use by context (Table 8)')
 groups = [('Legacy', lambda c: c['legacy'] == 'yes'), ('Not legacy', lambda c: c['legacy'] == 'no')]
 groups += [(k, (lambda k: lambda c: k in c['migration_kinds'].split(';'))(k)) for k in ['XL', 'LIB', 'VER', 'FW', 'DIA']]
 short = {'NIER', 'Ideas, Visions and Reflections', 'Demonstration', 'Poster'}
@@ -186,7 +187,7 @@ print('papers with O-c, O-d or O-e:', len(cde), ' origin of expected outputs not
 print('differential-testing papers with inputs not described (f:U):',
       of(sum('f:U' in origins(c) for c in main if has(c, 'O-f')), sum(has(c, 'O-f') for c in main)))
 
-# ---------------------------------------------------------------- RQ3 (Figure 3, Table 8, Table 9)
+# ---------------------------------------------------------------- RQ3 (Figure 3, Table 9, Table 10)
 section('RQ3: several oracles on the same outputs')
 mg = Counter(g for c in main for g in c['multi_oracle_group'].split(';') if g and g != 'none')
 grp = lambda c: set(c['multi_oracle_group'].split(';'))
@@ -196,17 +197,22 @@ print('papers combining oracles:', len(combine), ' with separate numbers on the 
       ' without:', len(combine) - len(sep))
 print('   by group (a paper can be in two):', dict(mg))
 f3_ids = [c for c in sep if 'figure3' in grp(c)]
-t8_only = [c for c in sep if 'table8' in grp(c) and 'figure3' not in grp(c)]
-print('   Figure 3:', len(f3_ids), ' table of other comparisons only:', len(t8_only),
-      ' other:', sum(grp(c) == {'other'} for c in sep), ' comparable (Figure 3 or table):', len(f3_ids) + len(t8_only))
+t9_only = [c for c in sep if 'table9' in grp(c) and 'figure3' not in grp(c)]
+print('   Figure 3:', len(f3_ids), ' table of other comparisons only:', len(t9_only),
+      ' other:', sum(grp(c) == {'other'} for c in sep), ' comparable (Figure 3 or table):', len(f3_ids) + len(t9_only))
 gaps = [float(r['gap_points']) for r in fig3]
 print('Figure 3 rows:', len(fig3), ' gap range: %.0f to %.0f points' % (min(gaps), max(gaps)),
-      ' gap above 10 points:', sum(g > 10 for g in gaps))
+      ' gap above 10 points:', sum(g > 10 for g in gaps), ' above 20 points:', sum(g > 20 for g in gaps))
+own = {r['candidate_id']: float(r['compile_rate_pct']) - float(r['behavioral_rate_pct']) for r in fig3_own}
+gaps_own = [own.get(r['candidate_id'], float(r['gap_points'])) for r in fig3]
+print('   with the paper\'s own system where it reports both rates (figure3_own_system.csv: %s): gap range %.0f to %.0f'
+      ' points, above 10 points: %d' % (', '.join(r['short_name'] for r in fig3_own), min(gaps_own), max(gaps_own),
+                                        sum(g > 10 for g in gaps_own)))
 for r in fig3:
     print('  %-26s %6.2f %6.2f  gap %3.0f' % (r['short_name'], float(r['compile_rate_pct']), float(r['behavioral_rate_pct']),
                                          float(r['gap_points'])))
-print('Table 8 rows:', len(tab8), ' papers by group:',
-      dict(Counter(g for g, _ in sorted({(r['group'], r['short_name']) for r in tab8}))))
+print('Table 9 rows:', len(tab9), ' papers by group:',
+      dict(Counter(g for g, _ in sorted({(r['group'], r['short_name']) for r in tab9}))))
 
 
 def numbers(s):
@@ -214,15 +220,15 @@ def numbers(s):
 
 
 sim = defaultdict(list)
-for r in tab8:
+for r in tab9:
     if r['group'] == 'Similarity next to a pass rate':
         sim[r['short_name']].append(numbers(r['result'])[:2])
 rev = sorted(p for p, v in sim.items() if (v[0][0] - v[1][0]) * (v[0][1] - v[1][1]) < 0)
 print('similarity next to a pass rate:', len(sim), 'papers; the two rows are ranked in opposite order in', len(rev), rev)
-em = [p for p in sim if any('exact match' in r['oracles_compared'] for r in tab8 if r['short_name'] == p)]
+em = [p for p in sim if any('exact match' in r['oracles_compared'] for r in tab9 if r['short_name'] == p)]
 print('   papers with exact match:', sorted(em), ' exact match below the pass rate in every row:',
       all(a > b for p in em for a, b in sim[p]))
-section('RQ3: stated limitations (Table 9)')
+section('RQ3: stated limitations (Table 10)')
 for k, v in Counter(c['limitation_theme'] for c in main).most_common():
     print('  %2d  %s' % (v, k))
 theme = lambda c, t: c['limitation_theme'].startswith(t)

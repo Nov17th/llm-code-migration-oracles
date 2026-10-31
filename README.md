@@ -15,8 +15,8 @@ Translation and Migration?** The paper refers to this repository as its replicat
 | Protocol, selection criteria and all codes | `protocol.md` | Sections 1, 2 and 4 |
 | 1. Search: every scanned paper, its keyword matches, and the search log | `1_search/` | Section 4.2, Table 2 |
 | 2. Screening of the 431 candidates | `2_screening/candidates.csv` | Sections 4.3–4.4, Figure 1 |
-| 3. Extraction from the full text of the 52 included papers | `3_extraction/extraction.csv` | Section 4.5, Table 4 |
-| 4. Coding of the 52 papers, with the data of Figure 3 and Table 8 and the counts that rest on reading the full texts | `4_coding/` | Section 5 (Tables 5–9, Figures 2–3), Appendix A |
+| 3. Extraction from the full text of the 52 included papers | `3_extraction/extraction.csv` | Section 4.5, Table 5 |
+| 4. Coding of the 52 papers, with the data of Figure 3 and Table 9 and the counts that rest on reading the full texts | `4_coding/` | Section 5 (Tables 6–10, Figures 2–3), Appendix A |
 | 5. Recomputation of every count of the map | `analysis/recompute.py` | All tables and figures of the map |
 
 To recompute the counts (Python 3, standard library only):

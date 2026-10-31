@@ -1,0 +1,3 @@
+candidate_id,short_name,configuration,compile_rate_pct,behavioral_rate_pct,location_in_paper,note
+C223,DepTrans,"RAST-7B, compile and test reward weights 1:1 (the paper's own system), both benchmarks",60.7,43.5,"Table 5, TOTAL columns; abstract",Figure 3 shows the compile-only reward ablation (1:0) that the paper uses to show reward hacking
+C099,DepWareTrans,"own approach, STAR project",100.0,100.0,"Abstract; RQ results, STAR project",Figure 3 shows the file-by-file baseline; the own approach reaches 100% compilation and test success

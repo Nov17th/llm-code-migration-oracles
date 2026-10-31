@@ -1,6 +1,7 @@
 candidate_id,short_name,configuration,compile_rate_pct,behavioral_rate_pct,gap_points,fractions,compile_check,behavioral_oracle,location_in_paper
 C223,DepTrans,compile-only reward ablation (1:0),97.9,0.0,97.9,,compilation,computational accuracy (tests),reward-weight ablation
 C165,AlphaTrans,"DeepSeek, 4,654 application method fragments",98.8,25.14,73.66,,syntactic correctness,"source tests, run through GraalVM or, where GraalVM cannot run a fragment, as translated tests (functional equivalence, GS + M1 All)","RQ1 results, Table 2 (Total row)"
+C295,MBTA,"TransCoder, translations of the 52,386 non-anomalous Java mutants",91.11,29.56,61.55,"47,729/52,386; 15,487/52,386",compilation,"same outputs as the Java mutant on its tests (1 - MTS; 36,899 mutants killed)",Table 1 and the text after it (RQ1)
 C098,DepUpgrade,"GPT-5.4, benchmark of 123 tasks",96.75,50.41,46.34,119/123; 62/123,compilation,human review: semantically equivalent,Tables 3 and 5
 C169,Fruntke & Krinke,"zero-shot, Claude 3.5 Sonnet, light slice (n = 65)",61.54,18.46,43.08,40/65; 12/65,compilation,test suite,Table 1 and Section 5
 C075,VERT,"Claude-2 + VERT, C++ (569 programs)",94.73,51.85,42.88,539/569; 295/569,compilation,property-based tests against the original,"results table, C++ row"

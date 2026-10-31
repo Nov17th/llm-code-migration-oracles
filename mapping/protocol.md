@@ -12,7 +12,7 @@ in the data files. Section numbers refer to the paper.
 - **RQ3.** Which threats to oracle reliability do the studies acknowledge or demonstrate?
 - **RQ4.** How do automatic oracles that do not execute the code compare with existing tests on the same LLM translations?
   Answered by the pilot (`pilot/`), not by the mapping.
-- **RQ5.** What gaps separate current evaluation practice from the needs of real migration projects, and what
+- **RQ5.** What gaps separate current evaluation practice from the evidence a migration needs, and what
   should studies report and investigate next?
 
 ## 2. Scope (Section 4.1)
@@ -103,7 +103,7 @@ Inclusion codes: `I1`, `I2`, `I3`, or combinations such as `I1/I2`.
 - Study quality was not scored: the RQs ask how studies evaluate equivalence, and RQ3 records the weaknesses that
   the studies state or show.
 
-## 6. Extraction form (Section 4.5, Table 4)
+## 6. Extraction form (Section 4.5, Table 5)
 
 `3_extraction/extraction.csv` has one row per included paper with these fields. The rows are the drafts written
 from the full text; where they differ from `4_coding/coding.csv`, for example after the coding rules of Section 4.5
@@ -186,16 +186,18 @@ technique (for example a compiler in a repair loop, or a filter on training data
 | `f:C` | Differential testing on curated samples or rendered screens |
 | `f:U` | Differential testing; inputs not described |
 
-**Limitation theme** (`limitation_theme`): one main theme per paper, as in Table 9 of the paper.
+**Limitation theme** (`limitation_theme`): one main theme per paper, as in Table 10 of the paper.
 
 **Several oracles on the same outputs** (`multi_oracle_group`). Used for papers that report, in the text or
 tables, numbers under two or more oracle categories for the same outputs:
-- `figure3`: the paper reports both a compile (or well-formedness) rate and a behavioral pass rate. Data in
-  `figure3_compile_vs_behavior.csv`.
-- `table8`: the paper reports one of the three groups of other comparisons in RQ3: a similarity score next to a
-  pass rate; how many outputs that pass tests or fuzzing also pass a further check; or a mutation score next to CA.
-  Data in `table8_other_disagreements.csv`, with one or two settings per paper; the `note` column says what holds
-  across the paper's other settings. A paper can be both `figure3` and `table8`.
+- `figure3`: the paper reports both a compile (or well-formedness) rate and a behavioral pass rate on the same
+  outputs (Figure 3). An output must pass the first check to pass the second. Data in
+  `figure3_compile_vs_behavior.csv`. Where a row shows a configuration other than the paper's own system and the
+  paper reports both rates for its own system, `figure3_own_system.csv` gives them (DepTrans, DepWareTrans).
+- `table9`: the paper reports one of the two groups of other comparisons in RQ3 (Table 9): a similarity score next
+  to a pass rate, or how many outputs that pass tests or fuzzing also pass a further check. Data in
+  `table9_other_disagreements.csv`, with one or two settings per paper; the `note` column says what holds across the
+  paper's other settings. A paper can be both `figure3` and `table9`.
 - `other`: the paper reports per-oracle numbers in another form.
 - `none`: none of the above.
 

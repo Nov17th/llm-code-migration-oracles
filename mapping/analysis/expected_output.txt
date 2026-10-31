@@ -56,7 +56,7 @@ existing tests but no compile rate (O-c without O-b): 6
 differential testing as the only test-based oracle: 9 of 14
 mean oracles by track: {'Demonstration': 3.0, 'Ideas, Visions and Reflections': 1.0, 'Industry/SEIP': 2.4, 'Journal-first': 2.4, 'NIER': 1.7, 'Poster': 2.0, 'Research': 2.6}
 
-== RQ1: oracle combinations (Table 5, lower triangle) ==
+== RQ1: oracle combinations (Table 6, lower triangle) ==
       O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
 O-a    14
 O-b     7   35
@@ -68,7 +68,7 @@ O-g     0    2    0    1    0    2    2
 O-h     0    1    0    0    0    0    0    2
 O-i     4   12    6    3    0    5    1    1   17
 
-== RQ2: oracle use by context (Table 6) ==
+== RQ2: oracle use by context (Table 8) ==
 group                      n  O-a  O-b  O-c  O-d  O-e  O-f  O-g  O-h  O-i
 Legacy                     5    0    1    0    0    1    2    0    1    1
 Not legacy                45   14   34   29    7    1   12    2    1   16
@@ -111,11 +111,13 @@ differential-testing papers with inputs not described (f:U): 2 of 14
 
 == RQ3: several oracles on the same outputs ==
 papers combining oracles: 41  with separate numbers on the same outputs: 34  without: 7
-   by group (a paper can be in two): {'figure3': 18, 'other': 9, 'table8': 11}
-   Figure 3: 18  table of other comparisons only: 7  other: 9  comparable (Figure 3 or table): 25
-Figure 3 rows: 18  gap range: 3 to 98 points  gap above 10 points: 13
+   by group (a paper can be in two): {'figure3': 19, 'other': 9, 'table9': 10}
+   Figure 3: 19  table of other comparisons only: 6  other: 9  comparable (Figure 3 or table): 25
+Figure 3 rows: 19  gap range: 3 to 98 points  gap above 10 points: 14  above 20 points: 10
+   with the paper's own system where it reports both rates (figure3_own_system.csv: DepTrans, DepWareTrans): gap range 0 to 74 points, above 10 points: 13
   DepTrans                    97.90   0.00  gap  98
   AlphaTrans                  98.80  25.14  gap  74
+  MBTA                        91.11  29.56  gap  62
   DepUpgrade                  96.75  50.41  gap  46
   Fruntke & Krinke            61.54  18.46  gap  43
   VERT                        94.73  51.85  gap  43
@@ -132,11 +134,11 @@ Figure 3 rows: 18  gap range: 3 to 98 points  gap above 10 points: 13
   Translation Tag Team        78.29  72.29  gap   6
   BatFix                      86.68  81.23  gap   5
   EvoC2Rust                   92.25  89.53  gap   3
-Table 8 rows: 19  papers by group: {'Further check on outputs that pass tests or fuzzing': 4, 'Mutation score next to CA': 1, 'Similarity next to a pass rate': 6}
+Table 9 rows: 18  papers by group: {'Further check on outputs that pass tests or fuzzing': 4, 'Similarity next to a pass rate': 6}
 similarity next to a pass rate: 6 papers; the two rows are ranked in opposite order in 5 ['CAST', 'DLBench', 'DepTrans', 'TerraMod', 'UniTrans']
    papers with exact match: ['CAST', 'DLBench', 'UniTrans']  exact match below the pass rate in every row: True
 
-== RQ3: stated limitations (Table 9) ==
+== RQ3: stated limitations (Table 10) ==
   15  Weak or few tests, so passing tests does not imply equivalence
   10  No limitation of the own oracle stated
    6  Incomplete differential, fuzzing, symbolic or bounded checks
@@ -174,8 +176,8 @@ LLM-generated tests / LLM judges by year: {'2026': 2} {'2026': 2}
   translated_tests_with_code                    5 papers  {'system translates code and tests': 4, 'system migrates tests only': 1}
 
 == Checklist (Section 7.3, column "In the map") ==
-1. behavioral rate over compiling outputs only: 2 of 18 papers in Figure 3
-2. O-a with a behavioral rate on the same outputs: 6 of 14 ; O-b: 18 of 35
+1. behavioral rate over compiling outputs only: 2 of 19 papers in Figure 3
+2. O-a with a behavioral rate on the same outputs: 6 of 14 ; O-b: 19 of 35
 3. rater agreement: 3 of 17 ; judge accuracy: 0 of 2
 4. origin not stated: 1 of 32 papers with O-c, O-d or O-e
 5. results on tests the system neither produced nor used: 1 paper
