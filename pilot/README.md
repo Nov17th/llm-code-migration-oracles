@@ -17,15 +17,17 @@ oracles. The tests are the only oracle that executes the translation, so each ot
 | `data.py` | Downloads HumanEval-X and pairs each Python function with its Java signature, reference solution and tests |
 | `llm.py` | The translation and judge prompts, the Ollama client, and extraction of the code and the YES/NO answer |
 | `oracles.py` | The four oracles |
-| `pipeline.py` | The stages: self-check, translation, the three oracles that need no model, the judge, the judge on known answers |
+| `pipeline.py` | The stages: self-check, translation, the three oracles that need no model, the judge, the judge on answers with an expected verdict |
 | `analyze.py` | Agreement between the oracles: `summary.md`, `summary.json`, `verdicts.csv`, `disagreements.csv` |
 | `run.py` | Command line |
 | `pilot_kaggle.ipynb` | The full run on a Kaggle GPU; it contains a copy of the six files, so it runs on its own |
 
 The **self-check** runs first: the reference solutions must compile, pass the tests and score CodeBLEU 1.0, and
 single-operator mutants of them (for example `<` changed to `<=`) show how many wrong programs the tests catch.
-The **judge on known answers** shows the judge each reference solution, which is equivalent, and one mutant per
-task that the tests reject, which is not.
+The **judge on answers with an expected verdict** (called "known answers" in the code and in `summary.md`) shows
+the judge each reference solution, which passes the tests, and, for the 142 tasks that have one, the first
+compiling mutant that the tests reject. These verdicts still rest on the tests: the reference solutions are not
+proven equivalent to the Python code.
 
 ## Running
 
@@ -45,7 +47,8 @@ prompt hashes.
 
 ## Results
 
-The run on a Kaggle T4 GPU on October 25, 2026 is in `results/`: `summary.md` has the rates and counts,
+The run on a Kaggle T4 GPU on October 25, 2026 is in `results/`: `summary.md` has the rates and counts (its
+"False acceptance" and "False rejection" columns are "Accepts failing" and "Rejects passing" in Table 11 of the paper),
 `verdicts.csv` the verdicts and CodeBLEU score of each translation, and `kaggle_run.ipynb` is the executed
 notebook. Of the 164 translations, 89.6% compile and 80.5% pass the tests. Of the 32 translations that fail the
 tests, compilation accepts 15, CodeBLEU at 0.6 accepts 13 and the LLM judge accepts 16. The judge also rejects 27
@@ -67,5 +70,5 @@ of the 132 translations that pass, and 67 of the 164 reference solutions.
 HumanEval-X tasks are short single functions with tests, unlike repository-scale code. Of the 288 single-operator
 mutants that compile, 46 (16%) survive the tests; some behave like the reference, but at least one does not
 (HumanEval/131). One translation fails only because the benchmark misspells a method name that the model corrected
-(HumanEval/22). The tests are therefore the best available reference, not the truth. Both models are small, and
+(HumanEval/22). The tests are therefore the best available check, not the truth. Both models are small, and
 HumanEval-X may be in their training data.

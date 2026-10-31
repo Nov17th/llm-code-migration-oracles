@@ -10,7 +10,7 @@ C372,TerraMod,Similarity next to a pass rate,LLaMA-4-Maverick with migration con
 C223,DepTrans,Similarity next to a pass rate,"RAST-7B, compile and test reward weights 1:1, both benchmarks",Tests (CA) vs CodeBLEU,43.5% vs 65.4,"Table 5, TOTAL columns",CodeBLEU ranks the 1:2 and 0:1 variants above 1:1; CA ranks 1:1 first
 C223,DepTrans,Similarity next to a pass rate,"RAST-7B, compile and test reward weights 1:2 (ablation), both benchmarks",Tests (CA) vs CodeBLEU,40.8% vs 66.5,"Table 5, TOTAL columns",
 C041,DLBench,Similarity next to a pass rate,"GPT-4o, all tasks",Execution (EX) vs exact match,70% vs 28%,"Figure 6, Section VI-A","EM is below EX for every model; DM and EM rank GPT-4o below Gemini-2.5-flash, EX the reverse"
-C041,DLBench,Similarity next to a pass rate,"Gemini-2.5-flash, all tasks",,67% vs 32%,"Figure 6, Section VI-A",
+C041,DLBench,Similarity next to a pass rate,"Gemini-2.5-flash, all tasks",Execution (EX) vs exact match,67% vs 32%,"Figure 6, Section VI-A",
 C212,BDUpdater,Further check on outputs that pass tests or fuzzing,"GPT-4.1, 24 updates",Existing tests vs developer's fix,24 vs 23,Table 8,Reported for the default model only; the 24 are successful updates with a developer fix
 C192,Code hints,Further check on outputs that pass tests or fuzzing,"LLM engine (Claude 3), deprecated methods with code hints",Fuzzing check vs manual review,95 vs 94,"Table 1, RefNeural-Claude3 (CH)",All eight rows of Table 1 have outputs that pass the check but are not equivalent
 C192,Code hints,Further check on outputs that pass tests or fuzzing,"LLM engine (Claude 3), deprecated methods without code hints",Fuzzing check vs manual review,12 vs 10,"Table 1, RefNeural-Claude3",

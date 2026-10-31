@@ -140,13 +140,13 @@ similarity next to a pass rate: 6 papers; the two rows are ranked in opposite or
 
 == RQ3: stated limitations (Table 10) ==
   15  Weak or few tests, so passing tests does not imply equivalence
-  10  No limitation of the own oracle stated
+  10  No limitation of the paper's own oracle stated
    6  Incomplete differential, fuzzing, symbolic or bounded checks
    4  Misleading surface similarity
-   3  Oracle derived from the same source as the output
+   3  Oracle and output share an origin
    3  Subjective human evaluation, or no agreement measured
-   3  The LLM games the oracle
-   2  Other limitation of the oracle
+   3  The LLM games the oracle: optimizes for compiling or passing tests
+   2  Other limitations of the oracle (such as readability)
    2  No executable oracle available
    2  Compiling does not imply correct behavior
 limitation of the own oracle stated: 40 of 50
